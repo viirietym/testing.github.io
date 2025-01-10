@@ -1,11 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
-</html>
+<?php
+  $dbhost = "localhost:3307";
+	$dbuser = "root";
+	$dbpass = "";
+	$db = "stbjobs";
+
+	$conn = new mysqli($dbhost, $dbuser, $dbpass, $db) or die("Connect failed: %s\n". $conn -> error);
+
+	if(!$conn)
+	{
+		die("Connection Failed. ". mysqli_connect_error());
+	}
+
+  function executeQuery($query){
+    $conn = $GLOBALS['conn'];
+    return mysqli_query($conn, $query);
+  }
+?>
