@@ -7,8 +7,9 @@
     <title>STBJobs: Notifications </title>
 
     <link href="../assets/css/userInbox.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="icon" href="../assets/image/stbLogo.ico">
+    <link rel="icon" href="../assets/image/userImage/stbLogo.ico">
 </head>
 
 <body>
@@ -17,7 +18,7 @@
     <!-- Header -->
     <div class="notification-box mt-5 mb-5">
         <div class="notification-header mb-2">
-            <h3 class="display-5 text-center">Notifications</h3>
+            <h1 class=" text-center"><b>Notifications</b></h1>
         </div>
 
     <!-- Notification Box -->
