@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3307
--- Generation Time: Jan 10, 2025 at 04:14 PM
+-- Generation Time: Jan 11, 2025 at 01:14 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -76,7 +76,8 @@ CREATE TABLE `jobdetail` (
 CREATE TABLE `letter` (
   `letterID` int(8) NOT NULL,
   `letterContent` varchar(2000) NOT NULL,
-  `userID` int(8) NOT NULL
+  `userID` int(8) NOT NULL,
+  `isRead` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
