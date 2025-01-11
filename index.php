@@ -15,6 +15,9 @@ include("connect.php");
 </head>
 
 <body>
+
+    <?php include("assets/shared/navbar.php");?>
+
     <?php
     include("assets/shared/footer.php");
     ?>
