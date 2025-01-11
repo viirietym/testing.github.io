@@ -1,22 +1,15 @@
+const filterLinks = document.querySelectorAll('.filter-link');
 
-        const unreadLabel = document.getElementById('unread-label');
-        const readLabel = document.getElementById('read-label');
-
-        
-        function setActive(label) {
-           
-            unreadLabel.classList.remove('active');
-            readLabel.classList.remove('active');
-
-           
-            label.classList.add('active');
+filterLinks.forEach(link => {
+    link.addEventListener('click', function () {
+        // Check if the clicked filter is already active
+        if (link.classList.contains('active')) {
+            link.classList.remove('active'); // If already active, remove 'active'
+        } else {
+            // Remove 'active' from all filters
+            filterLinks.forEach(link => link.classList.remove('active'));
+            // Add 'active' to the clicked filter
+            link.classList.add('active');
         }
-
-        
-        unreadLabel.addEventListener('click', function () {
-            setActive(unreadLabel);
-        });
-
-        readLabel.addEventListener('click', function () {
-            setActive(readLabel);
-        });
+    });
+});

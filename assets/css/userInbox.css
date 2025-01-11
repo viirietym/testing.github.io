@@ -30,8 +30,9 @@ body {
     max-height: 650px;
     background-color: #fff;
     margin: auto;
-    overflow: hidden;
+    overflow: auto;
     border-radius: 20px;
+    
 }
 
 @media (max-width: 768px) {
@@ -49,15 +50,19 @@ body {
 }
 
 .notification-list {
-    height: 100%;
     max-height: 1000px;
-    overflow-y: auto;
+    overflow: auto;
     background-color: #3E8A5E;
     border-radius: 20px !important;
 }
 
+
 .notification-item {
     background-color: #3E8A5E !important;
+}
+
+.notification-box::-webkit-scrollbar {
+    display: none;
 }
 
 .notification-list::-webkit-scrollbar {
