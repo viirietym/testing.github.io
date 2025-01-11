@@ -18,7 +18,7 @@
     <!-- Header -->
     <div class="notification-box mt-5 mb-5">
         <div class="notification-header mb-2">
-            <h1 class=" text-center"><b>Notifications</b></h1>
+            <h3 class=" text-center"><b>Notifications</b></h3>
         </div>
 
     <!-- Notification Box -->
