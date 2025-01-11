@@ -15,6 +15,7 @@ include("connect.php");
 </head>
 
 <body>
+ 
     <?php
     include("assets/shared/footer.php");
     ?>

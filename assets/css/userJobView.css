@@ -1,0 +1,54 @@
+body {
+    color: white;
+}
+
+.jobview-container {
+    background-color: #3E8A5E;
+    border-radius: 10px;
+    color: white;
+    padding: 50px;
+    text-align: center;
+    margin: 20px 40px 20px 40px;
+    font-family: Poppins;
+    text-align: left;
+}
+
+hr {
+    height: 4px;
+    border-width: 0;
+    color: white;
+    background-color: white;
+}
+
+.fa-location-dot {
+    color: #992F2F;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.apply-now-btn {
+    background-color: white;
+    color: #505050;
+    border: 2px solid #2ECC71;
+    border-radius: 25px;
+    padding: 10px 20px;
+    margin-top: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(46, 204, 113, 0.5);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.apply-now-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 8px rgba(46, 204, 113, 0.7);
+}
+
+.apply-now-btn:active {
+    transform: scale(0.95);
+    box-shadow: 0 3px 5px rgba(46, 204, 113, 0.4);
+}
