@@ -4,7 +4,7 @@
 <footer id="footer" class="container-fluid align-items-center text-center">
     <div class="row">
         <div class="col-12 col-md-6 order-2 order-md-1">
-            <p class="bold">Contact us: &nbsp;&nbsp;&nbsp;&nbsp;
+            <p class="bold">Contact us: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <span>
                     <a href="tel:+639668740452">
                         +639668740452
