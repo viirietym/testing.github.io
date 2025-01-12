@@ -1,0 +1,98 @@
+.form-container {
+    background-color: white;
+    border: 1px solid #3E8A5E;
+    border-radius: 10px;
+    box-shadow: 12px 12px 18px rgba(62, 138, 94, 1);
+    padding: 50px;
+    max-width: 600px;
+    margin: 50px auto;
+}
+
+.form-label {
+    color: #3E8A5E;
+    font-weight: bold;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.pdf-format {
+    color: #1A1A1D;
+}
+
+input[type="text"] {
+    border: none;
+    border-bottom: 2px solid #1A1A1D;
+    outline: none;
+    padding: 8px 0;
+    width: 100%;
+}
+
+.line-input {
+    font-size: 16px;
+    padding: 8px 0;
+    width: 100%;
+}
+
+input[type="text"]:focus {
+    border-bottom: 2px solid #3E8A5E;
+}
+
+.form-control-lg {
+    border: 2px solid #3E8A5E;
+    border-radius: 5px;
+}
+
+.form-control-lg:focus {
+    border-color: #3E8A5E;
+    box-shadow: 0 0 5px rgba(62, 138, 94, 0.8);
+    outline: none;
+}
+
+#uploadCV {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); 
+    border-radius: 5px;
+    padding: 8px;
+    width: 100%;
+}
+
+#uploadCV:hover {
+    border-color: #3E8A5E;
+    box-shadow: 0 0 5px rgba(62, 138, 94, 0.8);
+    outline: none;
+}
+
+.aformName {
+    color: #3E8A5E;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.submit-btn {
+    background-color: white;
+    color: #505050;
+    border: 2px solid #2ECC71;
+    border-radius: 25px;
+    padding: 10px 20px;
+    margin-top: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(46, 204, 113, 0.5);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.submit-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 8px rgba(46, 204, 113, 0.7);
+}
+
+.submit-btn:active {
+    transform: scale(0.95);
+    box-shadow: 0 3px 5px rgba(46, 204, 113, 0.4);
+}
