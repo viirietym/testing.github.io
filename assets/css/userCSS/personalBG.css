@@ -1,0 +1,132 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/*For removing the default link style*/
+a {
+    text-decoration: none;
+    color: inherit
+}
+
+a:focus,
+a:active {
+    outline: none
+}
+
+/*Sign up Form*/
+#signUpForm {
+    background-color: #3E8A5E;
+    max-width: 700px;
+    padding: 50px 40px;
+    border-radius: 20px;
+}
+
+.signUpField {
+    justify-content: center;
+}
+
+.signUpTitle p {
+    text-align: center;
+    font-family: Poppins;
+    font-weight: bolder;
+    font-size: clamp(20px, 2vw, 28px);
+    color: #ffffff;
+    margin-bottom: 50px;
+}
+
+.profileDetails {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.profile {
+    text-align: center;
+}
+
+.profile input {
+    display: none;
+}
+
+.profile img {
+    max-width: 250px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.profile img:hover {
+    opacity: 0.8;
+}
+
+.shortBio textarea {
+    word-wrap: break-word;
+    margin-right: 10px;
+    max-width: 400px;
+    background-color: transparent;
+    border: none;
+    border-radius: 0px;
+    border-bottom: 2px solid #ffffff;
+    color: #ffffff;
+    font-size: clamp(14px, 2vw, 18px);
+    outline: none;
+    resize: none;
+    overflow: hidden;
+}
+
+.personalDetail textarea {
+    max-width: 600px;
+    background-color: transparent;
+    border: none;
+    border-radius: 0px;
+    border-bottom: 2px solid #ffffff;
+    color: #ffffff;
+    font-size: clamp(14px, 2vw, 18px);
+    outline: none;
+    resize: none;
+    overflow: hidden;
+}
+
+.shortBio textarea:focus,
+.personalDetail textarea:focus {
+    background-color: transparent;
+    border-bottom: 2px solid #ffffff;
+    outline: none;
+    box-shadow: none;
+    caret-color: #ffffff;
+}
+
+.form-label {
+    font-family: Poppins;
+    font-weight: 600;
+    font-size: clamp(14px, 2vw, 18px);
+    color: #ffffff;
+}
+
+.submit {
+    text-align: center;
+    padding-top: 40px;
+}
+
+.btnSign {
+    border-radius: 20px;
+    background-color: #ffffff;
+    max-width: 180px;
+    border: none;
+    padding: 10px 40px;
+    box-shadow: 6px 4px 2px #2ECC71;
+    font-family: Poppins;
+    font-weight: bolder;
+    font-size: clamp(14px, 2vw, 18px);
+    color: #505050;
+}
+
+.btnSign:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 8px #2ecc71;
+}
+
+.btnSign:active {
+    transform: scale(0.95);
+    box-shadow: 0 3px 5px #2ecc71;
+}
