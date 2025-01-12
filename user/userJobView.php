@@ -4,8 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>STBJOBS | View Job Full <Details></Details>
-  </title>
+  <title>STBJOBS | View Job Full</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
@@ -16,7 +15,7 @@
 
 <body>
   <div class="jobview-container">
-    <p class="small mx-5">posted 1 day ago</p>
+    <p class="small mx-5">posted 1 day ago </p>
     <p class="fw-normal mb-1">
       <i class="fa-solid fa-location-dot"></i> Sta. Anastacia, Santo Tomas Batangas
     </p>

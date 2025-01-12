@@ -10,8 +10,8 @@
                         +639668740452
                     </a>
                     ,&nbsp;
-                    <a href="mailto:stbjobs.gmail.com">
-                        stbjobs.gmail.com
+                    <a href="mailto:stbjobs@gmail.com">
+                        stbjobs@gmail.com
                     </a>
                 </span>
             </p>
@@ -47,8 +47,6 @@
         padding: 10px 15px;
         height: auto;
         margin-bottom: 0;
-        display: flex;
-        flex-direction: column;
         justify-content: center;
         align-items: center;
     }
