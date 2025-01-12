@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3307
--- Generation Time: Jan 11, 2025 at 01:14 PM
+-- Generation Time: Jan 12, 2025 at 12:05 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -110,18 +110,6 @@ CREATE TABLE `post` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `skill`
---
-
-CREATE TABLE `skill` (
-  `skillID` int(8) NOT NULL,
-  `skillName` varchar(100) NOT NULL,
-  `userInfoID` int(8) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `user`
 --
 
@@ -151,7 +139,8 @@ CREATE TABLE `userinfo` (
   `contactDetails` varchar(3000) NOT NULL,
   `educationalDetails` varchar(3000) NOT NULL,
   `employmentHistoryDetails` varchar(3000) DEFAULT NULL,
-  `certificationDetails` varchar(3000) DEFAULT NULL
+  `certificationDetails` varchar(3000) DEFAULT NULL,
+  `skillDescription` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -193,12 +182,6 @@ ALTER TABLE `portfolio`
 --
 ALTER TABLE `post`
   ADD PRIMARY KEY (`postID`);
-
---
--- Indexes for table `skill`
---
-ALTER TABLE `skill`
-  ADD PRIMARY KEY (`skillID`);
 
 --
 -- Indexes for table `user`
@@ -251,12 +234,6 @@ ALTER TABLE `portfolio`
 --
 ALTER TABLE `post`
   MODIFY `postID` int(8) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `skill`
---
-ALTER TABLE `skill`
-  MODIFY `skillID` int(8) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `user`
