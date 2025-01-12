@@ -51,13 +51,14 @@ input[type="text"]:focus {
 #uploadCV {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); 
     border-radius: 5px;
+    border-color: #3E8A5E;
     padding: 8px;
     width: 100%;
 }
 
 #uploadCV:hover {
-    border-color: #3E8A5E;
-    box-shadow: 0 0 5px rgba(62, 138, 94, 0.8);
+    border-color: #505050;
+    box-shadow: 0 0 5px rgba(68, 143, 99, 0.8);
     outline: none;
 }
 
