@@ -17,24 +17,24 @@
 
     <form>
       <h5 class="aformName mb-4">Jane Doe's Application Form</h5>
-      <div class="mb-4">
+      <div class="question1 mb-4 ">
         <label for="question1" class="form-label mb-2">First Question:</label>
-        <input type="text"  class="line-input" id="question1" placeholder="Type your answer here">
+        <textarea name="question1" class="form-control" id="question1" placeholder="Type your answer here" required></textarea>
       </div>
 
-      <div class="mb-4">
+      <div class="question2 mb-4 ">
         <label for="question2" class="form-label mb-2">Second Question:</label>
-        <input type="text" class="line-input" id="question2" placeholder="Type your answer here">
+        <textarea name="question2" class="form-control" id="question2" placeholder="Type your answer here"required></textarea>
       </div>
 
       <!-- file input -->
       <div class="mb-5">
         <label for="uploadCV" class="form-label mb-2">Upload your CV/Resume (<span class="pdf-format">PDF
             Format</span>):</label>
-        <input class="form-control form-control-lg" id="uploadCV" type="file">
+        <input class="form-control form-control-lg" id="uploadCV" type="file"  accept=".pdf">
       </div>
     </form>
-      
+
     <!-- submit button -->
     <div class="button-container">
       <button type="submit" class="submit-btn">Submit</button>
