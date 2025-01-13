@@ -19,23 +19,45 @@
     color: #1A1A1D;
 }
 
-input[type="text"] {
+.question1 textarea {
+    word-wrap: break-word;
+    margin-right: 10px;
+    max-width: 400px;
+    background-color: transparent;
     border: none;
-    border-bottom: 2px solid #1A1A1D;
-    outline: none;
-    padding: 8px 0;
-    width: 100%;
-}
-
-.line-input {
-    font-size: 16px;
-    padding: 8px 0;
-    width: 100%;
-}
-
-input[type="text"]:focus {
+    border-radius: 0px;
     border-bottom: 2px solid #3E8A5E;
+    color: #3E8A5E;
+    font-size: clamp(14px, 2vw, 18px);
+    outline: none;
+    resize: none;
+    overflow: hidden;
 }
+
+.question2 textarea {
+    word-wrap: break-word;
+    margin-right: 10px;
+    max-width: 400px;
+    background-color: transparent;
+    border: none;
+    border-radius: 0px;
+    border-bottom: 2px solid #3E8A5E;
+    color: #3E8A5E;
+    font-size: clamp(14px, 2vw, 18px);
+    outline: none;
+    resize: none;
+    overflow: hidden;
+}
+
+.question1 textarea:focus,
+.question2 textarea:focus {
+    background-color: transparent;
+    border-bottom: 2px solid #3E8A5E; 
+    outline: none;
+    box-shadow: none;
+    caret-color: #3E8A5E;
+}
+
 
 .form-control-lg {
     border: 2px solid #3E8A5E;
@@ -49,7 +71,7 @@ input[type="text"]:focus {
 }
 
 #uploadCV {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     border-radius: 5px;
     border-color: #3E8A5E;
     padding: 8px;
