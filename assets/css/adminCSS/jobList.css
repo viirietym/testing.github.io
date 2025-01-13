@@ -1,0 +1,174 @@
+.greet {
+    color: #000000 !important;
+    font-family: Poppins !important;
+    font-size: clamp(2rem, 3.5vw, 10rem) !important;
+    align-items: center !important;
+    text-align: center !important;
+    letter-spacing: -2% !important;
+    font-weight: 400 !important;
+}
+
+.tagline {
+    color: #000000 !important;
+    font-family: Poppins !important;
+    font-size: clamp(1rem, 1.5vw, 4rem) !important;
+    align-items: center !important;
+    text-align: center !important;
+    font-weight: 400px !important;
+}
+
+.stb {
+    font-weight: bolder !important;
+    font-size: clamp(2rem, 3.5vw, 20rem) !important;
+}
+
+.jobs {
+    font-weight: bolder !important;
+    font-size: clamp(2rem, 3.5vw, 20rem) !important;
+}
+
+/* Thick red border */
+hr.new5 {
+    border: 3px solid rgb(24, 24, 24) !important;
+    border-radius: 2px !important;
+}
+
+.btnAdd {
+    background-color: #ffffff !important;
+    border-style: solid 50px 50px 50px 50px !important;
+    border-color: #0D99FF !important;
+    text-align: center !important;
+    font-size: clamp(2rem, 1.5vw, 5rem) !important;
+    font-family: Poppins !important;
+    align-items: center !important;
+    border-radius: 20px !important;
+    box-shadow: 6px 4px 2px #0D99FF !important;
+}
+
+.btnAdd:hover {
+    transform: scale(1.05) !important;
+    box-shadow: 0 6px 8px #0D99FF !important;
+}
+
+.datePosted {
+    color: #ffffff !important;
+    font-family: Poppins !important;
+    font-size: clamp(1rem, 1vw, 1rem) !important;
+    text-align: start !important;
+}
+
+.barangay {
+    text-align: left !important;
+    color: #ffffff !important;
+    font-family: Poppins !important;
+}
+
+.btnEdit {
+    background-color: #ffffff !important;
+    border-style: solid 50px 50px 50px 50px !important;
+    border-color: #21a027 !important;
+    text-align: center !important;
+    font-size: clamp(1rem, 1.2vw, 2rem) !important;
+    font-family: Poppins !important;
+    align-items: center !important;
+    border-radius: 20px !important;
+    box-shadow: 6px 4px 2px #21a027 !important;
+    width: 100px !important;
+}
+
+.btnEdit:hover {
+    transform: scale(1) !important;
+    box-shadow: 0 6px 8px #21a027 !important;
+}
+
+.btnDelete {
+    background-color: #ffffff !important;
+    border-style: solid 50px 50px 50px 50px !important;
+    border-color: #AF514C !important;
+    text-align: center !important;
+    font-size: clamp(1rem, 1.2vw, 3rem) !important;
+    font-family: Poppins !important;
+    align-items: center !important;
+    border-radius: 20px !important;
+    box-shadow: 6px 4px 2px #AF514C !important;
+    width: 100px;
+}
+
+.btnDelete:hover {
+    transform: scale(1) !important;
+    box-shadow: 0 6px 8px #AF514C !important;
+}
+
+.jobName {
+    color: #ffffff !important;
+    font-family: Poppins !important;
+    font-size: clamp(1rem, 1.5vw, 4rem) !important;
+    font-weight: bolder !important;
+}
+
+.jobDetails {
+    color: #ffffff !important;
+    font-family: Poppins !important;
+    font-size: clamp(1rem, 1.5vw, 1rem) !important;
+    font-weight: 200px !important;
+}
+
+.skill {
+    color: #ffffff !important;
+    font-family: Poppins !important;
+    font-size: clamp(1rem, 1.5vw, 1rem) !important;
+    font-weight: bold !important;
+}
+
+.skillDesc {
+    color: #ffffff !important;
+    font-family: Poppins !important;
+    font-size: clamp(1rem, 1.5vw, 1rem) !important;
+    font-weight: 200px !important;
+}
+
+.jobDescTitle {
+    color: #ffffff !important;
+    font-family: Poppins !important;
+    font-size: clamp(1rem, 1.5vw, 1rem) !important;
+    font-weight: bold !important;
+}
+
+.jobDesc {
+    color: #ffffff !important;
+    font-family: Poppins !important;
+    font-size: clamp(1rem, 1.5vw, 1rem) !important;
+    font-weight: 200px !important;
+}
+
+hr.bar {
+    border: 3px solid rgb(255, 255, 255) !important;
+    border-radius: 2px !important;
+}
+
+.otherEntry {
+    color: #ffffff !important;
+    font-family: Poppins !important;
+    font-size: clamp(1rem, 1.5vw, 4rem) !important;
+    font-weight: bold !important;
+}
+
+.filter {
+    color: #ffffff !important;
+    font-family: Poppins !important;
+    font-size: clamp(1rem, 2vw, 1.30rem) !important;
+    text-align: start !important;
+    text-align: center !important;
+    font-weight: bold !important;
+}
+
+.filterbtn {
+    color: #FFFFFF !important;
+    background-color: #939393 !important;
+    text-align: center !important;
+    font-size: clamp(15px, 2vw, 1rem) !important;
+    font-family: Poppins !important;
+    align-items: center !important;
+    border-radius: 20px !important;
+    border-color: #939393 !important;
+}
