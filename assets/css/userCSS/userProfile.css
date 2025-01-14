@@ -1,0 +1,320 @@
+body {
+    background-color: white;
+}
+
+.profileHeader {
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+}
+
+.profileImage {
+    width: 200px;
+    height: 190px;
+    background-color: #43B272;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.profileImage img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
+.profileImage span {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    color: #FFFFFF;
+    font-size: 20px;
+    background-color: transparent;
+    font-family: 'Poppins';
+    font-weight: bolder;
+    font-size: 22px;
+}
+
+.profileText {
+    flex: 1;
+    max-width: 600px;
+    text-align: left;
+    padding-left: 50px;
+    z-index: 1;
+}
+
+.profileText h2 {
+    margin: 0;
+    font-size: 44px;
+    font-family: 'Poppins';
+    font-weight: bolder;
+    color: #3E8A5E;
+}
+
+.profileText p {
+    margin: 5px 0;
+    color: #2ECC71;
+    font-size: 18px;
+    font-weight: bold;
+    font-family: 'Poppins';
+}
+
+.profileText p:last-of-type {
+    color: black;
+    margin-top: 20px;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-left: 20px;
+}
+
+.buttons button {
+    background-color: white;
+    color: #3E8A5E;
+    padding: 10px 10px;
+    margin: 10px 20px;
+    border-color: #2ECC71;
+    border-radius: 20px;
+    cursor: pointer;
+    position: relative;
+    font-weight: bolder;
+    font-size: 18px;
+    box-shadow: 0 4px 6px rgba(46, 204, 113, 0.5);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.buttons button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 8px rgba(46, 204, 113, 0.7);
+}
+
+.profileContent {
+    max-width: 1200px;
+    margin: 30px auto 20px auto;
+    padding: 30px 50px;
+    background-color: #5A806A;
+    border-radius: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: grid;
+    grid-template-columns: 1fr 1px 1fr;
+    gap: 20px;
+    position: relative;
+}
+
+.profileContent .divider {
+    background-color: #FFFFFF;
+    width: 1px;
+    height: auto;
+}
+
+.contentLeft,
+.contentRight {
+    padding: 10px;
+    overflow-wrap: break-word;
+}
+
+.jobTitle {
+    font-family: 'Poppins';
+    font-size: 18px;
+    font-weight: bolder;
+    color: white;
+    text-align: center;
+    padding-bottom: 30px;
+}
+
+.fullDescription,
+.skills {
+    margin-bottom: 10px;
+    color: #FFFFFF;
+    font-family: 'Poppins';
+    font-size: 20px;
+}
+
+.fullDescription p,
+.skills p {
+    margin-bottom: 10px;
+    color: #FFFFFF;
+    font-family: 'Poppins';
+    font-size: 15px;
+}
+
+.contactInfo {
+    margin-bottom: 10px;
+    color: #FFFFFF;
+    font-family: 'Poppins';
+    font-size: 20px;
+    text-align: center;
+    padding-top: 50px;
+}
+
+.contactInfo p {
+    margin-bottom: -10px;
+    color: #FFFFFF;
+    font-family: 'Poppins';
+    font-size: 15px;
+    padding-top: 20px;
+    padding-bottom: 0;
+}
+
+.educDetails {
+    padding-top: 55px;
+    color: #FFFFFF;
+    font-family: 'Poppins';
+    font-size: 20px;
+}
+
+.empHistory,
+.certDetails {
+    color: #FFFFFF;
+    font-family: 'Poppins';
+    font-size: 20px;
+}
+
+
+@media (max-width: 768px) {
+
+    .educDetails {
+        padding-top: 0;
+    }
+}
+
+
+.educDetails p,
+.empHistory p,
+.certDetails p {
+    margin-bottom: 10px;
+    color: #FFFFFF;
+    font-family: 'Poppins';
+    font-size: 15px;
+    padding-bottom: 10%;
+}
+
+
+.card {
+    margin-top: 20px;
+    width: 150px;
+    height: 165px;
+    border-radius: 20px;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.cardImg {
+    width: 133px;
+    height: 126px;
+    background-color: #CFF4D1;
+    border-radius: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    object-fit: cover;
+}
+
+.portfolioTitle {
+    font-size: 20px;
+    color: #2ECC71;
+    font-family: 'Poppins';
+    padding-top: 10px;
+}
+
+.textInput {
+    border: none;
+    border-bottom: 2px solid #2ECC71;
+    outline: none;
+    background-color: transparent;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    color: #000;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 5px 0;
+    transition: border-color 0.3s ease;
+}
+
+.textInput:focus {
+    border-bottom-color: #3E8A5E;
+}
+
+.textContent {
+    border: none;
+    border-bottom: 2px solid #2ECC71;
+    outline: none;
+    background-color: transparent;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    color: white;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 5px 0;
+    transition: border-color 0.3s ease;
+}
+
+.textContent:focus {
+    border-bottom-color: #3E8A5E;
+}
+
+
+@media (max-width: 768px) {
+
+    .profileHeader {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .profileImage {
+        width: 150px;
+        height: 150px;
+        margin-bottom: 10px;
+    }
+
+    .profileText {
+        padding-left: 20px;
+        text-align: center;
+    }
+
+    .buttons {
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .profileContent {
+        grid-template-columns: 1fr;
+        padding: 15px;
+    }
+
+    .profileContent .divider {
+        width: 100%;
+        height: 1px;
+    }
+
+
+    .contentLeft,
+    .contentRight {
+        padding: 5px;
+    }
+
+    .portfolio .card {
+        margin: 0 auto;
+    }
+
+    .portfolioTitle {
+        font-size: 16px;
+    }
+
+    .jobTitle {
+        margin-top: 40px;
+    }
+
+}
