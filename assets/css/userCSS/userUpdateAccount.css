@@ -1,0 +1,89 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.update {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px;
+}
+
+#updateForm {
+    background-color: #3E8A5E;
+    width: 100%;
+    max-width: 700px;
+    padding: 50px 90px;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.updateTitle p {
+    text-align: center;
+    font-family: 'Poppins';
+    font-weight: bolder;
+    font-size: 30px;
+    color: #ffffff;
+    margin-bottom: 50px;
+}
+
+.accountDetail input {
+    max-width: 500px;
+    background-color: transparent;
+    border: none;
+    border-radius: 0px;
+    border-bottom: 2px solid #ffffff;
+    color: #ffffff;
+    font-size: 18px;
+    outline: none;
+}
+
+.accountDetail input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+    font-family: 'Poppins';
+}
+
+.accountDetail input:focus {
+    background-color: transparent;
+    border-bottom: 2px solid #ffffff;
+    outline: none;
+    box-shadow: none;
+    caret-color: #ffffff;
+}
+
+.form-label {
+    font-family: Poppins;
+    font-weight: 600;
+    font-size: clamp(14px, 2vw, 18px);
+    color: #ffffff;
+}
+
+.submit {
+    text-align: center;
+    padding-top: 40px;
+}
+
+.btnUpdate {
+    border-radius: 20px;
+    background-color: #ffffff;
+    max-width: 180px;
+    border: none;
+    padding: 10px 40px;
+    box-shadow: 6px 4px 2px #2ECC71;
+    font-family: Poppins;
+    font-weight: bolder;
+    font-size: clamp(14px, 2vw, 18px);
+    color: #505050;
+    margin-top: 30px;
+}
+
+.btnUpdate:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+.btnUpdate:active {
+    transform: scale(0.95);
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.15);
+}

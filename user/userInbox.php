@@ -17,7 +17,7 @@
     <!-- Header -->
     <div class="notification-box mt-5 mb-5">
         <div class="notification-header mb-2">
-            <h3 class="display-5 text-center">Notifications</h3>
+            <h3 class=" text-center"><b>Notifications</b></h3>
         </div>
 
     <!-- Notification Box -->
@@ -47,7 +47,7 @@
             <li class="list-group-item mb-3 notification-item">
 
                 <a href="page2.html" class="text-decoration-none text-white d-flex align-items-center">
-                <img src="../assets/image/stbJobsNotification.png" alt="icon" class="rounded-circle me-2 img-fluid" style="max-width: 80px; height: auto;">
+                <img src="../assets/image/userImage/stbJobsNotification.png" alt="icon" class="rounded-circle me-2 img-fluid" style="max-width: 80px; height: auto;">
                     <div class="d-flex flex-column">
                         <div class="fw-bold fs-5">New message from John</div>
                         <small class="text-muted">Lorem ipsum dolor</small>
@@ -57,7 +57,7 @@
 
             <li class="list-group-item mb-3 notification-item">
                 <a href="page3.html" class="text-decoration-none text-white d-flex align-items-center">
-                    <img src="../assets/image/stbJobsNotification.png" alt="icon" class="rounded-circle me-2 img-fluid" style="max-width: 80px; height: auto;">
+                    <img src="../assets/image/userImage/stbJobsNotification.png" alt="icon" class="rounded-circle me-2 img-fluid" style="max-width: 80px; height: auto;">
                     <div class="d-flex flex-column">
                         <div class="fw-bold fs-5">New message from John</div>
                         <small class="text-muted">Lorem ipsum dolor</small>
@@ -67,7 +67,7 @@
 
             <li class="list-group-item mb-3 notification-item">
                 <a href="page4.html" class="text-decoration-none text-white d-flex align-items-center">
-                <img src="../assets/image/stbJobsNotification.png" alt="icon" class="rounded-circle me-2 img-fluid" style="max-width: 80px; height: auto;">
+                <img src="../assets/image/userImage/stbJobsNotification.png" alt="icon" class="rounded-circle me-2 img-fluid" style="max-width: 80px; height: auto;">
                     <div class="d-flex flex-column">
                         <div class="fw-bold fs-5">New message from John</div>
                         <small class="text-muted">Lorem ipsum dolor</small>
@@ -77,7 +77,7 @@
 
             <li class="list-group-item mt-3 mb-3  notification-item">
                 <a href="page5.html" class="text-decoration-none text-white d-flex align-items-center">
-                <img src="../assets/image/stbJobsNotification.png" alt="icon" class="rounded-circle me-2 img-fluid" style="max-width: 80px; height: auto;">
+                <img src="../assets/image/userImage/stbJobsNotification.png" alt="icon" class="rounded-circle me-2 img-fluid" style="max-width: 80px; height: auto;">
                     <div class="d-flex flex-column">
                         <div class="fw-bold fs-5">New message from John</div>
                         <small class="text-muted">Lorem ipsum dolor</small>
