@@ -1,0 +1,104 @@
+.job {
+    background-color: #4D4D4D !important;
+    border-radius: 20px !important;
+}
+
+.datePosted {
+    color: #ffffff !important;
+    font-family: Poppins !important;
+    font-size: clamp(.8rem, 1vw, .20rem) !important;
+    text-align: start !important;
+}
+
+.barangay {
+    text-align: left !important;
+    color: #ffffff !important;
+    font-family: Poppins !important;
+    font-size: clamp(1rem, 1vw, 1.5rem) !important;
+}
+
+.btnEdit {
+    background-color: #ffffff !important;
+    border-style: solid 50px 50px 50px 50px !important;
+    border-color: #21a027 !important;
+    text-align: center !important;
+    font-size: clamp(1rem, 1.2vw, 1.5rem) !important;
+    font-family: Poppins !important;
+    align-items: center !important;
+    border-radius: 20px !important;
+    box-shadow: 6px 4px 2px #21a027 !important;
+    width: 100px !important;
+    color: black !important;
+}
+
+.btnEdit:hover {
+    transform: scale(1.05) !important;
+    box-shadow: 0 6px 8px #21a027 !important;
+}
+
+.btnDelete {
+    background-color: #ffffff !important;
+    border-style: solid 50px 50px 50px 50px !important;
+    border-color: #AF514C !important;
+    text-align: center !important;
+    font-size: clamp(1rem, 1.2vw, 1.5rem) !important;
+    font-family: Poppins !important;
+    align-items: center !important;
+    border-radius: 20px !important;
+    box-shadow: 6px 4px 2px #AF514C !important;
+    width: 100px !important;
+    color: black !important;
+}
+
+.btnDelete:hover {
+    transform: scale(1.05) !important;
+    box-shadow: 0 6px 8px #AF514C !important;
+}
+
+.jobName {
+    color: #ffffff !important;
+    font-family: Poppins !important;
+    font-size: clamp(1rem, 1.8vw, 2rem) !important;
+    font-weight: bolder !important;
+}
+
+hr.bar {
+    border: 2px solid rgb(255, 255, 255) !important;
+    border-radius: 2px !important;
+    width: 1120px;
+}
+
+.jobDetails {
+    color: #ffffff !important;
+    font-family: Poppins !important;
+    font-size: clamp(1rem, 1.5vw, 1rem) !important;
+    font-weight: 500 !important;
+}
+
+.skill {
+    color: #ffffff !important;
+    font-family: Poppins !important;
+    font-size: clamp(1rem, 1.5vw, 1rem) !important;
+    font-weight: 800 !important;
+}
+
+.skillDesc {
+    color: #ffffff !important;
+    font-family: Poppins !important;
+    font-size: clamp(1rem, 1.5vw, 1rem) !important;
+    font-weight: 100 !important;
+}
+
+.jobDescTitle {
+    color: #ffffff !important;
+    font-family: Poppins !important;
+    font-size: clamp(1rem, 1.5vw, 1rem) !important;
+    font-weight: 800 !important;
+}
+
+.jobDesc {
+    color: #ffffff !important;
+    font-family: Poppins !important;
+    font-size: clamp(1rem, 1.5vw, 1rem) !important;
+    font-weight: 100 !important;
+}
