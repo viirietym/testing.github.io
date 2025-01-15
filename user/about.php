@@ -14,12 +14,12 @@
 
 <body>
     <?php
-    include("../assets/shared/footerAdmin.php");
+    include("../assets/shared/navbarHome.php");
     ?>
 
 
 
-    <div class="container orgProfile">
+    <div class="container orgProfile" style="margin-top: 150px;">
         <div class="row">
             <div class="col-12 col-md-4 orgLogo">
                 <img src="../assets/image/userImage/stbLogo.png">

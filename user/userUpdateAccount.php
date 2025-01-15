@@ -14,10 +14,10 @@
 
 <body>
     <?php
-    include("../assets/shared/footerAdmin.php");
+    include("../assets/shared/navbarHome.php");
     ?>
 
-    <div class="container update">
+    <div class="container update" style="margin-top: 150px;">
         <div id="updateForm">
             <div class="row">
                 <div class="col-12 updateTitle">
