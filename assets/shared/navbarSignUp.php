@@ -12,15 +12,14 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="navbarSignUp.css">
+    <link rel="stylesheet" href="../assets/css/userCSS/navbarSignUp.css">
 </head>
 
 <body>
 
-
-    <header>
-        <div class="logo">
-            <img src="image/STBJOBS 2 1.png" alt="" width="26%">
+    <div class="header">
+    <div class="logo">
+            <img src="../assets/image/userImage/stbLogoUser.png" alt="" width="26%">
             <h1>STB<span>Jobs</span></h1>
         </div>
 
@@ -37,13 +36,13 @@
             <a href="#">Help</a>
             <a href="#">About</a>
         </nav>
-    </header>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
 
-    <script src="./nav.js"></script>
+    <script src="../js/nav.js"></script>
 </body>
 
 </html>
