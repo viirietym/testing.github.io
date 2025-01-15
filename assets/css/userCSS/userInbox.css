@@ -45,13 +45,17 @@ body {
     }
 }
 
+
 .notification-header {
-    padding: 15px;
+    padding: 20px;
     background-color: #ffff;
     border: 1px solid #3E8A5E;
-    border-radius: 20px;
+    border-radius: 20px; 
     font-family: 'Poppins', sans-serif;
     font-weight: bold;
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
 }
 
 .notification-list {

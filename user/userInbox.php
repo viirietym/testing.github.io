@@ -9,16 +9,20 @@
     <link href="../assets/css/userCSS/userInbox.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="icon" href="../assets/image/userImage/stbLogo.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
 
     <!-- Header -->
-    <div class="notification-box mt-5 mb-5">
-        <div class="notification-header mb-2">
+    <div class="container-header-box mt-5">
+        <div class="notification-header mb-5" styles="">
             <h3 class=" text-center"><b>Notifications</b></h3>
         </div>
+    </div>
+
+    <div class="notification-box mb-5">
 
     <!-- Notification Box -->
         <ul class="list-group-flush notification-list">
