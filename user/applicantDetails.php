@@ -14,12 +14,12 @@
 
 <body>
     <?php
-    include("../assets/shared/footerAdmin.php");
+    include("../assets/shared/navbarSignUp.php");
     ?>
 
 
 
-    <div class="container my-5" id="signUpForm">
+    <div class="container" id="signUpForm" style="margin: 150px auto 50px auto;">
         <div class="row">
             <div class="col-12 signUpTitle">
                 <p>APPLICANT DETAILS</p>

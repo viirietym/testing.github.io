@@ -14,12 +14,10 @@
 
 <body>
     <?php
-    include("../assets/shared/footerAdmin.php");
+    include("../assets/shared/navbarSignUp.php");
     ?>
 
-
-
-    <div class="container my-5" id="signUpForm">
+    <div class="container" id="signUpForm" style="margin: 150px auto 50px auto;">
         <div class="row">
             <div class="col-12 signUpTitle">
                 <p>SKILLS BACKGROUND</p>
@@ -28,8 +26,8 @@
         <div class="row">
             <div class="col-12 signUpField">
                 <form method="POST" class="Post">
-                    <div class="mb-3 projectDetails">
-                        <div class="col-8" id="portfolioContainer">
+                    <div class="mb-5 projectDetails">
+                        <div class="col-12" id="portfolioContainer">
                             <div class="project-item">
                                 <p>Add Portfolio:</p>
                                 <label for="portfolioInput" id="profileImageLabel">
@@ -43,9 +41,9 @@
                                     placeholder="Project Name" required>
                             </div>
                         </div>
-                        <div class="col-4 addProject mt-3">
-                            <button type="button" onclick="addProject()">
-                                <img src="../assets/image/userImage/addProject.png" alt="Add Project">
+                        <div class="col-12 addProject">
+                            <button type="button" data-bs-toggle="modal" data-bs-target="#confirmationModal">
+                                <img src="../assets/image/userImage/addProject.png" alt="Add Project" style="overflow: hidden">
                             </button>
                         </div>
                     </div>
@@ -54,18 +52,38 @@
                         <textarea name="skillDesc" class="form-control frm-sign" id="skillDesc" required></textarea>
                     </div>
                     <div class="mb-3 submit">
-                        <button name="btnSign" type="submit" class="btnSign">Proceed</button>
+                        <button name="btnSign" type="submit" class="btnSign" data-bs-toggle="modal"
+                        data-bs-target="#addNew">Proceed</button>
+                    </div>
+
+                    <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="confirmationLabel">ADD NEW PORTFOLIO</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    Are you sure you want to add a new portfolio? This action will allow you to upload a new project.
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                    <button type="button" class="btn" style="background-color:rgb(81, 175, 76); color: #FFFFFF;" data-bs-dismiss="modal"
+                                     onclick="addProject()">Yes, Add Project</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 
-
-
     <?php
     include("../assets/shared/footer.php");
     ?>
+
     <script src="../js/skillBGAddProject.js"></script>
 </body>
+
 </html>
