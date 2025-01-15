@@ -13,7 +13,14 @@
 </head>
 
 <body>
-    <div class="container p-5">
+
+    <!-- Navigation -->
+    <?php
+    include("../assets/shared/navbarAdmin.php");
+    ?>
+
+
+    <div class="container main p-5" style="margin-top: 100px;">
 
         <div class="container job">
 
@@ -114,7 +121,7 @@
     <?php
     include("../assets/shared/footerAdmin.php");
     ?>
-    
+
 </body>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
