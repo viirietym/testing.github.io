@@ -14,12 +14,12 @@
 
 <body>
     <?php
-    include("../assets/shared/footerAdmin.php");
+    include("../assets/shared/navbarSignUp.php");
     ?>
 
 
 
-    <div class="container my-5" id="signUpForm">
+    <div class="container" id="signUpForm" style="margin: 150px auto 50px auto;">
         <div class="row">
             <div class="col-12 signUpTitle">
                 <p>PERSONAL BACKGROUND</p>
@@ -32,7 +32,7 @@
                         <div class="col-12 col-md-4 profile">
                             <label for="profile">
                                 <img id="profileImage" src="../assets/image/userImage/profile.png" alt="Profile Picture"
-                                    class="form-control frm-sign">
+                                    class="form-control frm-sign" style="overflow: hidden; border-radius: 100%">
                             </label>
                             <input type="file" name="profile" class="form-control frm-sign" id="profile"
                                 accept="image/*" onchange="previewImage(event)" required>

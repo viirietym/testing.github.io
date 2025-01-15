@@ -98,6 +98,7 @@ a:active {
 .orgImage img {
     width: clamp(250px, 30vw, 500px); 
     border-radius: 20px;
+    padding:10px;
 }
 
 .orgDetails {

@@ -19,14 +19,14 @@
 
 
 
-    <div class="container orgProfile" style="margin-top: 150px;">
+    <div class="container orgProfile" style="margin: 150px auto 50px auto">
         <div class="row">
             <div class="col-12 col-md-4 orgLogo">
                 <img src="../assets/image/userImage/stbLogo.png">
             </div>
             <div class="col-12 col-md-8">
                 <div class="orgLocation">
-                    <img src="../assets/image/userImage/location.png">
+                    <img src="../assets/image/userImage/location.png" style="margin-right: 4px;">
                     <p>Based on: Santo Tomas, Batangas, Philippines</p>
                 </div>
                 <p class="orgName">ViirtualHounds</p>
@@ -43,10 +43,10 @@
     <div class="container orgAbout">
         <div class="row">
             <div class="col-12 col-md-6 orgImage order-1 order-md-1">
-                <img src="../assets/image/userImage/orgImage.png">
+                <img src="../assets/image/userImage/orgImage.png" style="padding: 10px;">
             </div>
-            <div class="col-12 col-md-6 orgDetails order-2 order-md-2">
-                <p>VirtualHounds is an organization formed by 8 dedicated 3rd-year BSIT students from the Polytechnic
+            <div class="col-12 col-md-6 orgDetails order-2 order-md-2" style="padding: 10px;">
+                <p>ViirtualHounds is an organization formed by 8 dedicated 3rd-year BSIT students from the Polytechnic
                     University of the Philippines - Santo Tomas, Batangas. We specialize in creating impactful websites
                     that serve the general public's needs. With a strong focus on innovation, our goal is to design
                     user-friendly, functional digital solutions that help people navigate the digital world more
@@ -56,7 +56,7 @@
         </div>
 
         <div class="row">
-            <div class="col-12 col-md-6 orgDetails order-2 order-md-1">
+            <div class="col-12 col-md-6 orgDetails order-2 order-md-1" style="padding: 10px;">
                 <p>Our group, known as Group 7, was formed with the vision of building meaningful websites that solve
                     real-world challenges. As part of our academic journey, we aim to apply our skills to create digital
                     solutions that are both innovative and practical. Our goal is to consistently learn, evolve, and
@@ -65,7 +65,7 @@
                 </p>
             </div>
             <div class="col-12 col-md-6 orgImage order-1 order-md-2">
-                <img src="../assets/image/userImage/orgImage.png">
+                <img src="../assets/image/userImage/orgImage.png" style="padding: 10px;">
             </div>
         </div>
     </div>
