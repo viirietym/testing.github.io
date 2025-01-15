@@ -20,7 +20,7 @@
     ?>
 
     <!-- Home -->
-    <div class="container content" style="margin-top: 100px">
+    <div class="container content" style="margin-top: 150px; margin-bottom: 80px">
 
         <div class="row">
 
