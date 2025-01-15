@@ -14,9 +14,12 @@
 
 <body>
 
-
+<?php
+    include("../assets/shared/navbarHome.php");
+    ?>
+    
     <!-- Header -->
-    <div class="container-header-box mt-5">
+    <div class="container-header-box" style="margin-top: 150px;">
         <div class="notification-header mb-5" styles="">
             <h3 class=" text-center"><b>Notifications</b></h3>
         </div>
