@@ -27,7 +27,7 @@
     font-size: clamp(2rem, 3.5vw, 20rem) !important;
 }
 
-/* Thick red border */
+
 hr.new5 {
     border: 3px solid rgb(24, 24, 24) !important;
     border-radius: 2px !important;
@@ -38,7 +38,7 @@ hr.new5 {
     border-style: solid 50px 50px 50px 50px !important;
     border-color: #0D99FF !important;
     text-align: center !important;
-    font-size: clamp(2rem, 1.5vw, 5rem) !important;
+    font-size: clamp(.8rem, 1vw, 2rem) !important;
     font-family: Poppins !important;
     align-items: center !important;
     border-radius: 20px !important;
