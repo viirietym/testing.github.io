@@ -33,12 +33,30 @@ hr.new5 {
     border-radius: 2px !important;
 }
 
+.buttonContainer {
+    padding-top: 150px !important;
+}
+
+@media (max-width: 360px){
+    
+    .buttonContainer{
+       padding-top: 0 !important;
+    }
+}
+
+@media (max-width: 780px){
+    
+    .buttonContainer{
+       padding-top: 0 !important;
+    }
+}
+
 .btnAdd {
     background-color: #ffffff !important;
     border-style: solid 50px 50px 50px 50px !important;
     border-color: #0D99FF !important;
     text-align: center !important;
-    font-size: clamp(.8rem, 2vw, 3rem) !important;
+    font-size: clamp(1.3rem, 2.5vw, 2.5rem) !important;
     font-family: Poppins !important;
     align-items: center !important;
     border-radius: 20px !important;
@@ -49,6 +67,15 @@ hr.new5 {
     transform: scale(1.05) !important;
     box-shadow: 0 6px 8px #0D99FF !important;
 }
+
+.jobListContainer {
+    background-color: #4D4D4D !important;
+    border-radius: 20px !important;
+    height:500px ;
+    overflow-y: scroll !important;
+    scrollbar-width: none !important;
+}
+
 
 .datePosted {
     color: #ffffff !important;
@@ -91,7 +118,7 @@ hr.new5 {
     align-items: center !important;
     border-radius: 20px !important;
     box-shadow: 6px 4px 2px #AF514C !important;
-    width: 100px;
+    width: 100px !important;
 }
 
 .btnDelete:hover {
@@ -153,22 +180,28 @@ hr.bar {
     font-weight: bold !important;
 }
 
-.filter {
-    color: #ffffff !important;
-    font-family: Poppins !important;
-    font-size: clamp(1rem, 2vw, 1.30rem) !important;
-    text-align: start !important;
-    text-align: center !important;
-    font-weight: bold !important;
+.filters {
+    padding: 20px !important;
+    border-radius: 20px !important;
+    margin-top: 10px !important;
 }
 
-.filterbtn {
-    color: #FFFFFF !important;
-    background-color: #939393 !important;
+.filters h5 {
     text-align: center !important;
-    font-size: clamp(15px, 2vw, 1rem) !important;
+    color: white !important;
     font-family: Poppins !important;
-    align-items: center !important;
+    font-size: clamp(1rem, 2vw, 1.30rem) !important;
+    font-weight: 800 !important;
+}
+
+.filters button {
+    font-size: clamp(10px, 1vw, 14px) !important;
+    background-color:#939393 !important;
+    color: #ffffff !important;
+    font-weight: bold !important;
+    border: none !important;
     border-radius: 20px !important;
-    border-color: #939393 !important;
+    margin-bottom: 10px !important;
+    cursor: pointer !important;
+    font-family: Poppins !important;
 }
