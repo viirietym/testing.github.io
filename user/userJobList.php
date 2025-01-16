@@ -28,7 +28,7 @@
                     <div class="intro fw-bold">
                         <p>Connecting Opportunities in Santo Tomas, Batangas</p>
                     </div>
-                    <div style="border-top: 5px solid #3E8A5E; width: 80%;" class="m-auto"></div>
+                    <div style="border-top: 5px solid #3E8A5E; width: 100%;" class="m-auto"></div>
                 </div>
             </div>
 
@@ -52,12 +52,12 @@
                             <img src="../assets/image/userImage/location.png" alt="Location Icon" class="icon"> San
                             Antonio
                         </p>
-                        <h3 class="mt-3">Job Name | Company Name</h3>
+                        <h3 class="font-weight-bold mt-3">Job Name | Company Name</h3>
                         <p class="job-details mt-3">
                             salary rate | exp. level [ex. entry level] | job Industry [ex. IT]
                         </p>
                         <div class="skills-section mt-3">
-                            <p><strong>skills needed:</strong><br>
+                            <p><strong>Skills needed:</strong><br>
                                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                                 incididunt
                                 ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
@@ -65,7 +65,7 @@
                             </p>
                         </div>
                         <div class="description-section">
-                            <p>Description: <a href="#" class="see-more">see more</a></p>
+                            <p><strong>Description:</strong> <a href="#" class="see-more">see more</a></p>
                         </div>
                         <div style="border-top: 5px solid white; width: 100%; margin: 10px 0;"></div>
                         <p class="another-entry">Another Entry...</p>
@@ -77,13 +77,13 @@
             <div class="col-12 col-lg-4 order-3 order-lg-4 mt-5">
     <div class="filter-section">
         <div class="filters col-12 d-flex flex-column align-items-center py-5">
-            <h4>FILTER BY:</h4>
+            <h5>FILTER BY:</h5>
 
             <!-- Dropdown for Salary Rate -->
             <div class="row w-100 text-center">
                 <div class="col-4 col-lg-6 mb-2 mb-md-0 order-1 order-md-1">
                     <div class="dropdown w-100">
-                        <button class="btn btn-light w-100 dropdown-toggle" type="button" id="dropdownSalaryRate" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button class="my-3 btn btn-light w-100 dropdown-toggle" type="button" id="dropdownSalaryRate" data-bs-toggle="dropdown" aria-expanded="false">
                             Salary Rate
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownSalaryRate">
@@ -97,7 +97,7 @@
                 <!-- Dropdown for Industry -->
                 <div class="col-4 col-lg-6 mb-2 mb-md-0 order-2 order-md-2">
                     <div class="dropdown w-100">
-                        <button class="btn btn-light w-100 dropdown-toggle" type="button" id="dropdownIndustry" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button class="my-3 btn btn-light w-100 dropdown-toggle" type="button" id="dropdownIndustry" data-bs-toggle="dropdown" aria-expanded="false">
                             Industry
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownIndustry">
@@ -111,7 +111,7 @@
                 <!-- Dropdown for Location -->
                 <div class="col-4 col-lg-6 order-3 order-md-3">
                     <div class="dropdown w-100">
-                        <button class="btn btn-light w-100 dropdown-toggle" type="button" id="dropdownLocation" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button class="my-3 btn btn-light w-100 dropdown-toggle" type="button" id="dropdownLocation" data-bs-toggle="dropdown" aria-expanded="false">
                             Location
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownLocation">
@@ -125,7 +125,7 @@
                 <!-- Dropdown for Exp Level -->
                 <div class="col-6 col-lg-6 mb-2 mb-md-0 order-4 order-md-4">
                     <div class="dropdown w-100">
-                        <button class="btn btn-light w-100 dropdown-toggle" type="button" id="dropdownExpLevel" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button class="my-3 btn btn-light w-100 dropdown-toggle" type="button" id="dropdownExpLevel" data-bs-toggle="dropdown" aria-expanded="false">
                             Exp Level
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownExpLevel">
@@ -139,7 +139,7 @@
                 <!-- Dropdown for Date Posted -->
                 <div class="col-6 col-lg-12 mb-2 mb-md-0 order-5 order-md-6">
                     <div class="dropdown w-100">
-                        <button class="btn btn-light w-100 dropdown-toggle" type="button" id="dropdownDatePosted" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button class="my-3 btn btn-light w-100 dropdown-toggle" type="button" id="dropdownDatePosted" data-bs-toggle="dropdown" aria-expanded="false">
                             Date Posted
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownDatePosted">
@@ -151,13 +151,13 @@
                 </div>
             </div>
 
-            <h4 class="mt-5">Sort By:</h4>
+            <h5 class="mt-5">SORT BY:</h5>
 
             <!-- Dropdown for Most Recent and Salary -->
             <div class="row w-100 text-center">
                 <div class="col-6 col-lg-6 mb-2 mb-md-0">
                     <div class="dropdown w-100">
-                        <button class="btn btn-light w-100 dropdown-toggle" type="button" id="dropdownMostRecent" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button class="my-3 btn btn-light w-100 dropdown-toggle" type="button" id="dropdownMostRecent" data-bs-toggle="dropdown" aria-expanded="false">
                             Most Recent
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMostRecent">
@@ -169,7 +169,7 @@
                 </div>
                 <div class="col-6 col-lg-6">
                     <div class="dropdown w-100">
-                        <button class="btn btn-light w-100 dropdown-toggle" type="button" id="dropdownSalary" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button class="my-3 btn btn-light w-100 dropdown-toggle" type="button" id="dropdownSalary" data-bs-toggle="dropdown" aria-expanded="false">
                             Salary [↑ - ↓]
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownSalary">
