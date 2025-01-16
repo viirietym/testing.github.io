@@ -28,7 +28,7 @@
                     <div class="intro fw-bold">
                         <p>Connecting Opportunities in Santo Tomas, Batangas</p>
                     </div>
-                    <div style="border-top: 5px solid #3E8A5E; width: 80%;" class="m-auto"></div>
+                    <div style="border-top: 5px solid #3E8A5E; width: 100%;" class="m-auto"></div>
                 </div>
             </div>
 
