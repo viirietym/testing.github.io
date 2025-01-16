@@ -1,3 +1,5 @@
+<?php include "../assets/shared/navbarHome.php" ?>
+
 <!doctype html>
 <html lang="en">
 
@@ -13,6 +15,7 @@
 </head>
 
 <body>
+
   <div class="form-container">
 
     <form>
