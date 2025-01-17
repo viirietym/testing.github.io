@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3307
--- Generation Time: Jan 12, 2025 at 12:05 PM
+-- Generation Time: Jan 15, 2025 at 03:59 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -56,7 +56,7 @@ CREATE TABLE `help` (
 --
 
 CREATE TABLE `jobdetail` (
-  `jobDetailsID` int(10) NOT NULL,
+  `jobDetailID` int(10) NOT NULL,
   `jobLocation` varchar(300) NOT NULL,
   `jobTitle` varchar(100) NOT NULL,
   `salaryRate` varchar(50) NOT NULL,
@@ -163,7 +163,7 @@ ALTER TABLE `help`
 -- Indexes for table `jobdetail`
 --
 ALTER TABLE `jobdetail`
-  ADD PRIMARY KEY (`jobDetailsID`);
+  ADD PRIMARY KEY (`jobDetailID`);
 
 --
 -- Indexes for table `letter`
@@ -215,7 +215,7 @@ ALTER TABLE `help`
 -- AUTO_INCREMENT for table `jobdetail`
 --
 ALTER TABLE `jobdetail`
-  MODIFY `jobDetailsID` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `jobDetailID` int(10) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `letter`
@@ -239,7 +239,7 @@ ALTER TABLE `post`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `userID` int(8) NOT NULL AUTO_INCREMENT;
+  MODIFY `userID` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `userinfo`

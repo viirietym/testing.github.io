@@ -1,0 +1,90 @@
+body {
+    font-family: 'Poppins', sans-serif !important;
+    margin: 0;
+    padding: 0;
+    background-color: #f6f8f7;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.container {
+    display: flex;
+    flex: 1;
+    padding: 20px;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.main-content {
+    flex: 3;
+}
+
+.filters {
+    width: 300px;
+    background-color: #5A806A;
+    padding: 15px;
+    border-radius: 20px;
+    margin-top: 10px;
+}
+
+
+.filters h4 {
+    text-align: center;
+    color: white;
+}
+
+.filters button {
+    font-size: clamp(10px, 1vw, 14px);
+    background-color: #FFFFFF;
+    color: #3E8A5E;
+    font-weight: bold;
+    border: none;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    width: 125px;
+    height: 40px;
+}
+
+.welcome {
+    text-align: center;
+}
+
+.welcome h1 {
+    color: #2b8444;
+    margin: 0;
+    
+}
+
+.stb {
+    font-weight: 900;
+    font-size: clamp(36px, 4vw, 64px)
+}
+
+.jobs {
+    font-size: clamp(36px, 4vw, 64px);
+    font-weight: 900;
+    display: flex;
+    justify-content: center;
+    color: #3e8a5e;
+    margin-top: 0;
+}
+
+.intro {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.job-card {
+    background-color: #3E8A5E;
+    color: #ffffff;
+    width: 100%;
+    height: 500px;
+    margin-bottom: 20px;
+    border-radius: 20px;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}

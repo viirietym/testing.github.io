@@ -1,0 +1,42 @@
+.jobCreate {
+    background-color: #4D4D4D !important;
+    border-radius: 20px !important;
+}
+
+.jobInfo {
+    color: #ffffff !important;
+    font-family: Poppins !important;
+    font-size: clamp(.8rem, 2vw, 1.6rem) !important;
+    text-align: center !important;
+    font-weight: 900 !important;
+}
+
+.titles {
+    color: #4a4a4a !important;
+    font-family: Poppins !important;
+    font-size: clamp(1rem, 1vw, 1rem) !important;
+    text-align: center !important;
+    font-weight: 800 !important;
+}
+
+.forms {
+    background-color: #D9D9D9 !important;
+
+}
+
+.btnAdd {
+    background-color: #ffffff !important;
+    border-style: solid 50px 50px 50px 50px !important;
+    border-color: 2ECC71 !important;
+    text-align: center !important;
+    font-size: clamp(1rem, 2vw, 4rem) !important;
+    font-family: Poppins !important;
+    align-items: center !important;
+    border-radius: 20px !important;
+    box-shadow: 6px 4px 2px #2ECC71 !important;
+}
+
+.btnAdd:hover {
+    transform: scale(1.05) !important;
+    box-shadow: 0 6px 8px #2ECC71 !important;
+}

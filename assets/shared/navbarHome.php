@@ -17,9 +17,9 @@
 
 <body>
 
-    <header>
+    <div class="header">
         <div class="logo">
-            <img src="../image/STBJOBS 2 1.png" alt="" width="55%">
+            <img src="../assets/image/userImage/stbLogoUser.png" alt="" width="55%">
         </div>
 
         <!-- MOBILE SCREEN -->
@@ -35,16 +35,15 @@
             <a href="#">Help</a>
             <a href="#">About</a>
             <a href="#">
-                <img src="image/Group 25.png" alt="" class="notifImg">
+                <img src="../assets/image/userImage/notifBell.png" alt="" class="notifImg">
             </a>
             <div class="profileImg">
                 <a href="#">
-                    <img src="image/profile.png" alt="" class="profImg">
+                    <img src="../assets/image/userImage/profile.png" alt="" class="profImg">
                 </a>
             </div>
-
         </nav>
-    </header>
+    </div>
 
     <div class="profile">
         <ul>
@@ -52,7 +51,7 @@
                 <h4 class="username">Username</h4>
             </div>
             <div style="margin-bottom: 15px;">
-                <img src="image/profile.png" alt="" width="20%" style="margin-bottom: 10px;">
+                <img src="../assets/image/userImage/profile.png" alt="" width="20%" style="margin-bottom: 10px;">
                 <h4>Full Name</h4>
             </div>
             <div><a href="#" class="viewProfile">View Profile</a></div>
@@ -64,7 +63,7 @@
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
 
-    <script src="../nav.js"></script>
+    <script src="../js/nav.js"></script>
 </body>
 
 </html>

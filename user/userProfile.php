@@ -15,9 +15,9 @@
 
 <body>
     <?php
-    include("../assets/shared/footerAdmin.php");
+    include("../assets/shared/navbarHome.php");
     ?>
-    <div class="container">
+    <div class="container" style="margin-top: 150px;">
         <div class="row">
             <div class="col-12">
                 <div class="profileHeader d-flex flex-column flex-md-row align-items-center">
@@ -144,7 +144,7 @@
         integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
         crossorigin="anonymous"></script>
 
-    <script src="../js/userPeofileEdit.js"></script>
+    <script src="../js/userProfileEdit.js"></script>
 
 </body>
 

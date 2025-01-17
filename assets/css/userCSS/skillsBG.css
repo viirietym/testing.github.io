@@ -57,7 +57,8 @@ a:active {
 }
 
 .project-item img {
-    max-width: 200px;
+    width: 200px;
+    height: 200px;
     background-color: transparent;
     outline: none;
     border: none;
@@ -86,8 +87,6 @@ a:active {
 
 .addProject {
     text-align: center;
-    padding-right: 150px;
-    padding-top: 100px;
 }
 
 .addProject button{
@@ -103,6 +102,7 @@ a:active {
 .skillDetail {
     padding-left: 100px;
 }
+
 .skillDetail textarea {
     max-width: 400px;
     background-color: transparent;

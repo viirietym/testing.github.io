@@ -14,8 +14,13 @@
 
 <body>
 
+    <!-- Navigation -->
+    <?php
+    include("../assets/shared/navbarAdmin.php");
+    ?>
+
     <!-- Home -->
-    <div class="container content">
+    <div class="container content" style="margin-top: 150px; margin-bottom: 80px">
 
         <div class="row">
 
@@ -45,7 +50,8 @@
 
             <div class="col-12 col-sm-12 col-md-8 col-xl-8 order-4 order-sm-4 order-md-3 order-xl-3 p-1">
 
-                <div class="container" style="background-color: #4D4D4D; border-radius: 20px 20px 20px 20px; height:500px; overflow-y: auto;">
+                <div class="container"
+                    style="background-color: #4D4D4D; border-radius: 20px 20px 20px 20px; height:500px; overflow-y: auto;">
 
                     <div class="container">
 
@@ -234,7 +240,7 @@
                     </div>
 
 
-    
+
                 </div>
 
             </div>

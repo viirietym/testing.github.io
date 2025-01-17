@@ -42,6 +42,7 @@ a:active {
 
 .profile {
     text-align: center;
+    overflow: hidden;
 }
 
 .profile input {
@@ -49,7 +50,8 @@ a:active {
 }
 
 .profile img {
-    max-width: 250px;
+    width: 160px;
+    height: 140px;
     background-color: transparent;
     border: none;
     cursor: pointer;

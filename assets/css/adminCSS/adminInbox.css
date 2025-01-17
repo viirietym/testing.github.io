@@ -1,3 +1,6 @@
+*{
+    font-family: 'Poppins', sans-serif;
+}
 body {
     background-color: #f9f9f9;
     flex-direction: column;
@@ -15,14 +18,16 @@ body {
 }
 
 .filter-link.active {
-    background-color: #43B272;
-    border-color: #43B272;
+    background-color: #000000;
+    border-color: #000000;
     color: white;
+    font-family: 'Poppins', sans-serif;
 }
 
 .filter-link:hover {
-    background-color: #2ECC71;
-    border-color: #2ECC71;
+    background-color: #000000;
+    border-color: #000000;
+    font-family: 'Poppins', sans-serif;
 }
 
 .notification-box {
@@ -45,30 +50,39 @@ body {
     }
 }
 
-
 .notification-header {
-    padding: 20px;
-    background-color: #ffff;
-    border: 1px solid #3E8A5E;
-    border-radius: 20px; 
+    width: 80vw;
+
+    max-width: 1200px;
+    max-height: 650px;
+    padding: 15px;
+    margin: auto;
+    border-radius: 20px;
+    border: 1px solid #828282;
+    margin-top: 50px;
+    margin-bottom: 0px;
     font-family: 'Poppins', sans-serif;
     font-weight: bold;
-    width: 90%;
-    max-width: 1200px;
-    margin: auto;
-    margin-top: 150px;
 }
+
+@media (max-width: 768px) {
+    .notification-header {
+        width: 90vw;
+    }
+}
+
 
 .notification-list {
     max-height: 1000px;
     overflow: auto;
-    background-color: #3E8A5E;
+    background-color: #828282;
     border-radius: 20px !important;
     font-family: 'Poppins', sans-serif;
 }
 
+
 .notification-item {
-    background-color: #3E8A5E !important;
+    background-color:  #828282 !important;
     font-family: 'Poppins', sans-serif;
 }
 
@@ -78,11 +92,11 @@ body {
 
 .notification-list::-webkit-scrollbar {
     display: none;
+    
 }
 
 footer {
     background-color: #f1f1f1;
     text-align: center;
     overflow: hidden;
-    font-family: 'Poppins', sans-serif;
 }
