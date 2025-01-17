@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3307
--- Generation Time: Jan 15, 2025 at 03:59 PM
+-- Generation Time: Jan 17, 2025 at 03:24 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -64,7 +64,8 @@ CREATE TABLE `jobdetail` (
   `jobIndustry` varchar(50) NOT NULL,
   `fullDescription` varchar(3000) NOT NULL,
   `companyName` varchar(100) NOT NULL,
-  `jobSkillsDescription` varchar(1000) NOT NULL
+  `jobSkillsDescription` varchar(1000) NOT NULL,
+  `letterID` int(8) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -124,6 +125,13 @@ CREATE TABLE `user` (
   `userInfoID` int(8) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`userID`, `firstName`, `lastName`, `username`, `email`, `password`, `role`, `userInfoID`) VALUES
+(15, 'Louis', 'Santos', 'Louisito', 'luoisito1234@gmail.com', '$2y$10$jOZ3ajwfI1/4VFi5eSsGWuvAI3DiIly7IrY0Jfnsf.c', 'user', 5);
+
 -- --------------------------------------------------------
 
 --
@@ -142,6 +150,13 @@ CREATE TABLE `userinfo` (
   `certificationDetails` varchar(3000) DEFAULT NULL,
   `skillDescription` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `userinfo`
+--
+
+INSERT INTO `userinfo` (`userInfoID`, `userProfileImage`, `userBio`, `jobTitle`, `userDescription`, `contactDetails`, `educationalDetails`, `employmentHistoryDetails`, `certificationDetails`, `skillDescription`) VALUES
+(5, '', '', '', '', '', '', NULL, NULL, '');
 
 --
 -- Indexes for dumped tables
@@ -239,13 +254,13 @@ ALTER TABLE `post`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `userID` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `userID` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `userinfo`
 --
 ALTER TABLE `userinfo`
-  MODIFY `userInfoID` int(8) NOT NULL AUTO_INCREMENT;
+  MODIFY `userInfoID` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

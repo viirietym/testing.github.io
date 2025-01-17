@@ -97,6 +97,11 @@ a:active {
     color: #505050;
 }
 
+.required:after {
+    content: " *";
+    color: red;
+}
+
 .btnSign:hover {
     transform: scale(1.05);
     box-shadow: 0 6px 8px #2ecc71;
@@ -107,3 +112,8 @@ a:active {
     box-shadow: 0 3px 5px #2ecc71;
 }
 
+@media (max-width: 768px) {
+    .fullname input{
+        max-width: 500px;
+    }
+}

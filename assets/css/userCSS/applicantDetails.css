@@ -83,6 +83,10 @@ a:active {
     color: #505050;
 }
 
+.required:after {
+    content: " *";
+    color: red;
+}
 
 .btnSign:hover {
     transform: scale(1.05);

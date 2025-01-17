@@ -16,11 +16,6 @@
                 </span>
             </p>
         </div>
-        <div class="col-12 col-md-6 order-1 order-md-2">
-            <p class="bold">
-                About us
-            </p>
-        </div>
         <div class="col-12 copyright order-3">
             <p>&copy; 2025 STB Jobs. All rights reserved.</p>
         </div>

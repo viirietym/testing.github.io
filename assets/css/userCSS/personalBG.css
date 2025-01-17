@@ -123,6 +123,11 @@ a:active {
     color: #505050;
 }
 
+.required:after {
+    content: " *";
+    color: red;
+}
+
 .btnSign:hover {
     transform: scale(1.05);
     box-shadow: 0 6px 8px #2ecc71;
@@ -131,4 +136,10 @@ a:active {
 .btnSign:active {
     transform: scale(0.95);
     box-shadow: 0 3px 5px #2ecc71;
+}
+
+@media(max-width: 976px){
+    .shortBio textarea {
+        max-width: 600px;
+    }
 }
