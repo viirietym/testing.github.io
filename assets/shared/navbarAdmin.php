@@ -20,7 +20,7 @@
 
     <div class="header">
         <div class="logo">
-            <img src="../assets/image/adminImage/stbLogoAdmin.png" alt="" width="6%">
+            <img src="../assets/image/adminImage/stbLogoAdmin.png" alt="">
             <h1>Admin Dashboard</h1>
         </div>
 
@@ -33,21 +33,18 @@
         <!-- END MOBILE SCREEN -->
 
         <nav>
-            <a href="#">
-                <img src="../assets/image/adminImage/Home.png" alt="" class="homeImg">
+            <a href="../admin/adminJobList.php">
+                <img src="../assets/image/adminImage/adminHome.png" alt="" class="homeImg">
             </a>
-            <a href="#">
+            <a href="../admin/adminInbox.php">
                 <img src="../assets/image/adminImage/notif.png" alt="" class="notifImg">
             </a>
-            <a href="#">
+            <a href="../admin/adminLogin.php">
                 <img src="../assets/image/adminImage/Logout.png" alt="" class="logoutImg">
             </a>
         </nav>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
 
     <script src="../js/nav.js"></script>
 </body>

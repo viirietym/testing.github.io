@@ -32,15 +32,11 @@
         <!-- END MOBILE SCREEN -->
 
         <nav>
-            <a href="#" style="color: #2ECC71">Home</a>
-            <a href="#">Help</a>
-            <a href="#">About</a>
+            <a href="../index.php" style="color: #2ECC71">Home</a>
+            <a href="../user/help.php">Help</a>
+            <a href="../user/about.php">About</a>
         </nav>
     </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
 
     <script src="../js/nav.js"></script>
 </body>

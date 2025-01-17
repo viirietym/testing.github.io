@@ -19,7 +19,7 @@
 
     <div class="header">
         <div class="logo">
-            <img src="../assets/image/userImage/stbLogoUser.png" alt="" width="55%">
+            <img src="../assets/image/userImage/stbLogoUser.png" alt="" width="50%">
         </div>
 
         <!-- MOBILE SCREEN -->
@@ -31,16 +31,14 @@
         <!-- END MOBILE SCREEN -->
 
         <nav>
-            <a href="#" style="color: #2ECC71">Home</a>
-            <a href="#">Help</a>
-            <a href="#">About</a>
-            <a href="#">
-                <img src="../assets/image/userImage/notifBell.png" alt="" class="notifImg">
-            </a>
+            <a href="../user/userJobList.php" style="color: #2ECC71">Home</a>
+            <a href="../user/help.php">Help</a>
+            <a href="../user/about.php">About</a>
+            
+            <img src="../assets/image/userImage/notifBell.png" alt="" class="notifImg" onclick="window.location.href='../user/userInbox.php'">
+            
             <div class="profileImg">
-                <a href="#">
-                    <img src="../assets/image/userImage/profile.png" alt="" class="profImg">
-                </a>
+                    <img src="../assets/image/userImage/profileUser.png" alt="" class="profImg">
             </div>
         </nav>
     </div>
@@ -51,17 +49,13 @@
                 <h4 class="username">Username</h4>
             </div>
             <div style="margin-bottom: 15px;">
-                <img src="../assets/image/userImage/profile.png" alt="" width="20%" style="margin-bottom: 10px;">
+                <img src="../assets/image/userImage/profileUser.png" alt="" width="20%" style="margin-bottom: 10px;">
                 <h4>Full Name</h4>
             </div>
-            <div><a href="#" class="viewProfile">View Profile</a></div>
-            <div><a href="#" class="logout">Log out</a></div>
+            <div><a href="../user/userProfile.php" class="viewProfile">View Profile</a></div>
+            <div><a href="../index.php" class="logout">Log out</a></div>
         </ul>
     </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
 
     <script src="../js/nav.js"></script>
 </body>

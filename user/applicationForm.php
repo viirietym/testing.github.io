@@ -13,8 +13,10 @@
 </head>
 
 <body>
-  <div class="form-container">
 
+  <?php include "../assets/shared/navbarHome.php" ?>
+
+  <div class="form-container" style="margin: 150px auto;">
     <form>
       <h5 class="aformName mb-4">Jane Doe's Application Form</h5>
       <div class="question1 mb-4 ">
@@ -37,7 +39,7 @@
 
     <!-- submit button -->
     <div class="button-container">
-      <button type="submit" class="submit-btn">Submit</button>
+      <button type="submit" class="submit-btn" style="width:180px;">Submit</button>
     </div>
   </div>
   <?php include "../assets/shared/footer.php" ?>
