@@ -16,7 +16,7 @@
     font-family: Poppins !important;
     font-size: clamp(1rem, 1vw, 1rem) !important;
     text-align: center !important;
-    font-weight: 800 !important;
+    font-weight: 400 !important;
 }
 
 .forms {
