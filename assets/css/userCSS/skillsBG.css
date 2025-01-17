@@ -99,12 +99,14 @@ a:active {
     opacity: 0.6;
 }
 
-.skillDetail {
-    padding-left: 100px;
+.skillDetail{
+    text-align: start;
+    margin: auto 50px auto 50px;
 }
 
+
 .skillDetail textarea {
-    max-width: 400px;
+    max-width: 500px;
     background-color: transparent;
     border: none;
     border-radius: 0px;
@@ -113,6 +115,7 @@ a:active {
     font-size: clamp(14px, 2vw, 18px);
     outline: none;
     resize: none;
+    margin: auto;
     overflow: hidden;
 }
 
@@ -125,6 +128,7 @@ a:active {
 }
 
 .form-label {
+    margin: auto;
     font-family: Poppins;
     font-weight: 600;
     font-size: clamp(14px, 2vw, 18px);
@@ -147,6 +151,11 @@ a:active {
     font-weight: bolder;
     font-size: clamp(14px, 2vw, 18px);
     color: #505050;
+}
+
+.required:after {
+    content: " *";
+    color: red;
 }
 
 .btnSign:hover {

@@ -18,7 +18,7 @@
     ?>
 
 
-
+<div class="wrapper" style="padding: 20px; background-color: #f8f9fa;">
     <div class="container" id="signUpForm" style="margin: 150px auto 50px auto;">
         <div class="row">
             <div class="col-12 signUpTitle">
@@ -29,29 +29,29 @@
             <div class="col-12 signUpField">
                 <form method="POST" class="Post">
                     <div class="mb-3 applicantDetail">
-                        <label for="contact" class="form-label">Contact Details</label>
+                        <label for="contact" class="form-label required">Contact Details</label>
                         <textarea name="contact" class="form-control frm-sign" id="contact" required></textarea>
                     </div>
                     <div class="mb-3 applicantDetail">
-                        <label for="certificate" class="form-label">Certification Details</label>
-                        <textarea name="certificate" class="form-control frm-sign" id="certificate" required></textarea>
-                    </div>
-                    <div class="mb-3 applicantDetail">
-                        <label for="education" class="form-label">Educational History</label>
-                        <textarea name="education" class="form-control frm-sign" id="education"></textarea>
+                        <label for="education" class="form-label required">Educational History</label>
+                        <textarea name="education" class="form-control frm-sign" id="education" required></textarea>
                     </div>
                     <div class="mb-3 applicantDetail">
                         <label for="employment" class="form-label">Employment History</label>
                         <textarea name="employment" class="form-control frm-sign" id="employment"></textarea>
                     </div>
+                    <div class="mb-3 applicantDetail">
+                        <label for="certificate" class="form-label">Certification Details</label>
+                        <textarea name="certificate" class="form-control frm-sign" id="certificate" ></textarea>
+                    </div>
                     <div class="mb-3 submit">
-                        <button name="btnSign" type="submit" class="btnSign">Proceed</button>
+                        <button name="btnSign" type="submit" class="btnSign">Submit</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
-
+</div>
 
 
     <?php

@@ -17,7 +17,7 @@
             </p>
         </div>
         <div class="col-12 col-md-6 order-1 order-md-2">
-            <p class="bold">
+            <p class="bold clickable" onclick="window.location.href='../user/about.php'">
                 About us
             </p>
         </div>
@@ -71,5 +71,17 @@
         font-size: clamp(13px, 2vw, 18px);
         font-weight: bolder;
         color: #FFFFFF;
+    }
+
+    .clickable {
+        cursor: pointer;
+    }
+
+    .clickable:hover {
+        opacity: 50%;
+    }
+
+    .clickable:active {
+        color:rgb(150, 135, 135);
     }
 </style>
