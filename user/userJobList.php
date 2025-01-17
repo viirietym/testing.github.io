@@ -75,117 +75,122 @@
 
             <!-- Filter Section (Order 4) -->
             <div class="col-12 col-lg-4 order-3 order-lg-4 mt-5">
-    <div class="filter-section">
-        <div class="filters col-12 d-flex flex-column align-items-center py-5">
-            <h5>FILTER BY:</h5>
+                <div class="filter-section">
+                    <div class="filters col-12 d-flex flex-column align-items-center py-5">
+                        <h5>FILTER BY:</h5>
 
-            <!-- Dropdown for Salary Rate -->
-            <div class="row w-100 text-center">
-                <div class="col-4 col-lg-6 mb-2 mb-md-0 order-1 order-md-1">
-                    <div class="dropdown w-100">
-                        <button class="my-3 btn btn-light w-100 dropdown-toggle" type="button" id="dropdownSalaryRate" data-bs-toggle="dropdown" aria-expanded="false">
-                            Salary Rate
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownSalaryRate">
-                            <li><a class="dropdown-item" href="#">Option 1</a></li>
-                            <li><a class="dropdown-item" href="#">Option 2</a></li>
-                            <li><a class="dropdown-item" href="#">Option 3</a></li>
-                        </ul>
-                    </div>
-                </div>
+                        <!-- Dropdown for Salary Rate -->
+                        <div class="row w-100 text-center">
+                            <div class="col-4 col-lg-6 mb-2 mb-md-0 order-1 order-md-1">
+                                <div class="dropdown w-100">
+                                    <button class="my-3 btn btn-light w-100 dropdown-toggle" type="button"
+                                        id="dropdownSalaryRate" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Salary Rate
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownSalaryRate">
+                                        <li><a class="dropdown-item" href="#">Below 20,000 PHP</a></li>
+                                        <li><a class="dropdown-item" href="#">20,000 - 40,000 PHP</a></li>
+                                        <li><a class="dropdown-item" href="#">Above 40,000 PHP</a></li>
+                                    </ul>
+                                </div>
+                            </div>
 
-                <!-- Dropdown for Industry -->
-                <div class="col-4 col-lg-6 mb-2 mb-md-0 order-2 order-md-2">
-                    <div class="dropdown w-100">
-                        <button class="my-3 btn btn-light w-100 dropdown-toggle" type="button" id="dropdownIndustry" data-bs-toggle="dropdown" aria-expanded="false">
-                            Industry
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownIndustry">
-                            <li><a class="dropdown-item" href="#">Option 1</a></li>
-                            <li><a class="dropdown-item" href="#">Option 2</a></li>
-                            <li><a class="dropdown-item" href="#">Option 3</a></li>
-                        </ul>
-                    </div>
-                </div>
+                            <!-- Dropdown for Industry -->
+                            <div class="col-4 col-lg-6 mb-2 mb-md-0 order-2 order-md-2">
+                                <div class="dropdown w-100">
+                                    <button class="my-3 btn btn-light w-100 dropdown-toggle" type="button"
+                                        id="dropdownIndustry" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Industry
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownIndustry">
+                                        <li><a class="dropdown-item" href="#">Information Technology (IT)</a></li>
+                                        <li><a class="dropdown-item" href="#">Business and Administration</a></li>
+                                        <li><a class="dropdown-item" href="#">Manufacturing and Logistics</a></li>
+                                    </ul>
+                                </div>
+                            </div>
 
-                <!-- Dropdown for Location -->
-                <div class="col-4 col-lg-6 order-3 order-md-3">
-                    <div class="dropdown w-100">
-                        <button class="my-3 btn btn-light w-100 dropdown-toggle" type="button" id="dropdownLocation" data-bs-toggle="dropdown" aria-expanded="false">
-                            Location
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownLocation">
-                            <li><a class="dropdown-item" href="#">Option 1</a></li>
-                            <li><a class="dropdown-item" href="#">Option 2</a></li>
-                            <li><a class="dropdown-item" href="#">Option 3</a></li>
-                        </ul>
-                    </div>
-                </div>
+                            <!-- Dropdown for Location -->
+                            <div class="col-4 col-lg-6 order-3 order-md-3">
+                                <div class="dropdown w-100">
+                                    <button class="my-3 btn btn-light w-100 dropdown-toggle" type="button"
+                                        id="dropdownLocation" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Location
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownLocation">
+                                        <li><a class="dropdown-item" href="#">Option 1</a></li>
+                                        <li><a class="dropdown-item" href="#">Option 2</a></li>
+                                        <li><a class="dropdown-item" href="#">Option 3</a></li>
+                                    </ul>
+                                </div>
+                            </div>
 
-                <!-- Dropdown for Exp Level -->
-                <div class="col-6 col-lg-6 mb-2 mb-md-0 order-4 order-md-4">
-                    <div class="dropdown w-100">
-                        <button class="my-3 btn btn-light w-100 dropdown-toggle" type="button" id="dropdownExpLevel" data-bs-toggle="dropdown" aria-expanded="false">
-                            Exp Level
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownExpLevel">
-                            <li><a class="dropdown-item" href="#">Option 1</a></li>
-                            <li><a class="dropdown-item" href="#">Option 2</a></li>
-                            <li><a class="dropdown-item" href="#">Option 3</a></li>
-                        </ul>
-                    </div>
-                </div>
+                            <!-- Dropdown for Exp Level -->
+                            <div class="col-6 col-lg-6 mb-2 mb-md-0 order-4 order-md-4">
+                                <div class="dropdown w-100">
+                                    <button class="my-3 btn btn-light w-100 dropdown-toggle" type="button"
+                                        id="dropdownExpLevel" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Exp Level
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownExpLevel">
+                                        <li><a class="dropdown-item" href="#">Entry Level</a></li>
+                                        <li><a class="dropdown-item" href="#">Mid Level</a></li>
+                                        <li><a class="dropdown-item" href="#">Senior Level</a></li>
+                                    </ul>
+                                </div>
+                            </div>
 
-                <!-- Dropdown for Date Posted -->
-                <div class="col-6 col-lg-12 mb-2 mb-md-0 order-5 order-md-6">
-                    <div class="dropdown w-100">
-                        <button class="my-3 btn btn-light w-100 dropdown-toggle" type="button" id="dropdownDatePosted" data-bs-toggle="dropdown" aria-expanded="false">
-                            Date Posted
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownDatePosted">
-                            <li><a class="dropdown-item" href="#">Option 1</a></li>
-                            <li><a class="dropdown-item" href="#">Option 2</a></li>
-                            <li><a class="dropdown-item" href="#">Option 3</a></li>
-                        </ul>
+                            <!-- Dropdown for Date Posted -->
+                            <div class="col-6 col-lg-12 mb-2 mb-md-0 order-5 order-md-6">
+                                <div class="dropdown w-100">
+                                    <button class="my-3 btn btn-light w-100 dropdown-toggle" type="button"
+                                        id="dropdownDatePosted" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Date Posted
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownDatePosted">
+                                        <li><a class="dropdown-item" href="#">Last 24 Hours</a></li>
+                                        <li><a class="dropdown-item" href="#">Last 7 Days</a></li>
+                                        <li><a class="dropdown-item" href="#">Last 30 Days</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h5 class="mt-5">SORT BY:</h5>
+
+                        <!-- Dropdown for Most Recent and Salary -->
+                        <div class="row w-100 text-center">
+                            <div class="col-6 col-lg-6 mb-2 mb-md-0">
+                                <div class="dropdown w-100">
+                                    <button class="my-3 btn btn-light w-100 dropdown-toggle" type="button"
+                                        id="dropdownMostRecent" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Most Recent
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMostRecent">
+                                        <li><a class="dropdown-item" href="#">Newest</a></li>
+                                        <li><a class="dropdown-item" href="#">Oldest</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-6 col-lg-6">
+                                <div class="dropdown w-100">
+                                    <button class="my-3 btn btn-light w-100 dropdown-toggle" type="button"
+                                        id="dropdownSalary" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Salary [↑ - ↓]
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownSalary">
+                                        <li><a class="dropdown-item" href="#">Low to High</a></li>
+                                        <li><a class="dropdown-item" href="#">High to Low</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
 
-            <h5 class="mt-5">SORT BY:</h5>
-
-            <!-- Dropdown for Most Recent and Salary -->
-            <div class="row w-100 text-center">
-                <div class="col-6 col-lg-6 mb-2 mb-md-0">
-                    <div class="dropdown w-100">
-                        <button class="my-3 btn btn-light w-100 dropdown-toggle" type="button" id="dropdownMostRecent" data-bs-toggle="dropdown" aria-expanded="false">
-                            Most Recent
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMostRecent">
-                            <li><a class="dropdown-item" href="#">Option 1</a></li>
-                            <li><a class="dropdown-item" href="#">Option 2</a></li>
-                            <li><a class="dropdown-item" href="#">Option 3</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-6 col-lg-6">
-                    <div class="dropdown w-100">
-                        <button class="my-3 btn btn-light w-100 dropdown-toggle" type="button" id="dropdownSalary" data-bs-toggle="dropdown" aria-expanded="false">
-                            Salary [↑ - ↓]
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownSalary">
-                            <li><a class="dropdown-item" href="#">Option 1</a></li>
-                            <li><a class="dropdown-item" href="#">Option 2</a></li>
-                            <li><a class="dropdown-item" href="#">Option 3</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</div>
-
-
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
         </div>
     </div>
 
