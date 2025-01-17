@@ -14,10 +14,13 @@
 </head>
 
 <body>
+
+  <?php include "../assets/shared/navbarHome.php" ?>
   <div class="jobview-container">
     <p class="small mx-5">posted 1 day ago </p>
     <p class="fw-normal mb-1">
-      <i class="fa-solid fa-location-dot"></i> Sta. Anastacia, Santo Tomas Batangas
+      <img class="img-fluid locationImg mx-1" src="../assets/image/userImage/location.png">
+      Sta. Anastacia, Santo Tomas Batangas
     </p>
     <p class="h5 mb-1"><b>Operations Lead | Amcor Flexibles Philippines Corp.</b></p>
 
@@ -37,8 +40,10 @@
       <li>Problem Solving & Analytical Thinking: Strong problem-solving abilities to address and resolve issues quickly.
       </li>
       <li>Six Sigma Basics: Understanding of Six Sigma tools and techniques for process improvement.</li>
-      <li>Quality Control: Ability to conduct inspections and ensure that products meet established quality standards.</li>
-      <li>Microsoft Office Suite: Proficiency in Excel, Word, and PowerPoint for reporting, documentation, and analysis.</li>
+      <li>Quality Control: Ability to conduct inspections and ensure that products meet established quality standards.
+      </li>
+      <li>Microsoft Office Suite: Proficiency in Excel, Word, and PowerPoint for reporting, documentation, and analysis.
+      </li>
     </ul>
     </p>
 
@@ -53,7 +58,7 @@
 
     <div class="button-container">
       <a href="../user/applicationForm.php">
-        <button class="apply-now-btn">Apply Now</button>
+        <button class="apply-now-btn" style="width:180px;">Apply Now</button>
       </a>
     </div>
   </div>
@@ -61,9 +66,8 @@
 
   <?php include "../assets/shared/footer.php" ?>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-    crossorigin="anonymous">
-  </script>
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+    </script>
 </body>
 
 </html>
