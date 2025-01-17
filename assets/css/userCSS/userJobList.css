@@ -30,7 +30,7 @@ body {
 }
 
 
-.filters h4 {
+.filters h5 {
     text-align: center;
     color: white;
 }
@@ -55,10 +55,11 @@ body {
 .welcome h1 {
     color: #2b8444;
     margin: 0;
-    
+    font-size: 4rem;
 }
 
 .stb {
+    color: #3E8A5E;
     font-weight: 900;
     font-size: clamp(36px, 4vw, 64px)
 }
@@ -87,4 +88,33 @@ body {
     padding: 20px;
     font-family: Arial, sans-serif;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.job-card h3 {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.see-more {
+    color: #2FFF87; 
+    text-decoration: underline; 
+    text-decoration-color: #2FFF87; 
+    font-weight: bold; 
+}
+
+.see-more:hover {
+    color: #2FFF87;
+    text-decoration-color: #2F6B4A;
+}
+
+
+.dropdown .btn {
+    padding: 8px 16px;
+    font-size: 14px;
+    border-radius: 20px;
+}
+
+.dropdown-menu .dropdown-item {
+    padding: 10px 20px;
+    font-size: 14px;
 }

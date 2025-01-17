@@ -2,7 +2,6 @@
     padding: 0;
     box-sizing: border-box;
     margin: 0;
-    font-family: 'Poppins', sans-serif;
 }
 
 body{
@@ -11,11 +10,11 @@ body{
 }
 
 .header{
-    background: #f1f9f1;
+    background: #ffffff;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 100px;
+    height: 75px;
     padding: 0 30px;
     position: fixed;
     width: 100%;
@@ -23,19 +22,26 @@ body{
     z-index: 100;
     top: 0;
     left: 0;
-    
 }
 
 .logo{
     display: flex;
     gap: 15px;
+    min-width: 50px;
+}
+
+.logo img {
+    width: 5%;
+    height: auto;
+    min-width: 60px;
+    min-height: 60px;
 }
 
 .logo h1{
     color: #393C3B;
-    font-size: 28px;
+    font-size: 24px;
     font-weight: bold;
-    padding-top: 20px;
+    padding-top: 15px;
 }
 
 .logo h1 span{
@@ -45,16 +51,15 @@ body{
 
 nav{
     display: flex;
-    gap: 50px;
+    gap: 20px;
 }
 
 nav a{
     text-decoration: none;
     color: black;
-    font-size: 24px;
+    font-size: 18px;
     font-weight: bolder;
     transition: 0.3s;
-    
 }
 
 nav a:hover{
@@ -62,15 +67,15 @@ nav a:hover{
 }
 
 .homeImg{
-    width: 60%;
+    width: 80%;
 }
 
 .notifImg{
-    width: 60%;
+    width: 80%;
 }
 
 .logoutImg{
-    width: 60%;
+    width: 80%;
 }
 
 
@@ -80,7 +85,7 @@ nav a:hover{
     nav{
         position: absolute;
         top: 150px;
-        background: #f1f9f1;
+        background: #ffffff;
         left: 0;
         flex-direction: column;
         width: 100%;
@@ -94,7 +99,7 @@ nav a:hover{
     }
 
     nav.active{
-        top: 95px;
+        top: 75px;
         display: flex;
         height: 150px;
     }
@@ -104,21 +109,21 @@ nav a:hover{
     }
 
     .homeImg{
-        width: 8%;
+        width: 4%;
     }
     
     .notifImg{
-        width: 6%;
+        width: 4%;
     }
     
     .logoutImg{
-        width: 6%;
+        width: 4%;
     }    
 
     .logo img{
-        width: 20%;
+        width: 8%;
         gap: 0px;
-        height: 20%;
+        height: 12%;
     }
 
 
