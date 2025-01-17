@@ -9,7 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../assets/css/adminCSS/jobView.css">
+    <link rel="stylesheet" href="../assets/css/adminCSS/adminJobView.css">
 </head>
 
 <body>
@@ -31,38 +31,43 @@
 
             <div class="row location mx-3">
                 <!-- Location -->
-                <div class="col-12 col-sm-12 col-md-9 col-xl-9 d-flex align-items-center" style="text-align: left;">
+                <div class="col-12 col-sm-12 col-xl-8 d-flex align-items-center" style="text-align: left;">
                     <img class="img-fluid locationImg mx-3" src="../assets/image/userImage/location.png">
                     <p class="barangay pt-3">San Antonio</p>
                 </div>
 
                 <!-- Edit Btn -->
-                <div class="col-6 col-sm-6 col-md-1 col-xl-1 d-flex justify-content-center align-items-center">
-                    <a href="jobEdit.php"><button type="button" class="btn custom-btn btnEdit">Edit</button></a>
+                <div class="col-6 col-sm-6 col-xl-2 d-flex justify-content-center align-items-center" >
+                    <div class="container d-flex justify-content-end align-items-end">
+                        <button type="button"
+                                class="btn custom-btn btnEdit" onclick="location.href='jobEdit.php'">Edit</button>
+                    </div>
                 </div>
 
                 <!-- Delete Btn -->
-                <div class="col-6 col-sm-6 col-md-2 col-xl-2 d-flex justify-content-center align-items-center">
-                    <button name="btnDelete" class="btn custom-btn btnDelete" data-bs-toggle="modal"
-                        data-bs-target="#deleteModal">Delete</button>
+                <div class="col-6 col-sm-6 col-xl-2 d-flex justify-content-center align-items-center">
+                    <div class="container d-flex justify-content-start align-items-start">
+                        <button name="btnDelete" class="btn custom-btn btnDelete" data-bs-toggle="modal"
+                            data-bs-target="#deleteModal">Delete</button>
 
-                    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                        aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Job Deletion</h1>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    Are you sure you want to delete this job?
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary"
-                                        data-bs-dismiss="modal">Cancel</button>
-                                    <button type="submit" class="btn custom-button"
-                                        style="background-color: #AF514C; color: #FFFFFF;">Delete</button>
+                        <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Job Deletion</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Are you sure you want to delete this job?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Cancel</button>
+                                        <button type="submit" class="btn custom-button"
+                                            style="background-color: #AF514C; color: #FFFFFF;">Delete</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
