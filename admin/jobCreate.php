@@ -1,3 +1,30 @@
+<?php
+
+include("../connect.php");
+
+if (isset($_POST['addJobButton'])) {
+    $jobTitle = $_POST['jobTitle'];
+    $salaryRate = $_POST['salaryRate'];
+    $expLevel = $_POST['expLevel'];
+    $companyName = $_POST['companyName'];
+    $location = $_POST['barangay'];
+    $industry = $_POST['industry'];
+    $skillRequirements = $_POST['skillRequirements'];
+    $jobDescription = $_POST['jobDescription'];
+
+
+    $insertJobDetailQuery = "INSERT INTO jobdetail(jobTitle, salaryRate, experienceLevel, companyName , jobLocation, jobIndustry, jobSkillsDescription, fullDescription) 
+    VALUES ('$jobTitle','$salaryRate','$expLevel','$companyName','$location','$industry','$skillRequirements','$jobDescription');";
+    executeQuery($insertJobDetailQuery);
+
+    header('location:adminJobList.php');
+
+}
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,26 +62,28 @@
 
                     <div class="col-12 col-sm-12 col-md-4 col-xl-4">
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control forms" id="floatingInput" placeholder="Job Title">
+                            <input name="jobTitle" type="text" class="form-control forms" required id="floatingInput"
+                                placeholder="Job Title">
                             <label for="floatingInput" class="titles">Job title</label>
                         </div>
                     </div>
 
                     <div class="col-12 col-sm-12 col-md-4 col-xl-4">
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control forms" id="floatingInput" placeholder="Salary Rate">
+                            <input name="salaryRate" type="text" class="form-control forms" required id="floatingInput"
+                                placeholder="Salary Rate">
                             <label for="floatingInput" class="titles">Salary Rate</label>
                         </div>
                     </div>
 
                     <div class="col-12 col-sm-12 col-md-4 col-xl-4">
                         <div class="form-floating mb-3">
-                            <select class="form-select forms" required id="floatingSelect"
+                            <select name="expLevel" class="form-select forms" required id="floatingSelect"
                                 aria-label="Floating label select example">
                                 <option selected>Select an Exp Level</option>
-                                <option value="1">Common</option>
-                                <option value="2">Intermediate</option>
-                                <option value="3">Professional</option>
+                                <option value="Entry Level">Entry Level</option>
+                                <option value="Mid Level">Mid Level</option>
+                                <option value="Expert Level">Expert Level</option>
                             </select>
                             <label for="floatingSelect" class="titles">Experience Level</label>
                         </div>
@@ -66,19 +95,22 @@
 
                     <div class="col-12 col-sm-12 col-md-4 col-xl-4">
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control forms" id="floatingInput" placeholder="Company Name">
+                            <input name="companyName" type="text" class="form-control forms" required id="floatingInput"
+                                placeholder="Company Name">
                             <label for="floatingInput" class="titles">Company Name</label>
                         </div>
                     </div>
 
                     <div class="col-12 col-sm-12 col-md-4 col-xl-4">
                         <div class="form-floating mb-3">
-                            <select class="form-select forms" required id="floatingSelect"
+                            <select name="barangay" class="form-select forms" required id="floatingSelect"
                                 aria-label="Floating label select example">
                                 <option selected>Select a Barangay</option>
-                                <option value="1">San Roque</option>
-                                <option value="2">Santa Ana</option>
-                                <option value="3">San Agustin</option>
+                                <option value="San Agustin">San Agustin</option>
+                                <option value="Santa Ana">Santa Ana</option>
+                                <option value="Santa Clara">Santa Clara</option>
+                                <option value="San Roque">San Roque</option>
+                                <option value="San Vicente">San Vicente</option>
                             </select>
                             <label for="floatingSelect" class="titles">Barangay</label>
                         </div>
@@ -86,7 +118,8 @@
 
                     <div class="col-12 col-sm-12 col-md-4 col-xl-4">
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control forms" id="floatingInput" placeholder="Industry">
+                            <input name="industry" type="text" class="form-control forms" required id="floatingInput"
+                                placeholder="Industry">
                             <label for="floatingInput" class="titles">Industry</label>
                         </div>
                     </div>
@@ -97,8 +130,8 @@
 
                     <div class="col-12 col-sm-12 col-md-12 col-xl-12">
                         <div class="form-floating mb-3">
-                            <textarea class="form-control forms" placeholder="Skill Details" id="floatingTextarea"
-                                style="height: 100px"></textarea>
+                            <textarea name="skillRequirements" class="form-control forms" placeholder="Skill Details"
+                            required id="floatingTextarea" style="height: 100px"></textarea>
                             <label for="floatingTextarea" class="titles">Skill Requirements</label>
                         </div>
                     </div>
@@ -109,8 +142,8 @@
 
                     <div class="col-12 col-sm-12 col-md-12 col-xl-12">
                         <div class="form-floating mb-3">
-                            <textarea class="form-control forms" placeholder="Skill Details" id="floatingTextarea"
-                                style="height: 150px"></textarea>
+                            <textarea name="jobDescription" class="form-control forms" placeholder="Skill Details"
+                            required  id="floatingTextarea" style="height: 150px"></textarea>
                             <label for="floatingTextarea" class="titles">Job Description</label>
                         </div>
                     </div>
@@ -120,7 +153,8 @@
                 <!-- Add btn -->
                 <div class="row p-3 d-flex justify-content-center align-items-center">
                     <div class="container d-flex justify-content-center align-items-center p-2">
-                        <a href="adminJobList.php"><button type="button" class="btn btn-light btnAdd">Add New
+                        <button name="addJobButton" type="submit"
+                                class="btn btn-light btnAdd">Add New
                                 Job</button></a>
                     </div>
                 </div>
