@@ -140,7 +140,7 @@ a:active {
     padding-top: 40px;
 }
 
-.btnSign {
+.btnSignSkills {
     border-radius: 20px;
     background-color: #ffffff;
     max-width: 180px;
@@ -158,12 +158,12 @@ a:active {
     color: red;
 }
 
-.btnSign:hover {
+.btnSignSkills:hover {
     transform: scale(1.05);
     box-shadow: 0 6px 8px #2ecc71;
 }
 
-.btnSign:active {
+.btnSignSkills:active {
     transform: scale(0.95);
     box-shadow: 0 3px 5px #2ecc71;
 }

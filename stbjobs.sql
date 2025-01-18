@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3307
--- Generation Time: Jan 17, 2025 at 03:24 AM
+-- Generation Time: Jan 18, 2025 at 03:40 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -94,6 +94,15 @@ CREATE TABLE `portfolio` (
   `userInfoID` int(8) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `portfolio`
+--
+
+INSERT INTO `portfolio` (`portfolioID`, `projectImage`, `projectTitle`, `userInfoID`) VALUES
+(1, '678bbb1ed4324_PUPFlight.png', 'FlyQuest', 6),
+(2, '678bbd0904de9_test.png', 'Slime', 7),
+(3, '678bbd0905884_regio_vectorposter.png', 'Blue', 7);
+
 -- --------------------------------------------------------
 
 --
@@ -130,7 +139,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`userID`, `firstName`, `lastName`, `username`, `email`, `password`, `role`, `userInfoID`) VALUES
-(15, 'Louis', 'Santos', 'Louisito', 'luoisito1234@gmail.com', '$2y$10$jOZ3ajwfI1/4VFi5eSsGWuvAI3DiIly7IrY0Jfnsf.c', 'user', 5);
+(16, 'Mark', 'Ilawod', 'markWod', 'markWod@gmail.com', '$2y$10$1bwvZe9Md7f0aSojts0Psu5suf1qF3.zzBoCSkzYLfG', 'user', 6),
+(17, 'Roland', 'Regio', 'rightontrack', 'regioroland011@gmail.com', '$2y$10$0uo7yon9wDnAIGGxA.md3.1zy9HZqGTSbvqmpHvdZAM', 'user', 7);
 
 -- --------------------------------------------------------
 
@@ -156,7 +166,8 @@ CREATE TABLE `userinfo` (
 --
 
 INSERT INTO `userinfo` (`userInfoID`, `userProfileImage`, `userBio`, `jobTitle`, `userDescription`, `contactDetails`, `educationalDetails`, `employmentHistoryDetails`, `certificationDetails`, `skillDescription`) VALUES
-(5, '', '', '', '', '', '', NULL, NULL, '');
+(6, '678bbb12f35a4_test.png', 'An american', 'QA', 'A 3rd year NSTP Harvard Student', '983432123', 'Harvard University 2022-2026', 'None', 'NC2', 'QA lang'),
+(7, '678bbcdcc8c3a_Pup 1 crop.jpg', 'I am a Filipino', 'WEB DEVELOPER | QA', 'A 3rd Year BSIT Student', '09668740452', 'PUPSTC 2022-2026', '', '', 'Back End and Front End Capable');
 
 --
 -- Indexes for dumped tables
@@ -242,7 +253,7 @@ ALTER TABLE `letter`
 -- AUTO_INCREMENT for table `portfolio`
 --
 ALTER TABLE `portfolio`
-  MODIFY `portfolioID` int(8) NOT NULL AUTO_INCREMENT;
+  MODIFY `portfolioID` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `post`
@@ -254,13 +265,13 @@ ALTER TABLE `post`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `userID` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `userID` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `userinfo`
 --
 ALTER TABLE `userinfo`
-  MODIFY `userInfoID` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `userInfoID` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
