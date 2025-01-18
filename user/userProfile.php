@@ -21,8 +21,7 @@
             <div class="col-12">
                 <div class="profileHeader d-flex flex-column flex-md-row align-items-center">
                     <div class="profileImage">
-                        <img src="">
-                        <span>Profile</span>
+                        <img src="../assets/image/userImage/profileUser.png">
                     </div>
                     <div class="col-12 col-md-6">
                         <div class="profileText">
@@ -33,7 +32,7 @@
                             </div>
                             <p id="username">@username</p>
                             <input type="text" id="editUsername" class="textInput" style="display:none">
-                            <p id="shortDescription">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                            <p id="shortDescription" style="text-align: justify;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                                 eiusmod
                                 tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
                                 nostrud
@@ -64,7 +63,7 @@
                         </div>
                         <div class="fullDescription">
                             <b>Full Description:</b>
-                            <p id="fullDescriptionText">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                            <p id="fullDescriptionText" style="text-align: justify;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                                 eiusmod
                                 tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
                                 nostrud
@@ -80,7 +79,7 @@
                         </div>
                         <div class="skills">
                             <b>Skills</b>
-                            <p id="skillsText">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                            <p id="skillsText" style="text-align: justify;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
                                 tempor
                                 incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
                                 exercitation
@@ -101,7 +100,7 @@
                     <div class="contentRight">
                         <div class="educDetails">
                             <b>Education Details</b>
-                            <p id="educDetailsText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+                            <p id="educDetailsText" style="text-align: justify;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
                                 eiusmod tempor
                                 incididunt ut labore et dolore magna aliqua.</p>
                             <textarea id="editEducDetails" class="textContent"
@@ -109,7 +108,7 @@
                         </div>
                         <div class="empHistory">
                             <b>Employment History</b>
-                            <p id="empHistoryText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+                            <p id="empHistoryText" style="text-align: justify;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
                                 eiusmod tempor
                                 incididunt ut labore et dolore magna aliqua.</p>
                             <textarea id="editEmpHistory" class="textContent"
@@ -117,7 +116,7 @@
                         </div>
                         <div class="certDetails">
                             <b>Certification Details</b>
-                            <p id="certDetailsText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+                            <p id="certDetailsText" style="text-align: justify;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
                                 eiusmod tempor
                                 incididunt ut labore et dolore magna aliqua.</p>
                             <textarea id="editCertDetails" class="textContent"
