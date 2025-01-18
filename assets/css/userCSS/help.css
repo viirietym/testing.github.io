@@ -11,6 +11,8 @@ body{
     justify-content: center;
     margin-bottom: 70px;
     padding-bottom: 50px;
+    position: relative;
+    z-index: 1;
 }
 
 .h2{   
