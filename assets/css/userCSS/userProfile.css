@@ -68,9 +68,13 @@ body {
     font-family: 'Poppins';
 }
 
-.profileText p:last-of-type {
+#shortDescription {
+    margin: 5px 0;
     color: black;
-    margin-top: 20px;
+    font-size: 18px;
+    font-family: 'Poppins';
+    font-weight: normal;
+    /* Ensure it’s not bold */
 }
 
 .buttons {
@@ -263,7 +267,6 @@ body {
 .textContent:focus {
     border-bottom-color: #3E8A5E;
 }
-
 
 @media (max-width: 768px) {
 
