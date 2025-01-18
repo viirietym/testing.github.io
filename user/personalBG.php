@@ -1,3 +1,7 @@
+<?php
+include("../process/registering.php");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,7 +31,7 @@
             </div>
             <div class="row">
                 <div class="col-12 signUpField">
-                    <form method="POST" class="Post">
+                    <form method="POST" class="Post" enctype="multipart/form-data">
                         <div class="mb-3 profileDetails">
                             <div class="col-12 col-md-4 profile ">
                                 <label for="profile">
@@ -53,7 +57,7 @@
                             <textarea name="longbio" class="form-control frm-sign" id="longbio" required></textarea>
                         </div>
                         <div class="mb-3 submit">
-                            <button name="btnSign" type="submit" class="btnSign">Proceed</button>
+                            <button name="btnSignPersonal" type="submit" class="btnSignPersonal">Proceed</button>
                         </div>
                     </form>
                 </div>

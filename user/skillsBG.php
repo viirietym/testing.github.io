@@ -1,3 +1,7 @@
+<?php
+include("../process/registering.php");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,9 +17,7 @@
 </head>
 
 <body>
-    <?php
-    include("../assets/shared/navbarSignUp.php");
-    ?>
+
 
     <div class="wrapper" style="padding: 20px; background-color: #f8f9fa;">
         <div class="container" id="signUpForm" style="margin: 150px auto 50px auto;">
@@ -26,14 +28,15 @@
             </div>
             <div class="row">
                 <div class="col-12 signUpField">
-                    <form method="POST" class="Post">
+                    <form method="POST" class="Post" enctype="multipart/form-data">
                         <div class="mb-5 projectDetails">
                             <div class="col-12" id="portfolioContainer">
                                 <div class="project-item">
                                     <p class="required">Add Portfolio:</p>
                                     <label for="portfolioInput" id="profileImageLabel">
                                         <img id="profileImage" src="../assets/image/userImage/project.png"
-                                            alt="Profile Picture" class="form-control frm-sign" style="border-radius: 20px">
+                                            alt="Profile Picture" class="form-control frm-sign"
+                                            style="border-radius: 20px">
                                     </label>
                                     <input type="file" name="portfolio[]" id="portfolioInput"
                                         class="form-control projectFile" accept="image/*" onchange="previewImage(event)"
@@ -54,7 +57,7 @@
                             <textarea name="skillDesc" class="form-control frm-sign" id="skillDesc" required></textarea>
                         </div>
                         <div class="mb-3 submit">
-                            <button name="btnSign" type="submit" class="btnSign" data-bs-toggle="modal"
+                            <button name="btnSignSkills" type="submit" class="btnSignSkills" data-bs-toggle="modal"
                                 data-bs-target="#addNew">Proceed</button>
                         </div>
 

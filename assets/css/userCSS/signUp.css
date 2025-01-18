@@ -112,6 +112,16 @@ a:active {
     box-shadow: 0 3px 5px #2ecc71;
 }
 
+.custom-alert {
+    background-color: #d9f7d9;
+    color: #155724;
+    border: 1px solid #155724;
+    border-radius: 20px;
+    padding: 15px;
+    margin: 15px 0;
+    font-weight: bold;
+}
+
 @media (max-width: 768px) {
     .fullname input{
         max-width: 500px;

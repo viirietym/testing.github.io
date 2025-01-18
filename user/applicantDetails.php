@@ -1,3 +1,7 @@
+<?php
+include("../process/registering.php");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -45,7 +49,7 @@
                         <textarea name="certificate" class="form-control frm-sign" id="certificate" ></textarea>
                     </div>
                     <div class="mb-3 submit">
-                        <button name="btnSign" type="submit" class="btnSign">Submit</button>
+                        <button name="btnSignDetails" type="submit" class="btnSignDetails">Submit</button>
                     </div>
                 </form>
             </div>
