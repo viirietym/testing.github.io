@@ -1,7 +1,6 @@
 <?php
-include("connect.php");
+include("../connect.php");
 ?>
-
 
 <!doctype html>
 <html lang="en">
@@ -9,8 +8,8 @@ include("connect.php");
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>STBjobs | Login or Signup</title>
-    <link rel="icon" href="assets/image/userImage/stbLogo.ico">
+    <title>Login | Admin</title>
+    <link rel="icon" href="../assets/image/userImage/stbLogo.ico">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,17 +17,17 @@ include("connect.php");
     <link
         href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="./assets/css/userCSS/loginUser.css">
+    <link rel="stylesheet" href="../assets/css/adminCSS/loginAdmin.css">
 </head>
 
 <body>
     <div class="container-fluid">
         <div class="row justify-content-end">
-            <div class="loginContainer col-md-5">
+            <div class=" loginContainer col-md-5">
                 <div class="card">
                     <div class="imgContainer">
-                        <img src="./assets/image/userImage/stbLogoUser.png" alt="" class="logo">
-                        <img src="./assets/image/userImage/stbUserLogin.png" alt="" class="logo">
+                        <img src="../assets/image/adminImage/stbLogoAdmin.png" alt="" class="logo">
+                        <div class="logoText">ADMIN</div>
                     </div>
                     <div class="tagline">
                         Connecting opportunities in Santo Tomas, Batangas
@@ -45,9 +44,6 @@ include("connect.php");
                     </form>
                     <div class="buttonContainer">
                         <button type="button" class="btn btn-success rounded-5 login-button">Login</button>
-                    </div>
-                    <div class="signUp">
-                        <h6>First time here? <span><a href="#" class="sign-up-link">Create an account</a></span></h6>
                     </div>
                 </div>
             </div>

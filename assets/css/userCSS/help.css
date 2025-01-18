@@ -1,0 +1,75 @@
+body{
+    font-family: "Poppins", serif !important;
+}
+
+.card{
+    background-color: #3e8a5e !important;
+    color: white !important;
+    padding-top: 50px;
+    margin-top: 150px;
+    border-radius: 20px !important;
+    justify-content: center;
+    margin-bottom: 70px;
+    padding-bottom: 50px;
+}
+
+.h2{   
+    text-align: center;
+    margin-bottom: 90px !important;
+    font-size: 34px;
+    font-family: "Poppins", serif;
+    font-weight: bold !important;
+}
+
+.h6{
+    margin-left: 50px !important;
+    text-align: left;
+    margin-bottom: 50px !important;
+    font-weight: bold !important;
+}
+
+.accordion-container {
+    display: flex;
+    justify-content: center; 
+    align-items: center;   
+}
+
+.accordion {
+    width: 90%; 
+}
+
+.accordion-item {
+    width: 100%; 
+    background-color: #3e8a5e !important;
+    border: none !important;
+}
+
+.accordion-button {
+    width: 100% !important; 
+    background-color: #f1f9f1 !important;
+    font-size: 18px;
+    text-align: left; 
+    border: none !important; 
+    margin-bottom: 10px;
+    font-weight: bold;
+    border-radius: 20px !important;
+}
+
+.accordion-body {
+    background-color: #f1f9f1 !important;
+    margin-bottom: 50px;
+    border-radius: 20px !important;
+    border: none !important; 
+    width: 100% !important; 
+}
+
+
+.accordion-button:hover {
+    color: #367a40;
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: #f1f9f1;
+    color: #222222;
+    width: 60% !important;
+}
