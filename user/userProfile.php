@@ -11,13 +11,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/userCSS/userProfile.css">
 </head>
-</head>
 
 <body>
     <?php
     include("../assets/shared/navbarHome.php");
     ?>
-    <div class="container" style="margin-top: 150px;">
+    <div class="container" style="margin-top: 100px;">
         <div class="row">
             <div class="col-12">
                 <div class="profileHeader d-flex flex-column flex-md-row align-items-center">
@@ -25,23 +24,24 @@
                         <img src="">
                         <span>Profile</span>
                     </div>
-
-                    <div class="profileText">
-                        <h2 id="fullName">Full Name</h2>
-                        <div id="editFullNameContainer" style="display:none">
-                            <input type="text" id="editFirstName" class="textInput" placeholder="First Name">
-                            <input type="text" id="editLastName" class="textInput" placeholder="Last Name">
-
+                    <div class="col-12 col-md-6">
+                        <div class="profileText">
+                            <h2 id="fullName">Full Name</h2>
+                            <div id="editFullNameContainer" style="display:none">
+                                <input type="text" id="editFirstName" class="textInput" placeholder="First Name">
+                                <input type="text" id="editLastName" class="textInput" placeholder="Last Name">
+                            </div>
+                            <p id="username">@username</p>
+                            <input type="text" id="editUsername" class="textInput" style="display:none">
+                            <p id="shortDescription">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                                eiusmod
+                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+                                nostrud
+                                exercitation ullamco.</p>
+                            <textarea id="editDescription" class="textInput" style="display:none; overflow:hidden;"
+                                placeholder="Enter your description"></textarea>
                         </div>
-                        <p id="username">@username</p>
-                        <input type="text" id="editUsername" class="textInput" style="display:none">
-                        <p id="shortDescription">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                            exercitation ullamco.</p>
-                        <textarea id="editDescription" class="textInput" style="display:none; overflow:hidden;"
-                            placeholder="Enter your description"></textarea>
                     </div>
-
                     <div class="buttons d-flex justify-content-center justify-content-md-start">
                         <button onclick="editProfile()">EDIT PROFILE</button>
                         <button style="display:none" onclick="saveChanges()">SAVE CHANGES</button>
