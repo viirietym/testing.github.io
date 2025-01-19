@@ -1,3 +1,25 @@
+<?php
+
+include("../connect.php");
+
+$jobDetailquery = "SELECT jobdetail.jobDetailID,jobdetail.jobTitle, jobdetail.jobLocation, jobdetail.salaryRate, jobdetail.experienceLevel, jobdetail.jobIndustry, LEFT (jobdetail.jobSkillsDescription, 100) AS shortenedDesc, jobdetail.companyName, jobdetail.jobSkillsDescription, post.datePosted 
+FROM `jobdetail` LEFT JOIN post ON jobdetail.jobDetailID = post.jobDetailID;";
+
+$jobDetailresult = executeQuery($jobDetailquery);
+
+$jobTitle = '';
+$salaryRate = '';
+$expLevel = '';
+$companyName = '';
+$location = '';
+$industry = '';
+$skillRequirements = '';
+$jobDescription = '';
+$datePosted = '';
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -44,7 +66,8 @@
             <div
                 class="col-12 col-sm-12 col-md-4 col-xl-4 order-2 p-3 d-flex justify-content-center align-items-center">
                 <div class="container buttonContainer d-flex justify-content-center align-items-center">
-                <a href="jobCreate.php"><button type="button" class="btn btn-light btnAdd">+ Add New Job</button></a>
+                    <a href="jobCreate.php"><button type="button" class="btn btn-light btnAdd">+ Add New
+                            Job</button></a>
                 </div>
             </div>
 
@@ -54,192 +77,133 @@
 
                 <div class="container jobListContainer">
 
-                    <div class="container">
+                    <?php
 
-                        <div class="row pt-4">
-                            <p class="datePosted">Posted 1 day ago</p>
-                        </div>
+                    while ($jobRow = mysqli_fetch_assoc($jobDetailresult)) {
 
-                        <div class="row location">
+                        $jobTitle = $jobRow['jobTitle'];
+                        $salaryRate = $jobRow['salaryRate'];
+                        $expLevel = $jobRow['experienceLevel'];
+                        $companyName = $jobRow['companyName'];
+                        $location = $jobRow['jobLocation'];
+                        $industry = $jobRow['jobIndustry'];
+                        $skillRequirements = $jobRow['jobSkillsDescription'];
+                        $jobDescription = $jobRow['shortenedDesc'];
+                        $datePosted = $jobRow['datePosted'];
 
-                            <div class="col-12 col-sm-12 col-md-8 col-xl-8 d-flex align-items-center"
-                                style="text-align: left;">
-                                <img class="img-fluid locationImg" src="../assets/image/userImage/location.png">
-                                <p class="barangay pt-4 mx-2">San Antonio</p>
+                        ?>
+
+                        <div class="container">
+
+                            <div class="row pt-4">
+                                <p class="datePosted" id="timeAgo<?php echo $jobRow ['jobDetailID']?>">Posted:&nbsp; </p>
                             </div>
 
-                            <div class="col-6 col-sm-6 col-xl-2 d-flex justify-content-center align-items-center">
-                                <a href="jobEdit.php" name="btnEdit" class="btnEdit">Edit</a>
-                            </div>
+                            <div class="row location">
 
-                            <div class="col-6 col-sm-6 col-xl-2 d-flex justify-content-center align-items-center">
-                                <button name="btnDelete" class="btnDelete" data-bs-toggle="modal"
-                                    data-bs-target="#deleteModal">Delete</button>
+                                <div class="col-12 col-sm-12 col-md-8 col-xl-8 d-flex align-items-center"
+                                    style="text-align: left;">
+                                    <img class="img-fluid locationImg" src="../assets/image/userImage/location.png">
+                                    <p class="barangay pt-4 mx-2"><?php echo $location ?></p>
+                                </div>
+
+                                <div class="col-6 col-sm-6 col-xl-2 d-flex justify-content-center align-items-center">
+                                    <a href="jobEdit.php" name="btnEdit" class="btnEdit">Edit</a>
+                                </div>
+
+                                <div class="col-6 col-sm-6 col-xl-2 d-flex justify-content-center align-items-center">
+                                    <button name="btnDelete" class="btnDelete" data-bs-toggle="modal"
+                                        data-bs-target="#deleteModal">Delete</button>
 
 
-                                <div class="modal fade" id="deleteModal" tabindex="-1"
-                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h1 class="modal-title fs-5" id="exampleModalLabel">Job Deletion</h1>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                Are you sure you want to delete this job?
-                                            </div>
+                                    <div class="modal fade" id="deleteModal" tabindex="-1"
+                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Job Deletion</h1>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    Are you sure you want to delete this job?
+                                                </div>
 
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary"
-                                                    data-bs-dismiss="modal">Cancel</button>
-                                                <button type="submit" class="btn custom-button"
-                                                    style="background-color: #AF514C; color: #FFFFFF;">Delete</button>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-bs-dismiss="modal">Cancel</button>
+                                                    <button type="submit" class="btn custom-button"
+                                                        style="background-color: #AF514C; color: #FFFFFF;">Delete</button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
+
                                 </div>
 
                             </div>
 
-                        </div>
-
-                        <div class="row companyName p-2">
-                            <h3 class="jobName">Job Name | Company Name</h3>
-                        </div>
-
-                        <div class="row jobDetails p-2">
-                            <p>Salary Rate&nbsp;&nbsp; |&nbsp;&nbsp; Experience Level&nbsp;&nbsp; |&nbsp;&nbsp; Job
-                                Industry
-                            </p>
-                        </div>
-
-                        <div class="row skill px-2">
-                            <p>Skill Description:</p>
-                        </div>
-
-                        <div class="row skillDesc px-2">
-                            <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt ut
-                                labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                                ullamco.
-                            </p>
-                        </div>
-
-                        <div class="row jobDescTitle px-2">
-                            <p>Job Description:</p>
-                        </div>
-
-                        <div class="row jobDesc px-2">
-                            <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt ut
-                                labore et dolore magna aliqua.<a href="adminJobView.php"><button type="button"
-                                        class="btn custom-button btn-link" style="color: #21a027;">See
-                                        More...</button></a>
-                            </p>
-
-                        </div>
-
-                        <div class="row">
-                            <hr class="bar">
-                        </div>
-
-                    </div>
-
-                    <div class="container">
-
-                        <div class="row pt-4">
-                            <p class="datePosted">Posted 1 day ago</p>
-                        </div>
-
-                        <div class="row location">
-
-                            <div class="col-12 col-sm-12 col-md-8 col-xl-8 d-flex align-items-center"
-                                style="text-align: left;">
-                                <img class="img-fluid locationImg" src="../assets/image/userImage/location.png">
-                                <p class="barangay pt-4 mx-2">San Antonio</p>
+                            <div class="row companyName p-2">
+                                <h3 class="jobName"><?php echo $jobTitle ?>&nbsp;|&nbsp;<?php echo $companyName ?></h3>
                             </div>
 
-                            <div
-                                class="col-6 col-sm-6 col-md-2 col-xl-2 d-flex justify-content-center align-items-center">
-                                <a href="jobEdit.php" name="btnEdit" class="btnEdit">Edit</a>
+                            <div class="row jobDetails p-2">
+                                <p>Salary Rate: <?php echo $salaryRate ?>&nbsp;&nbsp; |&nbsp;&nbsp; Experience Level:
+                                    <?php echo $expLevel ?>&nbsp;&nbsp; |&nbsp;&nbsp; Job
+                                    Industry: <?php echo $industry ?>
+                                </p>
                             </div>
 
-                            <div
-                                class="col-6 col-sm-6 col-md-2 col-xl-2 d-flex justify-content-center align-items-center">
-                                <button name="btnDelete" class="btnDelete" data-bs-toggle="modal"
-                                    data-bs-target="#deleteModal">Delete</button>
+                            <div class="row skill px-2">
+                                <p>Skill Requirements</p>
+                            </div>
 
+                            <div class="row skillDesc px-2">
+                                <p><?php echo $skillRequirements ?>
+                                </p>
+                            </div>
 
-                                <div class="modal fade" id="deleteModal" tabindex="-1"
-                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h1 class="modal-title fs-5" id="exampleModalLabel">Job Deletion</h1>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                Sure kana diyan?
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary"
-                                                    data-bs-dismiss="modal">Cancel</button>
-                                                <button type="submit" class="btn custom-button"
-                                                    style="background-color: #AF514C; color: #FFFFFF;">Delete</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="row jobDescTitle px-2">
+                                <p>Job Description:</p>
+                            </div>
 
+                            <div class="row jobDesc px-2">
+                                <p><?php echo $jobDescription ?><a href="adminJobView.php"><button type="button"
+                                            class="btn custom-button btn-link" style="color: #21a027;">See
+                                            More...</button></a>
+                                </p>
+
+                            </div>
+
+                            <div class="row">
+                                <hr class="bar">
                             </div>
 
                         </div>
 
-                        <div class="row companyName p-2">
-                            <h3 class="jobName">Job Name | Company Name</h3>
-                        </div>
+                        <script>
+                            function timeAgo(timestamp) {
+                                const now = new Date();
+                                const past = new Date(timestamp);
+                                const diffInSeconds = Math.floor((now - past) / 1000);
 
-                        <div class="row jobDetails p-2">
-                            <p>Salary Rate&nbsp;&nbsp; |&nbsp;&nbsp; Experience Level&nbsp;&nbsp; |&nbsp;&nbsp; Job
-                                Industry
-                            </p>
-                        </div>
+                                if (diffInSeconds < 60) return `${diffInSeconds} seconds ago`;
+                                const diffInMinutes = Math.floor(diffInSeconds / 60);
+                                if (diffInMinutes < 60) return `${diffInMinutes} minutes ago`;
+                                const diffInHours = Math.floor(diffInMinutes / 60);
+                                if (diffInHours < 24) return `${diffInHours} hours ago`;
+                                const diffInDays = Math.floor(diffInHours / 24);
+                                return `${diffInDays} day${diffInDays > 1 ? 's' : ''} ago`;
+                            }
+                    
+                            document.getElementById('timeAgo<?php echo $jobRow ['jobDetailID']?>').innerText += timeAgo('<?php echo $datePosted ?>');
 
-                        <div class="row skill px-2">
-                            <p>Skill Description:</p>
-                        </div>
-
-                        <div class="row skillDesc px-2">
-                            <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt ut
-                                labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                                ullamco.
-                            </p>
-                        </div>
-
-                        <div class="row jobDescTitle px-2">
-                            <p>Job Description:</p>
-                        </div>
-
-                        <div class="row jobDesc px-2">
-                            <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt ut
-                                labore et dolore magna aliqua.<a href="adminJobView.php"><button type="button"
-                                        class="btn custom-button btn-link" style="color: #21a027;">See
-                                        More...</button></a>
-                            </p>
-
-                        </div>
-
-                        <div class="row">
-                            <hr class="bar">
-                        </div>
-
-                    </div>
+                        </script>
 
 
+                    <?php
+                    }
+                    ?>
 
                 </div>
 
@@ -375,10 +339,15 @@
     include("../assets/shared/footerAdmin.php");
     ?>
 
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+
+        </script>
+
 </body>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-    crossorigin="anonymous"></script>
+
 
 </html>
