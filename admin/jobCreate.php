@@ -17,13 +17,16 @@ if (isset($_POST['addJobButton'])) {
     VALUES ('$jobTitle','$salaryRate','$expLevel','$companyName','$location','$industry','$skillRequirements','$jobDescription');";
     executeQuery($insertJobDetailQuery);
 
+    $lastInsertedID = mysqli_insert_id($conn); 
+
+    $insertPostQuery = "INSERT INTO `post`(`userID`, `jobDetailID`) VALUES ('1','$lastInsertedID');";
+    executeQuery($insertPostQuery);
+
     header('location:adminJobList.php');
 
 }
 
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
