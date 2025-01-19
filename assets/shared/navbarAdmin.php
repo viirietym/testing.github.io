@@ -39,7 +39,7 @@
             <a href="../admin/adminInbox.php">
                 <img src="../assets/image/adminImage/notif.png" alt="" class="notifImg">
             </a>
-            <a href="../admin/adminLogin.php">
+            <a href="../admin/index.php">
                 <img src="../assets/image/adminImage/Logout.png" alt="" class="logoutImg">
             </a>
         </nav>

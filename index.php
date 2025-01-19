@@ -1,5 +1,7 @@
 <?php
 include("connect.php");
+include("./process/loggingIn.php");
+
 ?>
 
 
@@ -25,31 +27,40 @@ include("connect.php");
     <div class="container-fluid">
         <div class="row justify-content-end">
             <div class="loginContainer col-md-5">
-                <div class="card">
-                    <div class="imgContainer">
-                        <img src="./assets/image/userImage/stbLogoUser.png" alt="" class="logo">
-                        <img src="./assets/image/userImage/stbUserLogin.png" alt="" class="logo">
-                    </div>
-                    <div class="tagline">
-                        Connecting opportunities in Santo Tomas, Batangas
-                    </div>
-                    <form>
+                <form method="POST">
+                    <div class="card">
+                        <div class="imgContainer">
+                            <img src="./assets/image/userImage/stbLogoUser.png" alt="" class="logo">
+                            <img src="./assets/image/userImage/stbUserLogin.png" alt="" class="logo">
+                        </div>
+                        <div class="tagline">
+                            Connecting opportunities in Santo Tomas, Batangas
+                        </div>
+                        <?php if ($error == "NO USER") { ?>
+                            <div class="alert alert-danger mb-3" role="alert">
+                                Invalid email or password
+                            </div>
+                        <?php } ?>
+
                         <div class="email">
                             <label for="email" class="form-label">Email or Username</label>
-                            <input type="email" class="form-control" id="email" placeholder="email@gmail.com">
+                            <input type="text" class="form-control" id="email" name="email" required>
                         </div>
                         <div class="password">
                             <label for="password" class="form-label">Password</label>
-                            <input type="password" class="form-control" id="password" placeholder="Password">
+                            <input type="password" class="form-control frm-sign" id="password" name="password" required>
                         </div>
-                    </form>
-                    <div class="buttonContainer">
-                        <button type="button" class="btn btn-success rounded-5 login-button">Login</button>
+                        <div class="buttonContainer">
+                            <button type="submit" class="btn btn-success rounded-5 login-button"
+                                name="btnLogin">Login</button>
+                        </div>
+                        <div class="signUp">
+                            <h6>First time here? <span><a href="./user/signUp.php" class="sign-up-link">Create an
+                                        account</a></span>
+                            </h6>
+                        </div>
                     </div>
-                    <div class="signUp">
-                        <h6>First time here? <span><a href="#" class="sign-up-link">Create an account</a></span></h6>
-                    </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>

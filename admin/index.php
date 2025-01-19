@@ -1,5 +1,6 @@
 <?php
 include("../connect.php");
+include("../process/loggingIn.php");
 ?>
 
 <!doctype html>
@@ -8,7 +9,7 @@ include("../connect.php");
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Login | Admin</title>
+    <title>STBjobs | Login</title>
     <link rel="icon" href="../assets/image/userImage/stbLogo.ico">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -32,19 +33,25 @@ include("../connect.php");
                     <div class="tagline">
                         Connecting opportunities in Santo Tomas, Batangas
                     </div>
-                    <form>
+                    <?php if ($error == "NO USER") { ?>
+                        <div class="alert alert-danger mb-3" role="alert">
+                            Invalid email or password
+                        </div>
+                    <?php } ?>
+                    <form method="POST">
                         <div class="email">
                             <label for="email" class="form-label">Email or Username</label>
-                            <input type="email" class="form-control" id="email" placeholder="email@gmail.com">
+                            <input type="text" class="form-control" id="email" name="email">
                         </div>
                         <div class="password">
                             <label for="password" class="form-label">Password</label>
-                            <input type="password" class="form-control" id="password" placeholder="Password">
+                            <input type="password" class="form-control" id="password" name="password">
+                        </div>
+                        <div class="buttonContainer">
+                            <button type="submit" class="btn btn-success rounded-5 login-button"
+                                name="btnAdminLogin">Login</button>
                         </div>
                     </form>
-                    <div class="buttonContainer">
-                        <button type="button" class="btn btn-success rounded-5 login-button">Login</button>
-                    </div>
                 </div>
             </div>
         </div>
