@@ -2,7 +2,11 @@
 
 include("../connect.php");
 
+session_start ();
+$userID = $_SESSION['userID']; 
+
 if (isset($_POST['addJobButton'])) {
+
     $jobTitle = $_POST['jobTitle'];
     $salaryRate = $_POST['salaryRate'];
     $expLevel = $_POST['expLevel'];
@@ -17,13 +21,16 @@ if (isset($_POST['addJobButton'])) {
     VALUES ('$jobTitle','$salaryRate','$expLevel','$companyName','$location','$industry','$skillRequirements','$jobDescription');";
     executeQuery($insertJobDetailQuery);
 
+    $lastInsertedID = mysqli_insert_id($conn); 
+
+    $insertPostQuery = "INSERT INTO `post`(`userID`, `jobDetailID`) VALUES ('$userID','$lastInsertedID');";
+    executeQuery($insertPostQuery);
+
     header('location:adminJobList.php');
 
 }
 
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
