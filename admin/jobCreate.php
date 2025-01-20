@@ -11,19 +11,13 @@ if (isset($_POST['addJobButton'])) {
     $industry = $_POST['industry'];
     $skillRequirements = $_POST['skillRequirements'];
     $jobDescription = $_POST['jobDescription'];
-
-
     $insertJobDetailQuery = "INSERT INTO jobdetail(jobTitle, salaryRate, experienceLevel, companyName , jobLocation, jobIndustry, jobSkillsDescription, fullDescription) 
     VALUES ('$jobTitle','$salaryRate','$expLevel','$companyName','$location','$industry','$skillRequirements','$jobDescription');";
     executeQuery($insertJobDetailQuery);
 
     header('location:adminJobList.php');
-
 }
-
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
