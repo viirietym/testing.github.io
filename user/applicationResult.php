@@ -1,3 +1,6 @@
+<?php include("../process/applicationResultQuery.php")
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,26 +17,33 @@
 </head>
 
 <body>
+
+    <?php
+    include("../assets/shared/navbarHome.php");
+    ?>
+
     <!-- Application Letter -->
-    <div class="container my-5 d-flex justify-content">
-           <!-- Head -->
-        <div class="text  rounded bg-light box">
+    <div class="container mb-5 mt-5 d-flex justify-content" >
+    
+        <!-- Head -->
+        <div class="text rounded bg-light box mb-3" style="margin-top: 100px;">
             <h1 class="fw-bold mb-4 ms-3 mt-2" style="font-weight: 600;">Result of Job Application</h1>
             <div class="border-top-custom border-success">
-                   <!-- Profile Of the Sender -->
+
+                <!-- Profile Of the Sender -->
                 <div class="d-flex justify-content-between mb-4 mt-4">
                     <div class="d-flex align-items-center">
                         <div class="rounded-circle">
                             <a href="#">
-                            <img src="https://www.w3schools.com/images/w3schools_green.jpg" alt="Profile Picture"
-                                class="w-100 h-100 object-fit-cover">
+                                <img src="https://www.w3schools.com/images/w3schools_green.jpg" alt="Profile Picture"
+                                    class="w-100 h-100 object-fit-cover">
                             </a>
                         </div>
-                       
-                           <!-- Details Of the Sender -->
+
+                        <!-- Details Of the Sender -->
                         <div class="ms-3 mt-3">
-                            <strong class="ms-1">Employer 1</strong><br>
-                            <span class="text-muted">&lt;employer1@gmail.com&gt;</span> <br>
+                            <strong class="ms-1">From: Admin</strong><br>
+                            <span class="text-muted">&lt;<?php echo $email;?>&gt;</span> <br>
                             <span class="text-muted ms-1">to me</span>
                         </div>
                     </div>
@@ -42,27 +52,30 @@
                 <!-- Letter Title -->
                 <div class="title">
                     <strong>Subject:</strong> Job Title
-                    <p><strong>Good day applicant,</strong></p>
+                    <p><strong>Good day! <?php echo $firstName . " " . $lastName ;?>,</strong></p>
                 </div>
 
                 <!-- Letter Body -->
                 <div class="body">
-                    <p>Congratulations! We are thrilled to inform you that you have been accepted for an interview. Our
-                        HR team will contact you shortly with further details regarding the next steps, including the
-                        date, time, location, and any necessary paperwork for the interview.</p>
+                    <?php
+                    if ($isAccepted == 1) {
+                        // Accepted message
+                        echo "<p>Congratulations! We are thrilled to inform you that you have been accepted for an interview. Our HR team will contact you shortly with further details regarding the next steps, including the date, time, location, and any necessary paperwork for the interview.</p>";
+                    } else {
+                        // Not accepted message
+                        echo "<p>We regret to inform you that you did not make it to the final Interview.</p>";
+                    }
+                    ?>
                     <p>Thank you.</p>
-                    <p><strong>Employer 1</strong></p>
-                    
+                    <p><strong>Sincerely, from the Admin</strong></p>
                 </div>
             </div>
         </div>
     </div>
 
-
     <footer>
         <?php include("../assets/shared/footer.php"); ?>
     </footer>
-
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
