@@ -86,9 +86,9 @@ include("../process/adminJobCreate.php");
                             <select name="barangay" class="form-select forms" required id="floatingSelect"
                                 aria-label="Floating label select example">
                                 <option selected>Select a Barangay</option>
-                                <option value="San Agustin">San Agustin</option>
-                                <option value="Santa Ana">Santa Ana</option>
-                                <option value="Santa Clara">Santa Clara</option>
+                                <option value="San Agustin">San Antonio</option>
+                                <option value="Santa Ana">San Miguel</option>
+                                <option value="Santa Clara">San Pedro</option>
                                 <option value="San Roque">San Roque</option>
                                 <option value="San Vicente">San Vicente</option>
                             </select>
@@ -111,7 +111,7 @@ include("../process/adminJobCreate.php");
                     <div class="col-12 col-sm-12 col-md-12 col-xl-12">
                         <div class="form-floating mb-3">
                             <textarea name="skillRequirements" class="form-control forms" placeholder="Skill Details"
-                            required id="floatingTextarea" style="height: 100px"></textarea>
+                                required id="floatingTextarea" style="height: 100px"></textarea>
                             <label for="floatingTextarea" class="titles">Skill Requirements</label>
                         </div>
                     </div>
@@ -123,7 +123,7 @@ include("../process/adminJobCreate.php");
                     <div class="col-12 col-sm-12 col-md-12 col-xl-12">
                         <div class="form-floating mb-3">
                             <textarea name="jobDescription" class="form-control forms" placeholder="Skill Details"
-                            required  id="floatingTextarea" style="height: 150px"></textarea>
+                                required id="floatingTextarea" style="height: 150px"></textarea>
                             <label for="floatingTextarea" class="titles">Job Description</label>
                         </div>
                     </div>
@@ -133,9 +133,8 @@ include("../process/adminJobCreate.php");
                 <!-- Add btn -->
                 <div class="row p-3 d-flex justify-content-center align-items-center">
                     <div class="container d-flex justify-content-center align-items-center p-2">
-                        <button name="addJobButton" type="submit"
-                                class="btn btn-light btnAdd">Add New
-                                Job</button></a>
+                        <button name="addJobButton" type="submit" class="btn btn-light btnAdd">Add New
+                            Job</button></a>
                     </div>
                 </div>
 
