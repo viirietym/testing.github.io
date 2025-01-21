@@ -63,7 +63,7 @@ include("../process/adminJobCreate.php");
                                 <option selected>Select an Exp Level</option>
                                 <option value="Entry Level">Entry Level</option>
                                 <option value="Mid Level">Mid Level</option>
-                                <option value="Expert Level">Expert Level</option>
+                                <option value="Senior Level">Senior Level</option>
                             </select>
                             <label for="floatingSelect" class="titles">Experience Level</label>
                         </div>
@@ -86,9 +86,9 @@ include("../process/adminJobCreate.php");
                             <select name="barangay" class="form-select forms" required id="floatingSelect"
                                 aria-label="Floating label select example">
                                 <option selected>Select a Barangay</option>
-                                <option value="San Agustin">San Antonio</option>
-                                <option value="Santa Ana">San Miguel</option>
-                                <option value="Santa Clara">San Pedro</option>
+                                <option value="San Antonio">San Antonio</option>
+                                <option value="San Miguel">San Miguel</option>
+                                <option value="San Pedro">San Pedro</option>
                                 <option value="San Roque">San Roque</option>
                                 <option value="San Vicente">San Vicente</option>
                             </select>
@@ -148,10 +148,11 @@ include("../process/adminJobCreate.php");
     include("../assets/shared/footerAdmin.php");
     ?>
 
-</body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-    crossorigin="anonymous"></script>
+
+</body>
 
 </html>
