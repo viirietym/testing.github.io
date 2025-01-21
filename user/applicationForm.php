@@ -14,7 +14,7 @@
 
 <body>
 
-  <?php include "../assets/shared/navbarHome.php" ?>
+  <?php include "../assets/shared/navbarHome.php"?>
 
   <div class="form-container" style="margin: 150px auto;">
     <form>
