@@ -92,7 +92,7 @@ if ($datePosted) {
     $jobEntry .= " AND post.datePosted >= DATE_SUB(CURDATE(), INTERVAL $datePosted DAY)";
 }
 
-$jobEntry .= " ORDER BY $sort $order";
+// $jobEntry .= " ORDER BY $sort $order";
 
 $fetchJobEntry = executeQuery($jobEntry);
 ?>
@@ -232,10 +232,12 @@ $fetchJobEntry = executeQuery($jobEntry);
                                         Salary Rate
                                     </button>
                                     <ul class="dropdown-menu" aria-labelledby="dropdownSalaryRate">
+                                        <li><a class="dropdown-item" href="?salary=reset">---</a></li>
                                         <li><a class="dropdown-item" href="?salary=Below 10,000 php">Below 10,000 php
                                             </a>
                                         </li>
-                                        <li><a class="dropdown-item" href="?salary=salary=10,000 - 30,000 php">10,000 - 30,000
+                                        <li><a class="dropdown-item" href="?salary=10,000 - 30,000 php">10,000 -
+                                                30,000
                                                 php </a>
                                         </li>
                                         <li><a class="dropdown-item" href="?salary=Above 30000">30,000 above</a>
@@ -252,6 +254,7 @@ $fetchJobEntry = executeQuery($jobEntry);
                                         Industry
                                     </button>
                                     <ul class="dropdown-menu" aria-labelledby="dropdownIndustry">
+                                        <li><a class="dropdown-item" href="?industry=reset">---</a></li>
                                         <li><a class="dropdown-item" href="?industry=it">Information Technology (IT)</a>
                                         </li>
                                         <li><a class="dropdown-item" href="?industry=business">Business and
@@ -270,6 +273,7 @@ $fetchJobEntry = executeQuery($jobEntry);
                                         Location
                                     </button>
                                     <ul class="dropdown-menu" aria-labelledby="dropdownLocation">
+                                        <li><a class="dropdown-item" href="?location=reset">---</a></li>
                                         <li><a class="dropdown-item" href="?location=san_antonio">San Antonio</a></li>
                                         <li><a class="dropdown-item" href="?location=san_vicente">San Vicente</a></li>
                                         <li><a class="dropdown-item" href="?location=san_roque">San Roque</a></li>
@@ -288,6 +292,7 @@ $fetchJobEntry = executeQuery($jobEntry);
                                         Exp Level
                                     </button>
                                     <ul class="dropdown-menu" aria-labelledby="dropdownExpLevel">
+                                        <li><a class="dropdown-item" href="?expLevel=reset">---</a></li>
                                         <li><a class="dropdown-item" href="?expLevel=entry">Entry Level</a></li>
                                         <li><a class="dropdown-item" href="?expLevel=mid">Mid Level</a></li>
                                         <li><a class="dropdown-item" href="?expLevel=senior">Senior Level</a></li>
@@ -303,6 +308,7 @@ $fetchJobEntry = executeQuery($jobEntry);
                                         Date Posted
                                     </button>
                                     <ul class="dropdown-menu" aria-labelledby="dropdownDatePosted">
+                                        <li><a class="dropdown-item" href="?datePosted=reset">---</a></li>
                                         <li><a class="dropdown-item" href="?datePosted=1">Last 24 Hours</a></li>
                                         <li><a class="dropdown-item" href="?datePosted=7">Last 7 Days</a></li>
                                         <li><a class="dropdown-item" href="?datePosted=30">Last 30 Days</a></li>
