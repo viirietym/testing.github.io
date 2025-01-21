@@ -82,7 +82,7 @@ if (isset($_POST['btnSignPersonal'])) {
     $longbio = $_POST['longbio'];
 
     if (!empty($profile['name']) && !empty($shortbio) && !empty($jobtitle) && !empty($longbio)) {
-        $uploadDir = "../assets/image/user/";
+        $uploadDir = "../assets/image/user/userProfile/";
 
         if (!is_dir($uploadDir) || !is_writable($uploadDir)) {
             die('Upload directory does not exist or is not writable.');
@@ -129,7 +129,7 @@ if (isset($_POST['btnSignSkills'])) {
 
         $insertUserInfoQuery = "UPDATE userinfo SET skillDescription = '$skillDesc' WHERE userInfoId = '$userInfoId'";
         if ($conn->query($insertUserInfoQuery)) {
-            $uploadDir = "../assets/image/user/";
+            $uploadDir = "../assets/image/user/userPortfolio/";
 
             if (!is_dir($uploadDir) || !is_writable($uploadDir)) {
                 die('Upload directory does not exist or is not writable.');
