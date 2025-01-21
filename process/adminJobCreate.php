@@ -21,8 +21,11 @@ if (isset($_POST['addJobButton'])) {
     $skillRequirements = addslashes($skillRequirements);
     $jobDescription = addslashes($jobDescription);
 
+    $salaryRate = explode(",",$salaryRate);
+    $formattedSalary = implode("", $salaryRate);
+
     $insertJobDetailQuery = "INSERT INTO jobdetail(jobTitle, salaryRate, experienceLevel, companyName , jobLocation, jobIndustry, jobSkillsDescription, fullDescription) 
-    VALUES ('$jobTitle','$salaryRate','$expLevel','$companyName','$location','$industry','$skillRequirements','$jobDescription');";
+    VALUES ('$jobTitle','$formattedSalary','$expLevel','$companyName','$location','$industry','$skillRequirements','$jobDescription');";
     executeQuery($insertJobDetailQuery);
 
     $lastInsertedID = mysqli_insert_id($conn);
