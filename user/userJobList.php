@@ -1,8 +1,10 @@
 <?php
 include("../connect.php");
 
-$jobDetailquery = "SELECT jobdetail.jobDetailID,jobdetail.jobTitle, jobdetail.jobLocation, jobdetail.salaryRate, jobdetail.experienceLevel, jobdetail.jobIndustry, LEFT (jobdetail.jobSkillsDescription, 100) AS shortenedDesc, jobdetail.companyName, jobdetail.jobSkillsDescription, post.datePosted 
-FROM `jobdetail` LEFT JOIN post ON jobdetail.jobDetailID = post.jobDetailID;";
+$jobDetailquery = "SELECT jobdetail.jobDetailID, jobdetail.jobTitle, jobdetail.jobLocation, jobdetail.salaryRate, jobdetail.experienceLevel, jobdetail.jobIndustry, 
+LEFT(jobdetail.jobSkillsDescription, 100) , LEFT(jobdetail.fullDescription, 100) 
+AS shortenedDesc, jobdetail.companyName, jobdetail.jobSkillsDescription, jobdetail.fullDescription, post.datePosted 
+FROM jobdetail LEFT JOIN post ON jobdetail.jobDetailID = post.jobDetailID;";
 
 $jobDetailresult = executeQuery($jobDetailquery);
 
@@ -30,15 +32,18 @@ $jobEntry = "SELECT jobdetail.*, post.userID, post.datePosted
              WHERE 1=1";
 
 if ($salary) {
-    if ($salary == 'below_20000') {
-        $jobEntry .= " AND jobdetail.salaryRate < 20000";
-    } elseif ($salary == '20000_40000') {
-        $jobEntry .= " AND jobdetail.salaryRate BETWEEN 20000 AND 40000";
-    } elseif ($salary == 'above_40000') {
-        $jobEntry .= " AND jobdetail.salaryRate > 40000";
+    $salaryMap = [
+        'Below 10,000 php' => 'jobdetail.salaryRate < 10000',
+        '10,000 - 30,000 php' => 'jobdetail.salaryRate BETWEEN 10000 AND 30000',
+        'Above 30000' => 'jobdetail.salaryRate > 30000',
+    ];
+
+    $salaryCondition = isset($salaryMap[$salary]) ? $salaryMap[$salary] : null;
+
+    if ($salaryCondition) {
+        $jobEntry .= " AND $salaryCondition";
     }
 }
-
 
 if ($industry) {
     $industryMap = [
@@ -141,49 +146,76 @@ $fetchJobEntry = executeQuery($jobEntry);
             <!-- Job Section (Order 3) -->
             <div class="col-12 col-lg-8 order-4 mt-5">
                 <div class="job-section"
-                    style="max-height: 400px; overflow-y: auto; padding: 15px; border-radius: 8px;">
+                    style="max-height: 600px; overflow-y: auto; padding: 15px; border-radius: 8px;">
 
                     <!-- Job Entry 1 -->
-                    <div class="job-card">
-                        <?php
-                        while ($fetchJobEntryRow = mysqli_fetch_assoc($fetchJobEntry)) {
-                            ?>
-                            <span class="posted-time mb-2" style="font-size:10px;">
-                                Posted by User ID: <?php echo $fetchJobEntryRow['userID']; ?> on
-                                <?php echo $fetchJobEntryRow['datePosted']; ?>
+                    <?php
+                    function timeAgo($timestamp)
+                    {
+                        $time = strtotime($timestamp);
+                        $currentTime = time();
+                        $timeDifference = $currentTime - $time;
+
+                        if ($timeDifference < 60) {
+                            return $timeDifference . " seconds ago";
+                        } elseif ($timeDifference < 3600) {
+                            return floor($timeDifference / 60) . " minutes ago";
+                        } elseif ($timeDifference < 86400) {
+                            return floor($timeDifference / 3600) . " hours ago";
+                        } else {
+                            return floor($timeDifference / 86400) . " days ago";
+                        }
+                    }
+
+                    while ($fetchJobEntryRow = mysqli_fetch_assoc($fetchJobEntry)) {
+                        $timeAgo = timeAgo($fetchJobEntryRow['datePosted']);
+                        ?>
+                        <div class="job-card">
+                            <span class="posted-time mb-2" style="font-size:20px;">
+                                Posted: <?php echo $timeAgo; ?>
                             </span>
                             <p class="posted-info mt-3">
                                 <img src="../assets/image/userImage/location.png" alt="Location Icon" class="icon">
-                                <?php echo $fetchJobEntryRow['jobLocation'] ?>
+                                <?php echo $fetchJobEntryRow['jobLocation']; ?>
                             </p>
-                            <h3 class="font-weight-bold mt-3"><?php echo $fetchJobEntryRow['jobTitle'] ?> |
-                                <?php echo $fetchJobEntryRow['companyName'] ?>
+                            <h3 class="font-weight-bold mt-3"><?php echo $fetchJobEntryRow['jobTitle']; ?> |
+                                <?php echo $fetchJobEntryRow['companyName']; ?>
                             </h3>
                             <p class="job-details mt-3">
-                                <?php echo $fetchJobEntryRow['salaryRate'] ?> |
-                                <?php echo $fetchJobEntryRow['experienceLevel'] ?> |
-                                <?php echo $fetchJobEntryRow['jobIndustry'] ?>
+                                Salary Rate: PHP <?php echo $fetchJobEntryRow['salaryRate']; ?> |
+                                Experience Level: <?php echo $fetchJobEntryRow['experienceLevel']; ?> |
+                                Job Industry: <?php echo $fetchJobEntryRow['jobIndustry']; ?>
                             </p>
                             <div class="skills-section mt-3">
                                 <p><strong>Skills needed:</strong><br>
-                                    <?php echo $fetchJobEntryRow['jobSkillsDescription'] ?>
+                                    <?php
+                                    $skills = isset($fetchJobEntryRow['jobSkillsDescription']) ? substr($fetchJobEntryRow['jobSkillsDescription'], 0, 200) : 'No skills listed';
+                                    echo $skills;
+                                    ?>...
                                 </p>
                             </div>
+
                             <div class="description-section">
-                            <p><?php echo $jobDescription ?><a href="userJobView.php"><button type="button"
-                                            class="btn custom-button btn-link" style="color: #21a027;">See
-                                            More...</button></a>
+                                <p><strong>Job Description:</strong><br>
+                                    <?php
+                                    $fulldescription = isset($fetchJobEntryRow['fullDescription']) ? substr($fetchJobEntryRow['fullDescription'], 0, 200) : 'No Job listed';
+                                    echo $fulldescription; ?>...
+                                    <a href="userJobView.php?jobDetailID=<?php echo $fetchJobEntryRow['jobDetailID']; ?>">
+                                        <button type="button" class="btn custom-button btn-link" style="color: #2FFF87;">See
+                                            More...</button>
+                                    </a>
                                 </p>
                             </div>
                             <hr>
-                            <?php
-                        }
-                        ?>
-                    </div>
+                        </div>
 
+                        <?php
+                    }
+                    ?>
 
                 </div>
             </div>
+
 
             <!-- Filter Section (Order 4) -->
             <div class="col-12 col-lg-4 order-3 order-lg-4 mt-5">
@@ -203,10 +235,10 @@ $fetchJobEntry = executeQuery($jobEntry);
                                         <li><a class="dropdown-item" href="?salary=Below 10,000 php">Below 10,000 php
                                             </a>
                                         </li>
-                                        <li><a class="dropdown-item" href="?salary=10,000 - 30,000 php">10,000 - 30,000
+                                        <li><a class="dropdown-item" href="?salary=salary=10,000 - 30,000 php">10,000 - 30,000
                                                 php </a>
                                         </li>
-                                        <li><a class="dropdown-item" href="?salary=above_40000">30,000 above</a>
+                                        <li><a class="dropdown-item" href="?salary=Above 30000">30,000 above</a>
                                         </li>
                                     </ul>
                                 </div>
