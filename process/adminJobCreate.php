@@ -1,7 +1,7 @@
 <?php
 
-session_start ();
-$userID = $_SESSION['userID']; 
+session_start();
+$userID = $_SESSION['userID'];
 
 if (isset($_POST['addJobButton'])) {
 
@@ -14,12 +14,18 @@ if (isset($_POST['addJobButton'])) {
     $skillRequirements = $_POST['skillRequirements'];
     $jobDescription = $_POST['jobDescription'];
 
+    $jobTitle = addslashes($jobTitle);
+    $salaryRate = addslashes($salaryRate);
+    $companyName = addslashes($companyName);
+    $industry = addslashes($industry);
+    $skillRequirements = addslashes($skillRequirements);
+    $jobDescription = addslashes($jobDescription);
 
     $insertJobDetailQuery = "INSERT INTO jobdetail(jobTitle, salaryRate, experienceLevel, companyName , jobLocation, jobIndustry, jobSkillsDescription, fullDescription) 
     VALUES ('$jobTitle','$salaryRate','$expLevel','$companyName','$location','$industry','$skillRequirements','$jobDescription');";
     executeQuery($insertJobDetailQuery);
 
-    $lastInsertedID = mysqli_insert_id($conn); 
+    $lastInsertedID = mysqli_insert_id($conn);
 
     $insertPostQuery = "INSERT INTO `post`(`userID`, `jobDetailID`) VALUES ('$userID','$lastInsertedID');";
     executeQuery($insertPostQuery);
