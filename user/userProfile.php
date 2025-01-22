@@ -1,3 +1,8 @@
+<?php
+include('../process/viewUserProfile.php');
+
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -10,6 +15,7 @@
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/userCSS/userProfile.css">
+
 </head>
 
 <body>
@@ -17,117 +23,151 @@
     include("../assets/shared/navbarHome.php");
     ?>
     <div class="container" style="margin-top: 100px;">
-        <div class="row">
-            <div class="col-12">
-                <div class="profileHeader d-flex flex-column flex-md-row align-items-center">
-                    <div class="profileImage">
-                        <img src="../assets/image/userImage/profileUser.png">
-                    </div>
-                    <div class="col-12 col-md-6">
-                        <div class="profileText">
-                            <h2 id="fullName">Full Name</h2>
-                            <div id="editFullNameContainer" style="display:none">
-                                <input type="text" id="editFirstName" class="textInput" placeholder="First Name">
-                                <input type="text" id="editLastName" class="textInput" placeholder="Last Name">
-                            </div>
-                            <p id="username">@username</p>
-                            <input type="text" id="editUsername" class="textInput" style="display:none">
-                            <p id="shortDescription" style="text-align: justify;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                eiusmod
-                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-                                nostrud
-                                exercitation ullamco.</p>
-                            <textarea id="editDescription" class="textInput" style="display:none; overflow:hidden;"
-                                placeholder="Enter your description"></textarea>
-                        </div>
-                    </div>
-                    <div class="buttons d-flex justify-content-center justify-content-md-start">
-                        <button onclick="editProfile()">EDIT PROFILE</button>
-                        <button style="display:none" onclick="saveChanges()">SAVE CHANGES</button>
-                        <a href="userUpdateAccount.php">
-                            <button>UPDATE ACCOUNT</button>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <div class="profileContent">
-                    <div class="contentLeft">
-                        <div class="jobTitle">
-                            <span id="jobTitleText">Quality Assurance | Web Developer</span>
-                            <input type="text" id="editJobTitle" class="textContent" style="display:none;">
-                        </div>
-                        <div class="fullDescription">
-                            <b>Full Description:</b>
-                            <p id="fullDescriptionText" style="text-align: justify;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                eiusmod
-                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-                                nostrud
-                                exercitation ullamco.</p>
-                            <textarea id="editFullDescription" class="textContent"
-                                style="display:none; overflow:hidden;"></textarea>
-                        </div>
-                        <div class="card" style="border-radius: 20px">
-                            <img src="" class="cardImg" alt="...">
-                            <div class="cardBody">
-                                <b class="portfolioTitle">Portfolio #1</b>
+        <?php
+        if (mysqli_num_rows($result) > 0) {
+            while ($resultRow = mysqli_fetch_assoc($result)) {
+                ?>
+                <form id="editProfileForm" method="POST" action="saveProfileChanges.php" enctype="multipart/form-data">
+                    <input type="hidden" name="userId" value="<?php echo $userId; ?>">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="profileHeader d-flex flex-column flex-md-row align-items-center">
+                                <div class="profileImage">
+                                    <img id="profileImage"
+                                        src="../assets/image/user/userProfile/<?php echo $resultRow['userProfileImage']; ?>"
+                                        alt="Profile Image" style="cursor: pointer;">
+                                    <input type="file" id="editProfileImage" name="userProfileImage" style="display: none;"
+                                        onchange="previewProfileImage(event)">
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <div class="profileText">
+                                        <h2 id="fullName"><?php echo $resultRow['firstname'] . " " . $resultRow['lastname']; ?>
+                                        </h2>
+                                        <div id="editFullNameContainer" style="display:none">
+                                            <input type="text" id="editFirstName" name="firstname" class="textInput"
+                                                placeholder="First Name">
+                                            <input type="text" id="editLastName" name="lastname" class="textInput"
+                                                placeholder="Last Name">
+                                        </div>
+                                        <p id="username">@<?php echo $resultRow['username']; ?></p>
+                                        <input type="text" id="editUsername" name="username" class="textInput"
+                                            style="display:none">
+                                        <p id="shortDescription" style="text-align: justify;">
+                                            <?php echo nl2br($resultRow['userBio']); ?>
+                                        </p>
+                                        <textarea id="editDescription" name="userBio" class="textInput"
+                                            style="display:none; overflow:hidden;"></textarea>
+                                    </div>
+                                </div>
+                                <div class="buttons d-flex justify-content-center justify-content-md-start">
+                                    <button type="button" onclick="editProfile()">EDIT PROFILE</button>
+                                    <button type="submit" style="display:none" name="btnSave">SAVE CHANGES</button>
+                                    <a href="userUpdateAccount.php?userId=<?php echo $userId; ?>">
+                                        <button type="button">UPDATE ACCOUNT</button>
+                                    </a>
+                                </div>
                             </div>
                         </div>
-                        <div class="skills">
-                            <b>Skills</b>
-                            <p id="skillsText" style="text-align: justify;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                tempor
-                                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                                exercitation
-                                ullamco.</p>
-                            <textarea id="editSkills" class="textContent"
-                                style="display:none; overflow:hidden;"></textarea>
-                        </div>
-                        <div class="contactInfo">
-                            <b>Contact Info</b>
-                            <p id="contactText"></p>
-                            <textarea id="editContact" class="textContent"
-                                style="display:none; overflow:hidden;"></textarea>
+                    </div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="profileContent">
+                                    <div class="contentLeft">
+                                        <div class="jobTitle">
+                                            <span id="jobTitleText"><?php echo $resultRow['jobTitle']; ?></span>
+                                            <input type="text" id="editJobTitle" name="jobTitle" class="textContent"
+                                                style="display:none;">
+                                        </div>
+                                        <div class="fullDescription">
+                                            <b>Full Description:</b>
+                                            <p id="fullDescriptionText" style="text-align: justify;">
+                                                <?php echo nl2br($resultRow['userDescription']); ?>
+                                            </p>
+                                            <textarea id="editFullDescription" name="userDescription" class="textContent"
+                                                style="display:none; overflow:hidden;"></textarea>
+                                        </div>
+                                        <?php
+                                        $portfolioQuery = "SELECT projectImage, projectTitle FROM portfolio WHERE userInfoID = '" . $resultRow['userInfoID'] . "'";
+                                        $portfolioResult = executeQuery($portfolioQuery);
+                                        while ($portfolioItem = mysqli_fetch_assoc($portfolioResult)) {
+                                            ?>
+                                            <div class="col-12">
+                                                <div class="card" style="border-radius: 20px">
+                                                    <img id="projectImage"
+                                                        src="../assets/image/user/userPortfolio/<?php echo $portfolioItem['projectImage']; ?>"
+
+                                                        class="cardImg" alt="Portfolio Image" style="cursor: pointer;">
+                                                    <input type="file" id="editProjectImage" name="projectImage"
+                                                        style="display: none;" onchange="previewImage(event)">
+
+                                                    <div class="cardBody">
+                                                        <b id="projectTitle" class="portfolioTitle">
+                                                            <?php echo $portfolioItem['projectTitle']; ?>
+                                                        </b>
+                                                        <input type="text" id="editProjectTitle" name="projectTitle"
+                                                            class="textInput" value="<?php echo $portfolioItem['projectTitle']; ?>"
+                                                            style="display: none;" placeholder="Project Title">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <?php
+                                        }
+                                        ?>
+                                        <div class="skills">
+                                            <b>Skills</b>
+                                            <p id="skillsText" style="text-align: justify;">
+                                                <?php echo nl2br($resultRow['skillDescription']); ?>
+                                            </p>
+                                            <textarea id="editSkills" name="skillDescription" class="textContent"
+                                                style="display:none; overflow:hidden;"></textarea>
+                                        </div>
+                                        <div class="contactInfo">
+                                            <b>Contact Info</b>
+                                            <p id="contactText"><?php echo nl2br($resultRow['contactDetails']); ?></p>
+                                            <textarea id="editContact" name="contactDetails" class="textContent"
+                                                style="display:none; overflow:hidden;"></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="divider"></div>
+
+                                    <div class="contentRight">
+                                        <div class="educDetails">
+                                            <b>Education Details</b>
+                                            <p id="educDetailsText" style="text-align: justify;">
+                                                <?php echo nl2br($resultRow['educationalDetails']); ?>
+                                            </p>
+                                            <textarea id="editEducDetails" name="educationalDetails" class="textContent"
+                                                style="display:none; overflow:hidden;"></textarea>
+                                        </div>
+                                        <div class="empHistory">
+                                            <b>Employment History</b>
+                                            <p id="empHistoryText" style="text-align: justify;">
+                                                <?php echo nl2br($resultRow['employmentHistoryDetails']); ?>
+                                            </p>
+                                            <textarea id="editEmpHistory" name="employmentHistoryDetails" class="textContent"
+                                                style="display:none; overflow:hidden;"></textarea>
+                                        </div>
+                                        <div class="certDetails">
+                                            <b>Certification Details</b>
+                                            <p id="certDetailsText" style="text-align: justify;">
+                                                <?php echo nl2br($resultRow['certificationDetails']); ?>
+                                            </p>
+                                            <textarea id="editCertDetails" name="certificationDetails" class="textContent"
+                                                style="display:none; overflow:hidden;"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-
-                    <div class="divider"></div>
-
-                    <div class="contentRight">
-                        <div class="educDetails">
-                            <b>Education Details</b>
-                            <p id="educDetailsText" style="text-align: justify;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-                                eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua.</p>
-                            <textarea id="editEducDetails" class="textContent"
-                                style="display:none; overflow:hidden;"></textarea>
-                        </div>
-                        <div class="empHistory">
-                            <b>Employment History</b>
-                            <p id="empHistoryText" style="text-align: justify;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-                                eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua.</p>
-                            <textarea id="editEmpHistory" class="textContent"
-                                style="display:none; overflow:hidden;"></textarea>
-                        </div>
-                        <div class="certDetails">
-                            <b>Certification Details</b>
-                            <p id="certDetailsText" style="text-align: justify;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-                                eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua.</p>
-                            <textarea id="editCertDetails" class="textContent"
-                                style="display:none; overflow:hidden;"></textarea>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+                </form>
+                <?php
+            }
+        }
+        ?>
     </div>
-
 
     <?php
     include("../assets/shared/footer.php");
@@ -143,7 +183,9 @@
         integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
         crossorigin="anonymous"></script>
 
-    <script src="../js/userProfileEdit.js"></script>
+    <script src="../js/userProfileEdit.js">
+    </script>
+
 
 </body>
 

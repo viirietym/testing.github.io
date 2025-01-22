@@ -1,8 +1,48 @@
+let isEditingProfile = false;
+
+document.getElementById("profileImage").addEventListener("click", function () {
+    if (isEditingProfile) {
+        document.getElementById("editProfileImage").click();
+    }
+});
+
+function previewProfileImage(event) {
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            document.getElementById("profileImage").src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+    }
+}
+
+function enableImageEdit() {
+    const fileInput = document.getElementById("editProfileImage");
+    fileInput.click();
+
+    fileInput.addEventListener("change", function () {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            document.getElementById("profileImage").src = e.target.result;
+        };
+        reader.readAsDataURL(fileInput.files[0]);
+    });
+}
+
+document.getElementById("profileImage").style.cursor = "pointer";
+
 function autoResizeTextarea(textarea) {
     textarea.style.height = "auto";
     textarea.style.height = textarea.scrollHeight + "px";
 }
+
 function editProfile() {
+    
+    isEditingProfile = true;
+
+    document.getElementById("profileImage").addEventListener("click", enableImageEdit);
+
     document.getElementById("fullName").style.display = "none";
     document.getElementById("editFullNameContainer").style.display = "block";
 
@@ -12,7 +52,7 @@ function editProfile() {
 
     document.getElementById("username").style.display = "none";
     document.getElementById("editUsername").style.display = "block";
-    document.getElementById("editUsername").value = document.getElementById("username").innerText;
+    document.getElementById("editUsername").value = document.getElementById("username").innerText.replace('@', '');
 
     const shortDescriptionTextarea = document.getElementById("editDescription");
     document.getElementById("shortDescription").style.display = "none";
@@ -61,8 +101,27 @@ function editProfile() {
     certTextarea.value = document.getElementById("certDetailsText").innerText;
     autoResizeTextarea(certTextarea);
 
+    document.getElementById("editProjectTitle").style.display = "block";
+
+    // Hide the static text for project title
+    document.getElementById("projectTitle").style.display = "none";
+
+    // Enable editing portfolio image
+    document.getElementById("projectImage").style.cursor = "pointer";
+    document.getElementById("projectImage").addEventListener("click", enableImageEdit);
+
+    resetLayout();
+
     document.querySelector(".buttons button:nth-child(1)").style.display = "none";
     document.querySelector(".buttons button:nth-child(2)").style.display = "block";
+}
+
+function resetLayout() {
+    let elements = document.querySelectorAll('.textInput, .textContent');
+    elements.forEach(function (el) {
+        el.style.padding = '0.5rem';
+        el.style.margin = '0';
+    });
 }
 
 function saveChanges() {
@@ -118,4 +177,9 @@ function saveChanges() {
 
     document.querySelector(".buttons button:nth-child(1)").style.display = "block";
     document.querySelector(".buttons button:nth-child(2)").style.display = "none";
+
+    // Set the flag to false when leaving edit mode
+    isEditingProfile = false;
+
+    document.querySelector("form").submit();
 }

@@ -1,3 +1,103 @@
+<?php
+include("../connect.php");
+
+$jobDetailquery = "SELECT jobdetail.jobDetailID, jobdetail.jobTitle, jobdetail.jobLocation, jobdetail.salaryRate, jobdetail.experienceLevel, jobdetail.jobIndustry, 
+LEFT(jobdetail.jobSkillsDescription, 100) , LEFT(jobdetail.fullDescription, 100) 
+AS shortenedDesc, jobdetail.companyName, jobdetail.jobSkillsDescription, jobdetail.fullDescription, post.datePosted 
+FROM jobdetail LEFT JOIN post ON jobdetail.jobDetailID = post.jobDetailID;";
+
+$jobDetailresult = executeQuery($jobDetailquery);
+
+$jobTitle = '';
+$salaryRate = '';
+$expLevel = '';
+$companyName = '';
+$location = '';
+$industry = '';
+$skillRequirements = '';
+$jobDescription = '';
+$datePosted = '';
+
+$salary = isset($_GET['salary']) ? $_GET['salary'] : null;
+$industry = isset($_GET['industry']) ? $_GET['industry'] : null;
+$location = isset($_GET['location']) ? $_GET['location'] : null;
+$expLevel = isset($_GET['expLevel']) ? $_GET['expLevel'] : null;
+$datePosted = isset($_GET['datePosted']) ? $_GET['datePosted'] : null;
+$sort = isset($_GET['sort']) ? $_GET['sort'] : 'datePosted';
+$order = isset($_GET['order']) ? $_GET['order'] : 'DESC';
+
+$jobEntry = "SELECT jobdetail.*, post.userID, post.datePosted 
+             FROM jobdetail 
+             INNER JOIN post ON jobdetail.jobDetailID = post.jobDetailID 
+             WHERE 1=1";
+
+if ($salary) {
+    $salaryMap = [
+        'Below 10,000 php' => 'jobdetail.salaryRate < 10000',
+        '10,000 - 30,000 php' => 'jobdetail.salaryRate BETWEEN 10000 AND 30000',
+        'Above 30000' => 'jobdetail.salaryRate > 30000',
+    ];
+
+    $salaryCondition = isset($salaryMap[$salary]) ? $salaryMap[$salary] : null;
+
+    if ($salaryCondition) {
+        $jobEntry .= " AND $salaryCondition";
+    }
+}
+
+if ($industry) {
+    $industryMap = [
+        'it' => 'Information Technology',
+        'business' => 'Business and Administration',
+        'manufacturing' => 'Manufacturing and Logistics',
+    ];
+    $industryValue = isset($industryMap[$industry]) ? $industryMap[$industry] : null;
+
+    if ($industryValue) {
+        $jobEntry .= " AND jobdetail.jobIndustry LIKE '%$industryValue%'";
+    }
+}
+
+if ($location) {
+    $locationMap = [
+        'san_antonio' => 'San Antonio',
+        'san_vicente' => 'San Vicente',
+        'san_roque' => 'San Roque',
+        'san_miguel' => 'San Miguel',
+        'san_pedro' => 'San Pedro',
+    ];
+
+    $locationValue = isset($locationMap[$location]) ? $locationMap[$location] : null;
+
+    if ($locationValue) {
+        $jobEntry .= " AND jobdetail.jobLocation LIKE '%$locationValue%'";
+    }
+}
+
+echo $jobEntry;
+
+if ($expLevel) {
+    $expLevelMap = [
+        'entry' => 'Entry Level',
+        'mid' => 'Mid Level',
+        'senior' => 'Senior Level',
+    ];
+    $expLevelValue = isset($expLevelMap[$expLevel]) ? $expLevelMap[$expLevel] : null;
+
+    if ($expLevelValue) {
+        $jobEntry .= " AND jobdetail.experienceLevel LIKE '%$expLevelValue%'";
+    }
+}
+if ($datePosted) {
+    $jobEntry .= " AND post.datePosted >= DATE_SUB(CURDATE(), INTERVAL $datePosted DAY)";
+}
+
+// $jobEntry .= " ORDER BY $sort $order";
+
+$fetchJobEntry = executeQuery($jobEntry);
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -42,36 +142,80 @@
                 </div>
             </div>
 
+
             <!-- Job Section (Order 3) -->
             <div class="col-12 col-lg-8 order-4 mt-5">
-                <div class="job-section">
-                    <div class="job-card">
-                        <span class="posted-time mb-2" style="margin-left: 140px; font-size:10px;"> posted 1 day
-                            ago</span>
-                        <p class="posted-info mt-3">
-                            <img src="../assets/image/userImage/location.png" alt="Location Icon" class="icon"> San
-                            Antonio
-                        </p>
-                        <h3 class="font-weight-bold mt-3">Job Name | Company Name</h3>
-                        <p class="job-details mt-3">
-                            salary rate | exp. level [ex. entry level] | job Industry [ex. IT]
-                        </p>
-                        <div class="skills-section mt-3">
-                            <p><strong>Skills needed:</strong><br>
-                                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt
-                                ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                                ullamco."
+                <div class="job-section"
+                    style="max-height: 600px; overflow-y: auto; padding: 15px; border-radius: 8px;">
+
+                    <!-- Job Entry 1 -->
+                    <?php
+                    function timeAgo($timestamp)
+                    {
+                        $time = strtotime($timestamp);
+                        $currentTime = time();
+                        $timeDifference = $currentTime - $time;
+
+                        if ($timeDifference < 60) {
+                            return $timeDifference . " seconds ago";
+                        } elseif ($timeDifference < 3600) {
+                            return floor($timeDifference / 60) . " minutes ago";
+                        } elseif ($timeDifference < 86400) {
+                            return floor($timeDifference / 3600) . " hours ago";
+                        } else {
+                            return floor($timeDifference / 86400) . " days ago";
+                        }
+                    }
+
+                    while ($fetchJobEntryRow = mysqli_fetch_assoc($fetchJobEntry)) {
+                        $timeAgo = timeAgo($fetchJobEntryRow['datePosted']);
+                        ?>
+                        <div class="job-card">
+                            <span class="posted-time mb-2" style="font-size:20px;">
+                                Posted: <?php echo $timeAgo; ?>
+                            </span>
+                            <p class="posted-info mt-3">
+                                <img src="../assets/image/userImage/location.png" alt="Location Icon" class="icon">
+                                <?php echo $fetchJobEntryRow['jobLocation']; ?>
                             </p>
+                            <h3 class="font-weight-bold mt-3"><?php echo $fetchJobEntryRow['jobTitle']; ?> |
+                                <?php echo $fetchJobEntryRow['companyName']; ?>
+                            </h3>
+                            <p class="job-details mt-3">
+                                Salary Rate: PHP <?php echo $fetchJobEntryRow['salaryRate']; ?> |
+                                Experience Level: <?php echo $fetchJobEntryRow['experienceLevel']; ?> |
+                                Job Industry: <?php echo $fetchJobEntryRow['jobIndustry']; ?>
+                            </p>
+                            <div class="skills-section mt-3">
+                                <p><strong>Skills needed:</strong><br>
+                                    <?php
+                                    $skills = isset($fetchJobEntryRow['jobSkillsDescription']) ? substr($fetchJobEntryRow['jobSkillsDescription'], 0, 200) : 'No skills listed';
+                                    echo $skills;
+                                    ?>...
+                                </p>
+                            </div>
+
+                            <div class="description-section">
+                                <p><strong>Job Description:</strong><br>
+                                    <?php
+                                    $fulldescription = isset($fetchJobEntryRow['fullDescription']) ? substr($fetchJobEntryRow['fullDescription'], 0, 200) : 'No Job listed';
+                                    echo $fulldescription; ?>...
+                                    <a href="userJobView.php?jobDetailID=<?php echo $fetchJobEntryRow['jobDetailID']; ?>">
+                                        <button type="button" class="btn custom-button btn-link" style="color: #2FFF87;">See
+                                            More...</button>
+                                    </a>
+                                </p>
+                            </div>
+                            <hr>
                         </div>
-                        <div class="description-section">
-                            <p><strong>Description:</strong> <a href="#" class="see-more">see more</a></p>
-                        </div>
-                        <div style="border-top: 5px solid white; width: 100%; margin: 10px 0;"></div>
-                        <p class="another-entry">Another Entry...</p>
-                    </div>
+
+                        <?php
+                    }
+                    ?>
+
                 </div>
             </div>
+
 
             <!-- Filter Section (Order 4) -->
             <div class="col-12 col-lg-4 order-3 order-lg-4 mt-5">
@@ -88,9 +232,16 @@
                                         Salary Rate
                                     </button>
                                     <ul class="dropdown-menu" aria-labelledby="dropdownSalaryRate">
-                                        <li><a class="dropdown-item" href="#">Below 20,000 PHP</a></li>
-                                        <li><a class="dropdown-item" href="#">20,000 - 40,000 PHP</a></li>
-                                        <li><a class="dropdown-item" href="#">Above 40,000 PHP</a></li>
+                                        <li><a class="dropdown-item" href="?salary=reset">---</a></li>
+                                        <li><a class="dropdown-item" href="?salary=Below 10,000 php">Below 10,000 php
+                                            </a>
+                                        </li>
+                                        <li><a class="dropdown-item" href="?salary=10,000 - 30,000 php">10,000 -
+                                                30,000
+                                                php </a>
+                                        </li>
+                                        <li><a class="dropdown-item" href="?salary=Above 30000">30,000 above</a>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
@@ -103,9 +254,13 @@
                                         Industry
                                     </button>
                                     <ul class="dropdown-menu" aria-labelledby="dropdownIndustry">
-                                        <li><a class="dropdown-item" href="#">Information Technology (IT)</a></li>
-                                        <li><a class="dropdown-item" href="#">Business and Administration</a></li>
-                                        <li><a class="dropdown-item" href="#">Manufacturing and Logistics</a></li>
+                                        <li><a class="dropdown-item" href="?industry=reset">---</a></li>
+                                        <li><a class="dropdown-item" href="?industry=it">Information Technology (IT)</a>
+                                        </li>
+                                        <li><a class="dropdown-item" href="?industry=business">Business and
+                                                Administration</a></li>
+                                        <li><a class="dropdown-item" href="?industry=manufacturing">Manufacturing and
+                                                Logistics</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -118,10 +273,14 @@
                                         Location
                                     </button>
                                     <ul class="dropdown-menu" aria-labelledby="dropdownLocation">
-                                        <li><a class="dropdown-item" href="#">Option 1</a></li>
-                                        <li><a class="dropdown-item" href="#">Option 2</a></li>
-                                        <li><a class="dropdown-item" href="#">Option 3</a></li>
+                                        <li><a class="dropdown-item" href="?location=reset">---</a></li>
+                                        <li><a class="dropdown-item" href="?location=san_antonio">San Antonio</a></li>
+                                        <li><a class="dropdown-item" href="?location=san_vicente">San Vicente</a></li>
+                                        <li><a class="dropdown-item" href="?location=san_roque">San Roque</a></li>
+                                        <li><a class="dropdown-item" href="?location=san_miguel">San Miguel</a></li>
+                                        <li><a class="dropdown-item" href="?location=san_pedro">San Pedro</a></li>
                                     </ul>
+
                                 </div>
                             </div>
 
@@ -133,9 +292,10 @@
                                         Exp Level
                                     </button>
                                     <ul class="dropdown-menu" aria-labelledby="dropdownExpLevel">
-                                        <li><a class="dropdown-item" href="#">Entry Level</a></li>
-                                        <li><a class="dropdown-item" href="#">Mid Level</a></li>
-                                        <li><a class="dropdown-item" href="#">Senior Level</a></li>
+                                        <li><a class="dropdown-item" href="?expLevel=reset">---</a></li>
+                                        <li><a class="dropdown-item" href="?expLevel=entry">Entry Level</a></li>
+                                        <li><a class="dropdown-item" href="?expLevel=mid">Mid Level</a></li>
+                                        <li><a class="dropdown-item" href="?expLevel=senior">Senior Level</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -148,9 +308,10 @@
                                         Date Posted
                                     </button>
                                     <ul class="dropdown-menu" aria-labelledby="dropdownDatePosted">
-                                        <li><a class="dropdown-item" href="#">Last 24 Hours</a></li>
-                                        <li><a class="dropdown-item" href="#">Last 7 Days</a></li>
-                                        <li><a class="dropdown-item" href="#">Last 30 Days</a></li>
+                                        <li><a class="dropdown-item" href="?datePosted=reset">---</a></li>
+                                        <li><a class="dropdown-item" href="?datePosted=1">Last 24 Hours</a></li>
+                                        <li><a class="dropdown-item" href="?datePosted=7">Last 7 Days</a></li>
+                                        <li><a class="dropdown-item" href="?datePosted=30">Last 30 Days</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -167,8 +328,8 @@
                                         Most Recent
                                     </button>
                                     <ul class="dropdown-menu" aria-labelledby="dropdownMostRecent">
-                                        <li><a class="dropdown-item" href="#">Newest</a></li>
-                                        <li><a class="dropdown-item" href="#">Oldest</a></li>
+                                        <li><a class="dropdown-item" href="?sort=datePosted&order=desc">Newest</a></li>
+                                        <li><a class="dropdown-item" href="?sort=datePosted&order=asc">Oldest</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -179,16 +340,16 @@
                                         Salary [↑ - ↓]
                                     </button>
                                     <ul class="dropdown-menu" aria-labelledby="dropdownSalary">
-                                        <li><a class="dropdown-item" href="#">Low to High</a></li>
-                                        <li><a class="dropdown-item" href="#">High to Low</a></li>
+                                        <li><a class="dropdown-item" href="?sort=salary&order=asc">Low to High</a></li>
+                                        <li><a class="dropdown-item" href="?sort=salary&order=desc">High to Low</a></li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
+
 
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
         </div>

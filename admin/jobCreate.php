@@ -81,7 +81,7 @@ if (isset($_POST['addJobButton'])) {
                                 <option selected>Select an Exp Level</option>
                                 <option value="Entry Level">Entry Level</option>
                                 <option value="Mid Level">Mid Level</option>
-                                <option value="Expert Level">Expert Level</option>
+                                <option value="Senior Level">Senior Level</option>
                             </select>
                             <label for="floatingSelect" class="titles">Experience Level</label>
                         </div>
@@ -104,9 +104,9 @@ if (isset($_POST['addJobButton'])) {
                             <select name="barangay" class="form-select forms" required id="floatingSelect"
                                 aria-label="Floating label select example">
                                 <option selected>Select a Barangay</option>
-                                <option value="San Agustin">San Agustin</option>
-                                <option value="Santa Ana">Santa Ana</option>
-                                <option value="Santa Clara">Santa Clara</option>
+                                <option value="San Antonio">San Antonio</option>
+                                <option value="San Miguel">San Miguel</option>
+                                <option value="San Pedro">San Pedro</option>
                                 <option value="San Roque">San Roque</option>
                                 <option value="San Vicente">San Vicente</option>
                             </select>
@@ -129,7 +129,7 @@ if (isset($_POST['addJobButton'])) {
                     <div class="col-12 col-sm-12 col-md-12 col-xl-12">
                         <div class="form-floating mb-3">
                             <textarea name="skillRequirements" class="form-control forms" placeholder="Skill Details"
-                            required id="floatingTextarea" style="height: 100px"></textarea>
+                                required id="floatingTextarea" style="height: 100px"></textarea>
                             <label for="floatingTextarea" class="titles">Skill Requirements</label>
                         </div>
                     </div>
@@ -141,7 +141,7 @@ if (isset($_POST['addJobButton'])) {
                     <div class="col-12 col-sm-12 col-md-12 col-xl-12">
                         <div class="form-floating mb-3">
                             <textarea name="jobDescription" class="form-control forms" placeholder="Skill Details"
-                            required  id="floatingTextarea" style="height: 150px"></textarea>
+                                required id="floatingTextarea" style="height: 150px"></textarea>
                             <label for="floatingTextarea" class="titles">Job Description</label>
                         </div>
                     </div>
@@ -151,9 +151,8 @@ if (isset($_POST['addJobButton'])) {
                 <!-- Add btn -->
                 <div class="row p-3 d-flex justify-content-center align-items-center">
                     <div class="container d-flex justify-content-center align-items-center p-2">
-                        <button name="addJobButton" type="submit"
-                                class="btn btn-light btnAdd">Add New
-                                Job</button></a>
+                        <button name="addJobButton" type="submit" class="btn btn-light btnAdd">Add New
+                            Job</button></a>
                     </div>
                 </div>
 
@@ -167,10 +166,11 @@ if (isset($_POST['addJobButton'])) {
     include("../assets/shared/footerAdmin.php");
     ?>
 
-</body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-    crossorigin="anonymous"></script>
+
+</body>
 
 </html>
