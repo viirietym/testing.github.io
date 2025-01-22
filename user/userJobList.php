@@ -1,100 +1,8 @@
 <?php
 include("../connect.php");
+include("../process/sessionStarting.php");
+include("../process/userListProcessing.php");
 
-$jobDetailquery = "SELECT jobdetail.jobDetailID, jobdetail.jobTitle, jobdetail.jobLocation, jobdetail.salaryRate, jobdetail.experienceLevel, jobdetail.jobIndustry, 
-LEFT(jobdetail.jobSkillsDescription, 100) , LEFT(jobdetail.fullDescription, 100) 
-AS shortenedDesc, jobdetail.companyName, jobdetail.jobSkillsDescription, jobdetail.fullDescription, post.datePosted 
-FROM jobdetail LEFT JOIN post ON jobdetail.jobDetailID = post.jobDetailID;";
-
-$jobDetailresult = executeQuery($jobDetailquery);
-
-$jobTitle = '';
-$salaryRate = '';
-$expLevel = '';
-$companyName = '';
-$location = '';
-$industry = '';
-$skillRequirements = '';
-$jobDescription = '';
-$datePosted = '';
-
-$salary = isset($_GET['salary']) ? $_GET['salary'] : null;
-$industry = isset($_GET['industry']) ? $_GET['industry'] : null;
-$location = isset($_GET['location']) ? $_GET['location'] : null;
-$expLevel = isset($_GET['expLevel']) ? $_GET['expLevel'] : null;
-$datePosted = isset($_GET['datePosted']) ? $_GET['datePosted'] : null;
-$sort = isset($_GET['sort']) ? $_GET['sort'] : 'datePosted';
-$order = isset($_GET['order']) ? $_GET['order'] : 'DESC';
-
-$jobEntry = "SELECT jobdetail.*, post.userID, post.datePosted 
-             FROM jobdetail 
-             INNER JOIN post ON jobdetail.jobDetailID = post.jobDetailID 
-             WHERE 1=1";
-
-if ($salary) {
-    $salaryMap = [
-        'Below 10,000 php' => 'jobdetail.salaryRate < 10000',
-        '10,000 - 30,000 php' => 'jobdetail.salaryRate BETWEEN 10000 AND 30000',
-        'Above 30000' => 'jobdetail.salaryRate > 30000',
-    ];
-
-    $salaryCondition = isset($salaryMap[$salary]) ? $salaryMap[$salary] : null;
-
-    if ($salaryCondition) {
-        $jobEntry .= " AND $salaryCondition";
-    }
-}
-
-if ($industry) {
-    $industryMap = [
-        'it' => 'Information Technology',
-        'business' => 'Business and Administration',
-        'manufacturing' => 'Manufacturing and Logistics',
-    ];
-    $industryValue = isset($industryMap[$industry]) ? $industryMap[$industry] : null;
-
-    if ($industryValue) {
-        $jobEntry .= " AND jobdetail.jobIndustry LIKE '%$industryValue%'";
-    }
-}
-
-if ($location) {
-    $locationMap = [
-        'san_antonio' => 'San Antonio',
-        'san_vicente' => 'San Vicente',
-        'san_roque' => 'San Roque',
-        'san_miguel' => 'San Miguel',
-        'san_pedro' => 'San Pedro',
-    ];
-
-    $locationValue = isset($locationMap[$location]) ? $locationMap[$location] : null;
-
-    if ($locationValue) {
-        $jobEntry .= " AND jobdetail.jobLocation LIKE '%$locationValue%'";
-    }
-}
-
-echo $jobEntry;
-
-if ($expLevel) {
-    $expLevelMap = [
-        'entry' => 'Entry Level',
-        'mid' => 'Mid Level',
-        'senior' => 'Senior Level',
-    ];
-    $expLevelValue = isset($expLevelMap[$expLevel]) ? $expLevelMap[$expLevel] : null;
-
-    if ($expLevelValue) {
-        $jobEntry .= " AND jobdetail.experienceLevel LIKE '%$expLevelValue%'";
-    }
-}
-if ($datePosted) {
-    $jobEntry .= " AND post.datePosted >= DATE_SUB(CURDATE(), INTERVAL $datePosted DAY)";
-}
-
-// $jobEntry .= " ORDER BY $sort $order";
-
-$fetchJobEntry = executeQuery($jobEntry);
 ?>
 
 
@@ -135,11 +43,14 @@ $fetchJobEntry = executeQuery($jobEntry);
             <!-- Search Bar Section (Order 2) -->
             <div class="col-12 col-lg-4 order-2 d-flex align-items-center justify-content-center mt-3 mb-1 ">
                 <div class="search-bar-section">
-                    <form class="d-flex" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <form class="d-flex" role="search" method="GET">
+                        <input class="form-control me-2" type="search" name="search" placeholder="Search by job title"
+                            aria-label="Search">
                         <button class="btn btn-outline-success" type="submit">Search</button>
                     </form>
+
                 </div>
+
             </div>
 
 
@@ -152,6 +63,8 @@ $fetchJobEntry = executeQuery($jobEntry);
                     <?php
                     function timeAgo($timestamp)
                     {
+                        date_default_timezone_set('Asia/Manila');
+
                         $time = strtotime($timestamp);
                         $currentTime = time();
                         $timeDifference = $currentTime - $time;
