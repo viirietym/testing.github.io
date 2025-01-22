@@ -1,3 +1,19 @@
+<?php
+include '../connect.php';
+include('../process/sessionStarting.php');
+
+session_start();
+date_default_timezone_set('Asia/Manila');
+
+if (!isset($_SESSION['userID'])) {
+  header("../process/loggingIn.php");
+  exit();
+}
+
+$userID = $_SESSION['userID'];
+$applicantFullName = $_SESSION['firstName'] . " " . $_SESSION['lastName'];
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -14,26 +30,30 @@
 
 <body>
 
-  <?php include "../assets/shared/navbarHome.php"?>
+  <?php include "../assets/shared/navbarHome.php" ?>
 
   <div class="form-container" style="margin: 150px auto;">
-    <form>
-      <h5 class="aformName mb-4">Jane Doe's Application Form</h5>
+    <form action="applicationForm.php" method="POST" enctype="multipart/form-data">
+      <h5 class="aformName mb-4"><?php echo $applicantFullName; ?>'s Application Form</h5>
       <div class="question1 mb-4 ">
-        <label for="question1" class="form-label mb-2">First Question:</label>
-        <textarea name="question1" class="form-control" id="question1" placeholder="Type your answer here" required></textarea>
+        <label for="question1" class="form-label mb-2">Why should we hire you?</label>
+        <textarea name="firstAnswer" class="form-control" id="question1" placeholder="Type your answer here"
+          required></textarea>
       </div>
 
       <div class="question2 mb-4 ">
-        <label for="question2" class="form-label mb-2">Second Question:</label>
-        <textarea name="question2" class="form-control" id="question2" placeholder="Type your answer here"required></textarea>
+        <label for="question2" class="form-label mb-2">Please indicate your expected salary and provide a brief
+          explanation of the factors that have contributed to this expectation, such as your qualifications, experience,
+          and industry standards. </label>
+          <textarea name="secondAnswer" class="form-control" id="question2" placeholder="Type your answer here"
+          required></textarea>
       </div>
 
       <!-- file input -->
       <div class="mb-5">
         <label for="uploadCV" class="form-label mb-2">Upload your CV/Resume (<span class="pdf-format">PDF
             Format</span>):</label>
-        <input class="form-control form-control-lg" id="uploadCV" type="file"  accept=".pdf">
+        <input class="form-control form-control-lg" id="uploadCV" name="employeeResume" type="file" accept=".pdf" required>
       </div>
     </form>
 

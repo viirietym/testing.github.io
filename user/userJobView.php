@@ -1,5 +1,6 @@
 <?php
 include("../connect.php");
+include('../process/sessionStarting.php');
 
 $jobViewRowID = isset($_GET['jobDetailID']) ? intval($_GET['jobDetailID']) : 0;
 
