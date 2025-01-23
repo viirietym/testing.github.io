@@ -185,7 +185,6 @@ body {
     padding-bottom: 10%;
 }
 
-
 .card {
     margin-top: 20px;
     width: 150px;
@@ -245,9 +244,13 @@ body {
 }
 
 textarea {
-    padding-left: 0;
-    margin-left: 0;
+    margin: 0;
+    padding: 0;
     text-indent: 0;
+    line-height: 1.5;
+    /* Ensures consistent line spacing */
+    resize: none;
+    /* Optional: Prevent resizing */
 }
 
 .textContent:focus {
@@ -294,13 +297,6 @@ textarea {
         padding: 5px;
     }
 
-    .portfolio .card {
-        margin: 0 auto;
-    }
-
-    .portfolioTitle {
-        font-size: 16px;
-    }
 
     .jobTitle {
         margin-top: 40px;
