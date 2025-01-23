@@ -28,7 +28,7 @@ $results = executeQuery($helpQuery);
 <body>
 
   <?php
-  include("../assets/shared/navbarHome.php");
+  include("../assets/shared/navbarSignUp.php");
   ?>
 
   <div class="container">
