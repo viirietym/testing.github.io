@@ -17,19 +17,6 @@ function previewProfileImage(event) {
     }
 }
 
-function enableImageEdit() {
-    const fileInput = document.getElementById("editProfileImage");
-    fileInput.click();
-
-    fileInput.addEventListener("change", function () {
-        const reader = new FileReader();
-        reader.onload = function (e) {
-            document.getElementById("profileImage").src = e.target.result;
-        };
-        reader.readAsDataURL(fileInput.files[0]);
-    });
-}
-
 document.getElementById("profileImage").style.cursor = "pointer";
 
 function autoResizeTextarea(textarea) {
@@ -38,10 +25,14 @@ function autoResizeTextarea(textarea) {
 }
 
 function editProfile() {
-    
     isEditingProfile = true;
 
-    document.getElementById("profileImage").addEventListener("click", enableImageEdit);
+    document.getElementById("profileImage").addEventListener("click", function () {
+        document.getElementById("editProfileImage").click();
+    });
+
+    document.querySelector('button[name="btnSave"]').style.display = "block"; // Show the save button
+    document.querySelector('button[onclick="editProfile()"]').style.display = "none"; // Hide the edit button
 
     document.getElementById("fullName").style.display = "none";
     document.getElementById("editFullNameContainer").style.display = "block";
@@ -100,15 +91,6 @@ function editProfile() {
     certTextarea.style.display = "block";
     certTextarea.value = document.getElementById("certDetailsText").innerText;
     autoResizeTextarea(certTextarea);
-
-    document.getElementById("editProjectTitle").style.display = "block";
-
-    // Hide the static text for project title
-    document.getElementById("projectTitle").style.display = "none";
-
-    // Enable editing portfolio image
-    document.getElementById("projectImage").style.cursor = "pointer";
-    document.getElementById("projectImage").addEventListener("click", enableImageEdit);
 
     resetLayout();
 
@@ -178,7 +160,6 @@ function saveChanges() {
     document.querySelector(".buttons button:nth-child(1)").style.display = "block";
     document.querySelector(".buttons button:nth-child(2)").style.display = "none";
 
-    // Set the flag to false when leaving edit mode
     isEditingProfile = false;
 
     document.querySelector("form").submit();
