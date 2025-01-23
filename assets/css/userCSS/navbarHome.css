@@ -39,7 +39,7 @@ nav a {
     font-size: 18px;
     font-weight: bolder;
     transition: 0.3s;
-    padding-top: 25px;
+    padding-top: 15px;
 }
 
 nav a:hover {
@@ -49,18 +49,17 @@ nav a:hover {
 .notifImg{
     width: 7%;
     height: 7%;
-    padding-top: 25px;
+    padding-top: 15px;
 }
 
 .profileImg {
-    width: 50px;
-    height: 75px;
     display: flex;
-    padding-top: 10px; 
+    height: 40px;
+    margin-top: 10px;
 }
 
 .profileImg img {
-    width: 80%;
+    width: 100%;
     height: 80%;
     object-fit: cover;
 }
@@ -68,16 +67,16 @@ nav a:hover {
 
 .profile{
     background-color: white;
-    height: 250px;
-    width: 300px;
+    height: 115px;
+    width: 200px;
     position: fixed;
     top: 90px;
     right: 20px;
     display: flex;
     flex-direction: column;
-    align-items: left;
+    align-items: center;
     justify-content: center;
-    text-align: left;
+    text-align: center;
     box-shadow: 3px 3px 3px 3px #3e8a5e;
     font-size: 18px;
     z-index: 100;
@@ -89,6 +88,12 @@ nav a:hover {
     display: block;
 }
 
+.settings{
+    margin: 0;
+    padding: 0;
+    align-items: center;
+}
+
 .username{
     max-width: 240px;
     text-align: center;
@@ -98,17 +103,18 @@ nav a:hover {
     border-radius: 5px;
 }
 
-.viewProfile{
-    text-decoration: none;
-    font-family: "Poppins", serif;
-    color: black;
+.settings{
+    margin-top: 15px;
+    margin-bottom: 10px;
 }
 
-.logout{
+
+.logOut{
     text-decoration: none;
     color: red;
     font-family: "Poppins", serif;
 }
+
 
 
 @media (max-width: 840px) {
@@ -131,7 +137,7 @@ nav a:hover {
     }
 
     nav.active {
-        top: 75px;
+        top: 70px;
         display: flex;
         height: 150px;
         gap: 0;
@@ -140,12 +146,13 @@ nav a:hover {
     }
 
     .profileImg {
-        padding-top: 0px; 
+        padding-top: 0px;
+        height: 38px; 
     }
     
 
     .profImg{
-        width: 3%;
+        width: 4% !important;
     }
 
     .notifImg{
@@ -213,8 +220,8 @@ nav a:hover {
         left: -500px;
         position: fixed;
         display: none;
-        height: 200px;
-        width: 250px;
+        height: 120px;
+        width: 170px;
         font-size: 14px;
     }
     .profile.active{
