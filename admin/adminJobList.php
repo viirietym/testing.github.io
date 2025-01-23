@@ -1,12 +1,12 @@
 <?php
 
 include("../connect.php");
+session_start();
 
-$jobDetailquery = "SELECT jobdetail.jobDetailID,jobdetail.jobTitle, jobdetail.jobLocation, jobdetail.salaryRate, jobdetail.experienceLevel, jobdetail.jobIndustry, LEFT (jobdetail.jobSkillsDescription, 100) AS shortenedDesc, jobdetail.companyName, jobdetail.jobSkillsDescription, post.datePosted 
-FROM `jobdetail` LEFT JOIN post ON jobdetail.jobDetailID = post.jobDetailID;";
+$jobDetailquery = "SELECT jobdetail.jobDetailID, jobdetail.jobTitle, jobdetail.jobLocation, jobdetail.salaryRate, jobdetail.experienceLevel, jobdetail.jobIndustry, LEFT (jobdetail.fullDescription, 100) AS shortenedDesc, jobdetail.companyName, jobdetail.jobSkillsDescription, post.datePosted 
+FROM `jobdetail` LEFT JOIN post ON jobdetail.jobDetailID = post.jobDetailID";
 
-$jobDetailresult = executeQuery($jobDetailquery);
-
+$jobDetailID = '';
 $jobTitle = '';
 $salaryRate = '';
 $expLevel = '';
@@ -17,6 +17,141 @@ $skillRequirements = '';
 $jobDescription = '';
 $datePosted = '';
 
+$jobFilter = [];
+
+if (isset($_GET['salaryRate'])) {
+
+    $salary = $_GET['salaryRate'];
+
+    switch ($salary) {
+        case "1":
+            $jobFilter[] = "salaryRate <= 10000";
+            break;
+
+        case "2":
+            $jobFilter[] = "salaryRate >= 10000 and salaryRate <= 30000";
+            break;
+
+        case "3":
+            $jobFilter[] = "salaryRate >= 30000";
+            break;
+
+        default:
+            $jobFilter[] = "salaryRate = null";
+
+    }
+
+}
+
+if (isset($_GET['industry'])) {
+
+    $industry = $_GET['industry'];
+
+    switch ($industry) {
+        case "1":
+            $jobFilter[] = "jobIndustry = 'Information Technology'";
+            break;
+
+        case "2":
+            $jobFilter[] = "jobIndustry = 'Business and Administration'";
+            break;
+
+        case "3":
+            $jobFilter[] = "jobIndustry = 'Manufacturing and Logistics'";
+            break;
+
+        default:
+            $jobFilter[] = "jobIndustry = null";
+
+    }
+
+}
+
+if (isset($_GET['location'])) {
+
+    $location = $_GET['location'];
+
+    switch ($location) {
+        case "1":
+            $jobFilter[] = "jobLocation = 'San Antonio'";
+            break;
+
+        case "2":
+            $jobFilter[] = "jobLocation = 'San Vicente'";
+            break;
+
+        case "3":
+            $jobFilter[] = "jobLocation = 'San Roque'";
+            break;
+
+        case "4":
+            $jobFilter[] = "jobLocation = 'San Miguel'";
+            break;
+
+        case "5":
+            $jobFilter[] = "jobLocation = 'San Pedro'";
+            break;
+
+        default:
+            $jobFilter[] = "jobLocation = null";
+
+    }
+
+}
+
+if (isset($_GET['expLevel'])) {
+
+    $expLevel = $_GET['expLevel'];
+
+    switch ($expLevel) {
+        case "1":
+            $jobFilter[] = "experienceLevel = 'Entry Level'";
+            break;
+
+        case "2":
+            $jobFilter[] = "experienceLevel = 'Mid Level'";
+            break;
+
+        case "3":
+            $jobFilter[] = "experienceLevel = 'Senior Level'";
+            break;
+
+        default:
+            $jobFilter[] = "experienceLevel = null";
+
+    }
+
+}
+
+if (isset($_GET['datePosted'])) {
+
+    $datePosted = $_GET['datePosted'];
+
+    switch ($datePosted) {
+        case "1":
+            $jobFilter[] = "datePosted >= UNIX_TIMESTAMP(DATE_SUB(NOW(),INTERVAL 1 DAY))";
+            break;
+
+        case "2":
+            $jobFilter[] = "datePosted >= UNIX_TIMESTAMP(DATE_SUB(NOW(),INTERVAL 7 DAY))";
+            break;
+
+        case "3":
+            $jobFilter[] = "datePosted >= UNIX_TIMESTAMP(DATE_SUB(NOW(),INTERVAL 30 DAY))";
+            break;
+
+        default:
+            $jobFilter[] = "datePosted = null";
+
+    }
+
+}
+
+if (count($jobFilter) > 0) {
+    $jobDetailquery = $jobDetailquery . " WHERE " . implode(' AND ', $jobFilter);
+}
+
+$jobDetailresult = executeQuery($jobDetailquery);
 
 ?>
 
@@ -81,6 +216,7 @@ $datePosted = '';
 
                     while ($jobRow = mysqli_fetch_assoc($jobDetailresult)) {
 
+                        $jobDetailID = $jobRow['jobDetailID'];
                         $jobTitle = $jobRow['jobTitle'];
                         $salaryRate = $jobRow['salaryRate'];
                         $expLevel = $jobRow['experienceLevel'];
@@ -91,12 +227,13 @@ $datePosted = '';
                         $jobDescription = $jobRow['shortenedDesc'];
                         $datePosted = $jobRow['datePosted'];
 
+
                         ?>
 
                         <div class="container">
 
                             <div class="row pt-4">
-                                <p class="datePosted" id="timeAgo<?php echo $jobRow ['jobDetailID']?>">Posted:&nbsp; </p>
+                                <p class="datePosted" id="timeAgo<?php echo $jobRow['jobDetailID'] ?>">Posted:&nbsp; </p>
                             </div>
 
                             <div class="row location">
@@ -148,9 +285,11 @@ $datePosted = '';
                             </div>
 
                             <div class="row jobDetails p-2">
-                                <p>Salary Rate: <?php echo $salaryRate ?>&nbsp;&nbsp; |&nbsp;&nbsp; Experience Level:
-                                    <?php echo $expLevel ?>&nbsp;&nbsp; |&nbsp;&nbsp; Job
-                                    Industry: <?php echo $industry ?>
+                                <p> <span class="jobDetailsLabel">Salary Rate:</span>
+                                ₱&nbsp;<?php echo number_format($salaryRate) ?>&nbsp;&nbsp;&nbsp;
+                                    |&nbsp;&nbsp; <span class="jobDetailsLabel">Experience Level:</span>
+                                    <?php echo $expLevel ?>&nbsp;&nbsp; |&nbsp;&nbsp; <span class="jobDetailsLabel">Job
+                                        Industry:</span>&nbsp;&nbsp;<?php echo $industry ?>
                                 </p>
                             </div>
 
@@ -167,13 +306,18 @@ $datePosted = '';
                                 <p>Job Description:</p>
                             </div>
 
+
                             <div class="row jobDesc px-2">
-                                <p><?php echo $jobDescription ?><a href="adminJobView.php"><button type="button"
-                                            class="btn custom-button btn-link" style="color: #21a027;">See
+                                <p><?php echo $jobDescription ?><a
+                                        href="adminJobView.php?jobDetailID=<?php echo $jobDetailID ?>"><button
+                                            name="btnSeeMore" type="button" class="btn custom-button btn-link"
+                                            style="color: #21a027;">See
                                             More...</button></a>
                                 </p>
 
                             </div>
+
+
 
                             <div class="row">
                                 <hr class="bar">
@@ -195,13 +339,20 @@ $datePosted = '';
                                 const diffInDays = Math.floor(diffInHours / 24);
                                 return `${diffInDays} day${diffInDays > 1 ? 's' : ''} ago`;
                             }
-                    
-                            document.getElementById('timeAgo<?php echo $jobRow ['jobDetailID']?>').innerText += timeAgo('<?php echo $datePosted ?>');
+
+                            document.getElementById('timeAgo<?php echo $jobRow['jobDetailID'] ?>').innerText += timeAgo('<?php echo $datePosted ?>');
 
                         </script>
 
 
-                    <?php
+                        <?php
+
+                    }
+                    if (isset($_POST['btnSeeMore'])) {
+
+                        $_SESSION['jobDetailID'] = $jobDetailID;
+                        header("Location: adminJobView.php");
+
                     }
                     ?>
 
@@ -225,9 +376,16 @@ $datePosted = '';
                                         Salary Rate
                                     </button>
                                     <ul class="dropdown-menu" aria-labelledby="dropdownSalaryRate">
-                                        <li><a class="dropdown-item" href="#">Option 1</a></li>
-                                        <li><a class="dropdown-item" href="#">Option 2</a></li>
-                                        <li><a class="dropdown-item" href="#">Option 3</a></li>
+                                        <li><a class="dropdown-item"
+                                                href="adminJobList.php?salaryRate=1&<?php echo isset($_GET['industry']) ? 'industry=' . $_GET['industry'] . '&' : ''; ?><?php echo isset($_GET['location']) ? 'location=' . $_GET['location'] . '&' : ''; ?><?php echo isset($_GET['expLevel']) ? 'expLevel=' . $_GET['expLevel'] . '&' : ''; ?><?php echo isset($_GET['datePosted']) ? 'datePosted=' . $_GET['datePosted'] . '&' : ''; ?>">
+                                                Below 10,000php</a></li>
+                                        <li><a class="dropdown-item"
+                                                href="adminJobList.php?salaryRate=2&<?php echo isset($_GET['industry']) ? 'industry=' . $_GET['industry'] . '&' : ''; ?><?php echo isset($_GET['location']) ? 'location=' . $_GET['location'] . '&' : ''; ?><?php echo isset($_GET['expLevel']) ? 'expLevel=' . $_GET['expLevel'] . '&' : ''; ?><?php echo isset($_GET['datePosted']) ? 'datePosted=' . $_GET['datePosted'] . '&' : ''; ?>">
+                                                10,000-30,000 php</a></li>
+                                        <li><a class="dropdown-item"
+                                                href="adminJobList.php?salaryRate=3&<?php echo isset($_GET['industry']) ? 'industry=' . $_GET['industry'] . '&' : ''; ?><?php echo isset($_GET['location']) ? 'location=' . $_GET['location'] . '&' : ''; ?><?php echo isset($_GET['expLevel']) ? 'expLevel=' . $_GET['expLevel'] . '&' : ''; ?><?php echo isset($_GET['datePosted']) ? 'datePosted=' . $_GET['datePosted'] . '&' : ''; ?>">
+                                                30,000Above</a></li>
+                                        <li><a class="dropdown-item" href="adminJobList.php">Reset</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -240,9 +398,16 @@ $datePosted = '';
                                         Industry
                                     </button>
                                     <ul class="dropdown-menu" aria-labelledby="dropdownIndustry">
-                                        <li><a class="dropdown-item" href="#">Option 1</a></li>
-                                        <li><a class="dropdown-item" href="#">Option 2</a></li>
-                                        <li><a class="dropdown-item" href="#">Option 3</a></li>
+                                        <li><a class="dropdown-item"
+                                                href="adminJobList.php?industry=1&<?php echo isset($_GET['salaryRate']) ? 'salaryRate=' . $_GET['salaryRate'] . '&' : ''; ?><?php echo isset($_GET['location']) ? 'location=' . $_GET['location'] . '&' : ''; ?><?php echo isset($_GET['expLevel']) ? 'expLevel=' . $_GET['expLevel'] . '&' : ''; ?><?php echo isset($_GET['datePosted']) ? 'datePosted=' . $_GET['datePosted'] . '&' : ''; ?>">
+                                                Information Technology</a></li>
+                                        <li><a class="dropdown-item"
+                                                href="adminJobList.php?industry=2&<?php echo isset($_GET['salaryRate']) ? 'salaryRate=' . $_GET['salaryRate'] . '&' : ''; ?><?php echo isset($_GET['location']) ? 'location=' . $_GET['location'] . '&' : ''; ?><?php echo isset($_GET['expLevel']) ? 'expLevel=' . $_GET['expLevel'] . '&' : ''; ?><?php echo isset($_GET['datePosted']) ? 'datePosted=' . $_GET['datePosted'] . '&' : ''; ?>">
+                                                Business and Administration</a></li>
+                                        <li><a class="dropdown-item"
+                                                href="adminJobList.php?industry=3&<?php echo isset($_GET['salaryRate']) ? 'salaryRate=' . $_GET['salaryRate'] . '&' : ''; ?><?php echo isset($_GET['location']) ? 'location=' . $_GET['location'] . '&' : ''; ?><?php echo isset($_GET['expLevel']) ? 'expLevel=' . $_GET['expLevel'] . '&' : ''; ?><?php echo isset($_GET['datePosted']) ? 'datePosted=' . $_GET['datePosted'] . '&' : ''; ?>">
+                                                Manufacturing and Logistics</a></li>
+                                        <li><a class="dropdown-item" href="adminJobList.php">Reset</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -255,9 +420,22 @@ $datePosted = '';
                                         Location
                                     </button>
                                     <ul class="dropdown-menu" aria-labelledby="dropdownLocation">
-                                        <li><a class="dropdown-item" href="#">Option 1</a></li>
-                                        <li><a class="dropdown-item" href="#">Option 2</a></li>
-                                        <li><a class="dropdown-item" href="#">Option 3</a></li>
+                                        <li><a class="dropdown-item"
+                                                href="adminJobList.php?location=1&<?php echo isset($_GET['salaryRate']) ? 'salaryRate=' . $_GET['salaryRate'] . '&' : ''; ?><?php echo isset($_GET['industry']) ? 'industry=' . $_GET['industry'] . '&' : ''; ?><?php echo isset($_GET['expLevel']) ? 'expLevel=' . $_GET['expLevel'] . '&' : ''; ?><?php echo isset($_GET['datePosted']) ? 'datePosted=' . $_GET['datePosted'] . '&' : ''; ?>">
+                                                San Antonio</a></li>
+                                        <li><a class="dropdown-item"
+                                                href="adminJobList.php?location=2&<?php echo isset($_GET['salaryRate']) ? 'salaryRate=' . $_GET['salaryRate'] . '&' : ''; ?><?php echo isset($_GET['industry']) ? 'industry=' . $_GET['industry'] . '&' : ''; ?><?php echo isset($_GET['expLevel']) ? 'expLevel=' . $_GET['expLevel'] . '&' : ''; ?><?php echo isset($_GET['datePosted']) ? 'datePosted=' . $_GET['datePosted'] . '&' : ''; ?>">
+                                                San Vicente</a></li>
+                                        <li><a class="dropdown-item"
+                                                href="adminJobList.php?location=3&<?php echo isset($_GET['salaryRate']) ? 'salaryRate=' . $_GET['salaryRate'] . '&' : ''; ?><?php echo isset($_GET['industry']) ? 'industry=' . $_GET['industry'] . '&' : ''; ?><?php echo isset($_GET['expLevel']) ? 'expLevel=' . $_GET['expLevel'] . '&' : ''; ?><?php echo isset($_GET['datePosted']) ? 'datePosted=' . $_GET['datePosted'] . '&' : ''; ?>">
+                                                San Roque</a></li>
+                                        <li><a class="dropdown-item"
+                                                href="adminJobList.php?location=4&<?php echo isset($_GET['salaryRate']) ? 'salaryRate=' . $_GET['salaryRate'] . '&' : ''; ?><?php echo isset($_GET['industry']) ? 'industry=' . $_GET['industry'] . '&' : ''; ?><?php echo isset($_GET['expLevel']) ? 'expLevel=' . $_GET['expLevel'] . '&' : ''; ?><?php echo isset($_GET['datePosted']) ? 'datePosted=' . $_GET['datePosted'] . '&' : ''; ?>">
+                                                San Miguel</a></li>
+                                        <li><a class="dropdown-item"
+                                                href="adminJobList.php?location=5&<?php echo isset($_GET['salaryRate']) ? 'salaryRate=' . $_GET['salaryRate'] . '&' : ''; ?><?php echo isset($_GET['industry']) ? 'industry=' . $_GET['industry'] . '&' : ''; ?><?php echo isset($_GET['expLevel']) ? 'expLevel=' . $_GET['expLevel'] . '&' : ''; ?><?php echo isset($_GET['datePosted']) ? 'datePosted=' . $_GET['datePosted'] . '&' : ''; ?>">
+                                                San Pedro</a></li>
+                                        <li><a class="dropdown-item" href="adminJobList.php">Reset</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -270,9 +448,16 @@ $datePosted = '';
                                         Exp Level
                                     </button>
                                     <ul class="dropdown-menu" aria-labelledby="dropdownExpLevel">
-                                        <li><a class="dropdown-item" href="#">Option 1</a></li>
-                                        <li><a class="dropdown-item" href="#">Option 2</a></li>
-                                        <li><a class="dropdown-item" href="#">Option 3</a></li>
+                                        <li><a class="dropdown-item"
+                                                href="adminJobList.php?expLevel=1&<?php echo isset($_GET['salaryRate']) ? 'salaryRate=' . $_GET['salaryRate'] . '&' : ''; ?><?php echo isset($_GET['industry']) ? 'industry=' . $_GET['industry'] . '&' : ''; ?><?php echo isset($_GET['location']) ? 'location=' . $_GET['location'] . '&' : ''; ?><?php echo isset($_GET['datePosted']) ? 'datePosted=' . $_GET['datePosted'] . '&' : ''; ?>">
+                                                Entry Level</a></li>
+                                        <li><a class="dropdown-item"
+                                                href="adminJobList.php?expLevel=2&<?php echo isset($_GET['salaryRate']) ? 'salaryRate=' . $_GET['salaryRate'] . '&' : ''; ?><?php echo isset($_GET['industry']) ? 'industry=' . $_GET['industry'] . '&' : ''; ?><?php echo isset($_GET['location']) ? 'location=' . $_GET['location'] . '&' : ''; ?><?php echo isset($_GET['datePosted']) ? 'datePosted=' . $_GET['datePosted'] . '&' : ''; ?>">
+                                                Mid Level</a></li>
+                                        <li><a class="dropdown-item"
+                                                href="adminJobList.php?expLevel=3&<?php echo isset($_GET['salaryRate']) ? 'salaryRate=' . $_GET['salaryRate'] . '&' : ''; ?><?php echo isset($_GET['industry']) ? 'industry=' . $_GET['industry'] . '&' : ''; ?><?php echo isset($_GET['location']) ? 'location=' . $_GET['location'] . '&' : ''; ?><?php echo isset($_GET['datePosted']) ? 'datePosted=' . $_GET['datePosted'] . '&' : ''; ?>">
+                                                Senior Level</a></li>
+                                        <li><a class="dropdown-item" href="adminJobList.php">Reset</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -285,9 +470,16 @@ $datePosted = '';
                                         Date Posted
                                     </button>
                                     <ul class="dropdown-menu" aria-labelledby="dropdownDatePosted">
-                                        <li><a class="dropdown-item" href="#">Option 1</a></li>
-                                        <li><a class="dropdown-item" href="#">Option 2</a></li>
-                                        <li><a class="dropdown-item" href="#">Option 3</a></li>
+                                        <li><a class="dropdown-item"
+                                                href="adminJobList.php?datePosted=1&<?php echo isset($_GET['salaryRate']) ? 'salaryRate=' . $_GET['salaryRate'] . '&' : ''; ?><?php echo isset($_GET['industry']) ? 'industry=' . $_GET['industry'] . '&' : ''; ?><?php echo isset($_GET['location']) ? 'location=' . $_GET['location'] . '&' : ''; ?><?php echo isset($_GET['expLevel']) ? 'expLevel=' . $_GET['expLevel'] . '&' : ''; ?>">
+                                                Last 24 Hours</a></li>
+                                        <li><a class="dropdown-item"
+                                                href="adminJobList.php?datePosted=2&<?php echo isset($_GET['salaryRate']) ? 'salaryRate=' . $_GET['salaryRate'] . '&' : ''; ?><?php echo isset($_GET['industry']) ? 'industry=' . $_GET['industry'] . '&' : ''; ?><?php echo isset($_GET['location']) ? 'location=' . $_GET['location'] . '&' : ''; ?><?php echo isset($_GET['expLevel']) ? 'expLevel=' . $_GET['expLevel'] . '&' : ''; ?>">
+                                                Last 7 Days</a></li>
+                                        <li><a class="dropdown-item"
+                                                href="adminJobList.php?datePosted=3&<?php echo isset($_GET['salaryRate']) ? 'salaryRate=' . $_GET['salaryRate'] . '&' : ''; ?><?php echo isset($_GET['industry']) ? 'industry=' . $_GET['industry'] . '&' : ''; ?><?php echo isset($_GET['location']) ? 'location=' . $_GET['location'] . '&' : ''; ?><?php echo isset($_GET['expLevel']) ? 'expLevel=' . $_GET['expLevel'] . '&' : ''; ?>">
+                                                Last 30 Days</a></li>
+                                        <li><a class="dropdown-item" href="adminJobList.php">Reset</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -304,9 +496,9 @@ $datePosted = '';
                                         Most Recent
                                     </button>
                                     <ul class="dropdown-menu" aria-labelledby="dropdownMostRecent">
-                                        <li><a class="dropdown-item" href="#">Option 1</a></li>
-                                        <li><a class="dropdown-item" href="#">Option 2</a></li>
-                                        <li><a class="dropdown-item" href="#">Option 3</a></li>
+                                        <li><a class="dropdown-item" href="#">Newest</a></li>
+                                        <li><a class="dropdown-item" href="#">Oldest</a></li>
+                                        <li><a class="dropdown-item" href="#">Reset</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -317,9 +509,9 @@ $datePosted = '';
                                         Salary [↑ - ↓]
                                     </button>
                                     <ul class="dropdown-menu" aria-labelledby="dropdownSalary">
-                                        <li><a class="dropdown-item" href="#">Option 1</a></li>
-                                        <li><a class="dropdown-item" href="#">Option 2</a></li>
-                                        <li><a class="dropdown-item" href="#">Option 3</a></li>
+                                        <li><a class="dropdown-item" href="#">Low to High</a></li>
+                                        <li><a class="dropdown-item" href="#">High to Low</a></li>
+                                        <li><a class="dropdown-item" href="#">Reset</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -339,15 +531,11 @@ $datePosted = '';
     include("../assets/shared/footerAdmin.php");
     ?>
 
-
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
 
         </script>
 
 </body>
-
-
 
 </html>
