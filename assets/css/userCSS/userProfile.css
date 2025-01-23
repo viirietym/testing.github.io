@@ -248,9 +248,7 @@ textarea {
     padding: 0;
     text-indent: 0;
     line-height: 1.5;
-    /* Ensures consistent line spacing */
     resize: none;
-    /* Optional: Prevent resizing */
 }
 
 .textContent:focus {
