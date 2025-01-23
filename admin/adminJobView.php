@@ -1,3 +1,46 @@
+<?php
+
+include("../connect.php");
+
+if (isset($_GET['jobDetailID'])) {
+
+    $jobDetailID = $_GET['jobDetailID'];
+
+} else {
+    header('location:adminJobList.php');
+}
+
+$getJobViewQuery = "SELECT jobdetail.jobDetailID,jobdetail.jobTitle, jobdetail.jobLocation, jobdetail.salaryRate, jobdetail.experienceLevel, jobdetail.jobIndustry, jobdetail.fullDescription, jobdetail.companyName, jobdetail.jobSkillsDescription, post.datePosted FROM `jobdetail` LEFT JOIN post ON jobdetail.jobDetailID = post.jobDetailID WHERE jobdetail.jobDetailID = '$jobDetailID';";
+
+$jobViewresult = executeQuery($getJobViewQuery);
+
+$jobTitle = '';
+$salaryRate = '';
+$expLevel = '';
+$companyName = '';
+$location = '';
+$industry = '';
+$skillRequirements = '';
+$jobDescription = '';
+$datePosted = '';
+
+while ($jobRow = mysqli_fetch_assoc($jobViewresult)) {
+
+    $jobDetailID = $jobRow['jobDetailID'];
+    $jobTitle = $jobRow['jobTitle'];
+    $salaryRate = $jobRow['salaryRate'];
+    $expLevel = $jobRow['experienceLevel'];
+    $companyName = $jobRow['companyName'];
+    $location = $jobRow['jobLocation'];
+    $industry = $jobRow['jobIndustry'];
+    $skillRequirements = $jobRow['jobSkillsDescription'];
+    $jobDescription = $jobRow['fullDescription'];
+    $datePosted = $jobRow['datePosted'];
+
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,21 +69,21 @@
 
             <!-- Date Posted -->
             <div class="row pt-4 mx-5">
-                <p class="datePosted">Posted 1 day ago</p>
+                <p class="datePosted">Posted:&nbsp;<?php echo $datePosted ?></p>
             </div>
 
             <div class="row location mx-3">
                 <!-- Location -->
                 <div class="col-12 col-sm-12 col-xl-8 d-flex align-items-center" style="text-align: left;">
                     <img class="img-fluid locationImg mx-3" src="../assets/image/userImage/location.png">
-                    <p class="barangay pt-3">San Antonio</p>
+                    <p class="barangay pt-3"><?php echo $location ?></p>
                 </div>
 
                 <!-- Edit Btn -->
-                <div class="col-6 col-sm-6 col-xl-2 d-flex justify-content-center align-items-center" >
+                <div class="col-6 col-sm-6 col-xl-2 d-flex justify-content-center align-items-center">
                     <div class="container d-flex justify-content-end align-items-end">
-                        <button type="button"
-                                class="btn custom-btn btnEdit" onclick="location.href='jobEdit.php'">Edit</button>
+                        <button type="button" class="btn custom-btn btnEdit"
+                            onclick="location.href='jobEdit.php'">Edit</button>
                     </div>
                 </div>
 
@@ -79,7 +122,7 @@
 
             <!-- Job Name -->
             <div class="row companyName p-3 mx-3">
-                <h3 class="jobName">Job Name | Company Name</h3>
+                <h3 class="jobName"><?php echo $jobTitle ?>&nbsp;|&nbsp;<?php echo $companyName ?></h3>
             </div>
 
             <div class="row d-flex justify-content-center align-items-center">
@@ -87,21 +130,20 @@
             </div>
 
             <div class="row jobDetails p-2 mx-4">
-                <p>Salary Rate&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Experience
-                    Level&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Job
-                    Industry
+                <p> <span class="jobDetailsLabel">Salary Rate:</span> <?php echo $salaryRate ?>&nbsp;&nbsp;
+                    |&nbsp;&nbsp; <span class="jobDetailsLabel">Experience Level:</span>
+                    <?php echo $expLevel ?>&nbsp;&nbsp; |&nbsp;&nbsp; <span class="jobDetailsLabel">Job
+                        Industry:</span>&nbsp;&nbsp;<?php echo $industry ?>
                 </p>
             </div>
 
             <div class="row skill px-2 mx-4">
-                <p>Skill Description:</p>
+                <p>Skill Requirements:</p>
             </div>
 
             <div class="row skillDesc px-2 mx-4">
-                <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                    incididunt ut
-                    labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                    ullamco.
+                <p>
+                    <?php echo $skillRequirements ?>
                 </p>
             </div>
 
@@ -110,11 +152,8 @@
             </div>
 
             <div class="row jobDesc px-2 mx-4">
-                <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                    culpa qui officia deserunt mollit anim id est laborum."
+                <p>
+                    <?php echo $jobDescription ?>
                 </p>
             </div>
 
@@ -127,10 +166,12 @@
     include("../assets/shared/footerAdmin.php");
     ?>
 
-</body>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-    crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+
+</body>
 
 </html>

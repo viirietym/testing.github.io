@@ -1,8 +1,39 @@
+let isEditingProfile = false;
+
+document.getElementById("profileImage").addEventListener("click", function () {
+    if (isEditingProfile) {
+        document.getElementById("editProfileImage").click();
+    }
+});
+
+function previewProfileImage(event) {
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            document.getElementById("profileImage").src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+    }
+}
+
+document.getElementById("profileImage").style.cursor = "pointer";
+
 function autoResizeTextarea(textarea) {
     textarea.style.height = "auto";
     textarea.style.height = textarea.scrollHeight + "px";
 }
+
 function editProfile() {
+    isEditingProfile = true;
+
+    document.getElementById("profileImage").addEventListener("click", function () {
+        document.getElementById("editProfileImage").click();
+    });
+
+    document.querySelector('button[name="btnSave"]').style.display = "block"; // Show the save button
+    document.querySelector('button[onclick="editProfile()"]').style.display = "none"; // Hide the edit button
+
     document.getElementById("fullName").style.display = "none";
     document.getElementById("editFullNameContainer").style.display = "block";
 
@@ -12,7 +43,7 @@ function editProfile() {
 
     document.getElementById("username").style.display = "none";
     document.getElementById("editUsername").style.display = "block";
-    document.getElementById("editUsername").value = document.getElementById("username").innerText;
+    document.getElementById("editUsername").value = document.getElementById("username").innerText.replace('@', '');
 
     const shortDescriptionTextarea = document.getElementById("editDescription");
     document.getElementById("shortDescription").style.display = "none";
@@ -61,8 +92,18 @@ function editProfile() {
     certTextarea.value = document.getElementById("certDetailsText").innerText;
     autoResizeTextarea(certTextarea);
 
+    resetLayout();
+
     document.querySelector(".buttons button:nth-child(1)").style.display = "none";
     document.querySelector(".buttons button:nth-child(2)").style.display = "block";
+}
+
+function resetLayout() {
+    let elements = document.querySelectorAll('.textInput, .textContent');
+    elements.forEach(function (el) {
+        el.style.padding = '0.5rem';
+        el.style.margin = '0';
+    });
 }
 
 function saveChanges() {
@@ -118,4 +159,8 @@ function saveChanges() {
 
     document.querySelector(".buttons button:nth-child(1)").style.display = "block";
     document.querySelector(".buttons button:nth-child(2)").style.display = "none";
+
+    isEditingProfile = false;
+
+    document.querySelector("form").submit();
 }

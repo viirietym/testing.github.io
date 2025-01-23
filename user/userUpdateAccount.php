@@ -1,6 +1,12 @@
+<?php
+include('../process/sessionStarting.php');
+include('../process/updatedUserAccount.php');
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,11 +17,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/userCSS/userUpdateAccount.css">
 </head>
-
 <body>
-    <?php
-    include("../assets/shared/navbarHome.php");
-    ?>
+    <?php include("../assets/shared/navbarHome.php"); ?>
 
     <div class="container update" style="margin-top: 150px;">
         <div id="updateForm">
@@ -26,16 +29,19 @@
             </div>
             <div class="row">
                 <div class="col-12 updateField">
-                    <form method="POST" class="Post">
+                    <?php if (!empty($message))
+                        echo $message; ?>
+                    <form method="GET" class="Post">
+                        <input type="hidden" name="userId" value="<?php echo $userId; ?>">
                         <div class="mb-3 accountDetail">
                             <label for="email" class="form-label">Email</label>
                             <input type="email" name="email" class="form-control frm-sign" id="email"
-                                placeholder="Enter your email">
+                                placeholder="Enter your email" value="<?php echo $user['email']; ?>">
                         </div>
                         <div class="mb-3 accountDetail">
                             <label for="password" class="form-label">Old Password</label>
                             <input type="password" name="password" class="form-control frm-sign" id="password"
-                                placeholder="Enter your old password">
+                                placeholder="Enter your old password" required>
                         </div>
                         <div class="mb-3 accountDetail">
                             <label for="newPassword" class="form-label">New Password</label>
@@ -56,9 +62,15 @@
         </div>
     </div>
 
-    <?php
-    include("../assets/shared/footer.php");
-    ?>
+    <?php include("../assets/shared/footer.php"); ?>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+        integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+        crossorigin="anonymous"></script>
 </body>
-
 </html>
