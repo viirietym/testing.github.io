@@ -1,9 +1,9 @@
 <?php
 include('../connect.php');
+include('../process/sessionStarting.php');
 
-// session_start ();
-// $userId = isset($_GET['userId']) ? $_GET['userId'] : '';
-$userId = 16;
+session_start ();
+$userId = isset($_GET['userId']) ? $_GET['userId'] : '';
 
 $query = "SELECT user.username, user.firstname, user.lastname,
     userinfo.userInfoID, userinfo.userProfileImage, userinfo.userBio, userinfo.jobTitle,

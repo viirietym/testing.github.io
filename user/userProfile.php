@@ -1,6 +1,5 @@
 <?php
 include('../process/viewUserProfile.php');
-include('../process/sessionStarting.php');
 
 ?>
 
@@ -46,20 +45,25 @@ include('../process/sessionStarting.php');
                                         <h2 id="fullName"><?php echo $resultRow['firstname'] . " " . $resultRow['lastname']; ?>
                                         </h2>
                                         <div id="editFullNameContainer" style="display:none">
+                                            <label for="editFirstName">First Name:</label>
                                             <input type="text" id="editFirstName" name="firstname" class="textInput"
                                                 placeholder="First Name">
+                                            <label for="editLastName">Last Name:</label>
                                             <input type="text" id="editLastName" name="lastname" class="textInput"
                                                 placeholder="Last Name">
                                         </div>
                                         <p id="username">@<?php echo $resultRow['username']; ?></p>
+                                        <label for="editUsername" style="display:none">Username:</label>
                                         <input type="text" id="editUsername" name="username" class="textInput"
                                             style="display:none">
                                         <p id="shortDescription" style="text-align: justify;">
                                             <?php echo nl2br($resultRow['userBio']); ?>
                                         </p>
+                                        <label for="editDescription" style="display:none">Short Description:</label>
                                         <textarea id="editDescription" name="userBio" class="textInput"
                                             style="display:none; overflow:hidden;"></textarea>
                                     </div>
+                                    
                                 </div>
                                 <div class="buttons d-flex justify-content-center justify-content-md-start">
                                     <button type="button" onclick="editProfile()">EDIT PROFILE</button>
@@ -78,6 +82,7 @@ include('../process/sessionStarting.php');
                                     <div class="contentLeft">
                                         <div class="jobTitle">
                                             <span id="jobTitleText"><?php echo $resultRow['jobTitle']; ?></span>
+                                            <label for="editJobTitle" style="display:none">Job Title:</label>
                                             <input type="text" id="editJobTitle" name="jobTitle" class="textContent"
                                                 style="display:none;">
                                         </div>
@@ -86,6 +91,7 @@ include('../process/sessionStarting.php');
                                             <p id="fullDescriptionText" style="text-align: justify;">
                                                 <?php echo nl2br($resultRow['userDescription']); ?>
                                             </p>
+                                            <label for="editFullDescription" style="display:none">Full Description:</label>
                                             <textarea id="editFullDescription" name="userDescription" class="textContent"
                                                 style="display:none; overflow:hidden;"></textarea>
                                         </div>
@@ -100,7 +106,7 @@ include('../process/sessionStarting.php');
                                                         <img id="projectImage"
                                                             src="../assets/image/user/userPortfolio/<?php echo $portfolioItem['projectImage']; ?>"
                                                             class="cardImg" alt="Portfolio Image" style="cursor: pointer;">
-                                                        <div class="cardBody" style = "text-align:center;">
+                                                        <div class="cardBody" style="text-align:center;">
                                                             <b id="projectTitle" class="portfolioTitle">
                                                                 <?php echo $portfolioItem['projectTitle']; ?>
                                                             </b>
@@ -116,12 +122,14 @@ include('../process/sessionStarting.php');
                                             <p id="skillsText" style="text-align: justify;">
                                                 <?php echo nl2br($resultRow['skillDescription']); ?>
                                             </p>
+                                            <label for="editSkills" style="display:none">Skills:</label>
                                             <textarea id="editSkills" name="skillDescription" class="textContent"
                                                 style="display:none; overflow:hidden;"></textarea>
                                         </div>
                                         <div class="contactInfo">
                                             <b>Contact Info</b>
                                             <p id="contactText"><?php echo nl2br($resultRow['contactDetails']); ?></p>
+                                            <label for="editContact" style="display:none">Contact Info:</label>
                                             <textarea id="editContact" name="contactDetails" class="textContent"
                                                 style="display:none; overflow:hidden;"></textarea>
                                         </div>
@@ -135,6 +143,7 @@ include('../process/sessionStarting.php');
                                             <p id="educDetailsText" style="text-align: justify;">
                                                 <?php echo nl2br($resultRow['educationalDetails']); ?>
                                             </p>
+                                            <label for="editEducDetails" style="display:none">Education Details:</label>
                                             <textarea id="editEducDetails" name="educationalDetails" class="textContent"
                                                 style="display:none; overflow:hidden;"></textarea>
                                         </div>
@@ -143,6 +152,7 @@ include('../process/sessionStarting.php');
                                             <p id="empHistoryText" style="text-align: justify;">
                                                 <?php echo nl2br($resultRow['employmentHistoryDetails']); ?>
                                             </p>
+                                            <label for="editEmpHistory" style="display:none">Employment History:</label>
                                             <textarea id="editEmpHistory" name="employmentHistoryDetails" class="textContent"
                                                 style="display:none; overflow:hidden;"></textarea>
                                         </div>
@@ -151,6 +161,7 @@ include('../process/sessionStarting.php');
                                             <p id="certDetailsText" style="text-align: justify;">
                                                 <?php echo nl2br($resultRow['certificationDetails']); ?>
                                             </p>
+                                            <label for="editCertDetails" style="display:none">Certification Details:</label>
                                             <textarea id="editCertDetails" name="certificationDetails" class="textContent"
                                                 style="display:none; overflow:hidden;"></textarea>
                                         </div>
@@ -160,6 +171,7 @@ include('../process/sessionStarting.php');
                         </div>
                     </div>
                 </form>
+
                 <?php
             }
         }
