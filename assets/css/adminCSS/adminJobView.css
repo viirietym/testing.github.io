@@ -77,6 +77,13 @@ hr.bar {
     color: #ffffff !important;
     font-family: Poppins !important;
     font-size: clamp(1rem, 1.5vw, 1rem) !important;
+    font-weight: 200 !important;
+}
+
+.jobDetailsLabel {
+    color: #ffffff !important;
+    font-family: Poppins !important;
+    font-size: clamp(1rem, 1.5vw, 1rem) !important;
     font-weight: 500 !important;
 }
 
@@ -91,7 +98,7 @@ hr.bar {
     color: #ffffff !important;
     font-family: Poppins !important;
     font-size: clamp(1rem, 1.5vw, 1rem) !important;
-    font-weight: 100 !important;
+    font-weight: 200 !important;
 }
 
 .jobDescTitle {
@@ -105,5 +112,5 @@ hr.bar {
     color: #ffffff !important;
     font-family: Poppins !important;
     font-size: clamp(1rem, 1.5vw, 1rem) !important;
-    font-weight: 100 !important;
+    font-weight: 200 !important;
 }

@@ -130,7 +130,8 @@ while ($jobRow = mysqli_fetch_assoc($jobViewresult)) {
             </div>
 
             <div class="row jobDetails p-2 mx-4">
-                <p> <span class="jobDetailsLabel">Salary Rate:</span> <?php echo $salaryRate ?>&nbsp;&nbsp;
+                <p> <span class="jobDetailsLabel">Salary Rate:</span>
+                    ₱&nbsp;<?php echo number_format($salaryRate) ?>&nbsp;&nbsp;&nbsp;
                     |&nbsp;&nbsp; <span class="jobDetailsLabel">Experience Level:</span>
                     <?php echo $expLevel ?>&nbsp;&nbsp; |&nbsp;&nbsp; <span class="jobDetailsLabel">Job
                         Industry:</span>&nbsp;&nbsp;<?php echo $industry ?>

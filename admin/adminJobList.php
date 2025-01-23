@@ -286,7 +286,7 @@ $jobDetailresult = executeQuery($jobDetailquery);
 
                             <div class="row jobDetails p-2">
                                 <p> <span class="jobDetailsLabel">Salary Rate:</span>
-                                    <?php echo number_format($salaryRate) ?>&nbsp;php&nbsp;&nbsp;
+                                ₱&nbsp;<?php echo number_format($salaryRate) ?>&nbsp;&nbsp;&nbsp;
                                     |&nbsp;&nbsp; <span class="jobDetailsLabel">Experience Level:</span>
                                     <?php echo $expLevel ?>&nbsp;&nbsp; |&nbsp;&nbsp; <span class="jobDetailsLabel">Job
                                         Industry:</span>&nbsp;&nbsp;<?php echo $industry ?>
