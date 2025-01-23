@@ -1,3 +1,7 @@
+<?php
+include('../process/sessionStarting.php');
+?>
+
 <!doctype html>
 <html lang="en">
 

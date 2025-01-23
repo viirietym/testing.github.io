@@ -34,27 +34,25 @@
             <a href="../user/userJobList.php" style="color: #2ECC71">Home</a>
             <a href="../user/help.php">Help</a>
             <a href="../user/about.php">About</a>
-            
-            <img src="../assets/image/userImage/notifBell.png" alt="" class="notifImg" onclick="window.location.href='../user/userInbox.php'">
-            
+
+            <img src="../assets/image/userImage/notificationBell.png" alt="" class="notifImg"
+                onclick="window.location.href='../user/userInbox.php'">
+
             <div class="profileImg">
-                    <img src="../assets/image/userImage/profileUser.png" alt="" class="profImg">
+                <img src="../assets/image/userImage/settings.png" alt="" class="profImg">
             </div>
         </nav>
     </div>
 
     <div class="profile">
-        <ul>
-            <div style="margin-bottom: 15px;">
-                <h4 class="username">Username</h4>
-            </div>
-            <div style="margin-bottom: 15px;">
-                <img src="../assets/image/userImage/profileUser.png" alt="" width="20%" style="margin-bottom: 10px;">
-                <h4>Full Name</h4>
-            </div>
-            <div><a href="../user/userProfile.php" class="viewProfile">View Profile</a></div>
-            <div><a href="../index.php" class="logout">Log out</a></div>
-        </ul>
+        <div class="settings">
+            <button type="button" class="btn btn-outline-success"><a href="../user/userProfile.php"
+                    class="viewProfile">View Profile</a></button>
+        </div>
+        <div class="logOut">
+            <button type="button" class="btn btn-outline-danger"><a href="../index.php" class="logout">Log
+                    out</a></button>
+        </div>
     </div>
 
     <script src="../js/nav.js"></script>
