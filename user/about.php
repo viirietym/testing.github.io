@@ -1,9 +1,3 @@
-<?php
-include('../process/sessionStarting.php');
-?>
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,7 +14,7 @@ include('../process/sessionStarting.php');
 
 <body>
     <?php
-    include("../assets/shared/navbarHome.php");
+    include("../assets/shared/navbarSignUp.php");
     ?>
 
 
@@ -28,7 +22,7 @@ include('../process/sessionStarting.php');
         <div class="container orgProfile" style="margin: 150px auto 50px auto">
             <div class="row">
                 <div class="col-12 col-md-4 orgLogo">
-                    <img src="../assets/image/userImage/stbLogo.png">
+                    <img src="../assets/image/userImage/orgLogo.png">
                 </div>
                 <div class="col-12 col-md-8">
                     <div class="orgLocation">
