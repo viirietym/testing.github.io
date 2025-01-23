@@ -2,11 +2,20 @@
 include("../connect.php");
 include('../process/sessionStarting.php');
 
-$jobViewRowID = isset($_GET['jobDetailID']) ? intval($_GET['jobDetailID']) : 0;
+// Get the jobDetailID from the URL
+if (isset($_GET['jobDetailID'])) {
+
+  $jobDetailID = $_GET['jobDetailID'];
+
+} else {
+  header('location:userJobList.php');
+}
 
 // Query to get the full details of the job
-$jobViewQuery = "SELECT jobdetail.*, post.datePosted, post.userID FROM jobdetail LEFT JOIN post ON jobdetail.jobDetailID = post.jobDetailID 
-WHERE jobdetail.jobDetailID = $jobViewRowID";
+$jobViewQuery = "SELECT jobdetail.*, post.datePosted, post.userID 
+  FROM jobdetail 
+  LEFT JOIN post ON jobdetail.jobDetailID = post.jobDetailID 
+  WHERE jobdetail.jobDetailID = $jobDetailID";
 
 $jobViewResult = executeQuery($jobViewQuery);
 
@@ -20,12 +29,39 @@ if ($jobViewRow = mysqli_fetch_assoc($jobViewResult)) {
   $jobSkillsDescription = $jobViewRow['jobSkillsDescription'];
   $datePosted = $jobViewRow['datePosted'];
   $userID = $jobViewRow['userID'];
+  $fullDescription = $jobViewRow['fullDescription'];
 } else {
   echo "<p>Job not found.</p>";
   exit;
 }
-?>
 
+$jobViewresult = executeQuery($jobViewQuery);
+
+$jobTitle = '';
+$salaryRate = '';
+$expLevel = '';
+$companyName = '';
+$location = '';
+$industry = '';
+$skillRequirements = '';
+$jobDescription = '';
+$datePosted = '';
+
+while ($jobViewRow = mysqli_fetch_assoc($jobViewresult)) {
+
+$jobDetailID = $jobViewRow['jobDetailID'];
+$jobTitle = $jobViewRow['jobTitle'];
+$salaryRate = $jobViewRow['salaryRate'];
+$expLevel = $jobViewRow['experienceLevel'];
+$companyName = $jobViewRow['companyName'];
+$location = $jobViewRow['jobLocation'];
+$industry = $jobViewRow['jobIndustry'];
+$skillRequirements = $jobViewRow['jobSkillsDescription'];
+$jobDescription = $jobViewRow['fullDescription'];
+$datePosted = $jobViewRow['datePosted'];
+
+}
+?>
 
 <!doctype html>
 <html lang="en">
@@ -63,25 +99,25 @@ if ($jobViewRow = mysqli_fetch_assoc($jobViewResult)) {
       }
     }
 
-    $timeAgo = timeAgo($jobViewRow['datePosted']);
+    $timeAgo = timeAgo($datePosted);
     ?>
     <p class="small mx-5">
       <?php echo "Posted " . $timeAgo; ?>
     </p>
     <p class="fw-normal mb-1 mx-1">
       <img class="img-fluid locationImg mx-1" src="../assets/image/userImage/location.png">
-      <?php echo $jobViewRow['jobLocation']; ?>
+      <?php echo $jobLocation; ?>
     </p>
-    <p class="h5 mb-1"><b><?php echo $jobViewRow['jobTitle']; ?> | <?php echo $jobViewRow['companyName']; ?></b></p>
+    <p class="h5 mb-1"><b><?php echo $jobTitle; ?> | <?php echo $companyName; ?></b></p>
 
     <hr class="my-2">
 
     <div class="row">
       <p class="col-auto mb-2">
         <small>
-          Salary Rate: PHP <?php echo $jobViewRow['salaryRate']; ?> |
-          Experience Level: <?php echo $jobViewRow['experienceLevel']; ?> |
-          Job Industry: <?php echo $jobViewRow['jobIndustry']; ?>
+          Salary Rate: PHP <?php echo $salaryRate; ?> |
+          Exp. Level: <?php echo $experienceLevel; ?> |
+          Job Industry: <?php echo $jobIndustry; ?>
         </small>
       </p>
     </div>
@@ -91,7 +127,7 @@ if ($jobViewRow = mysqli_fetch_assoc($jobViewResult)) {
     <ul>
       <?php
 
-      $skills = explode(',', $jobViewRow['jobSkillsDescription']);
+      $skills = explode(',', $jobSkillsDescription);
       foreach ($skills as $skill) {
         echo "<li>" . trim($skill) . "</li>";
       }
@@ -100,7 +136,7 @@ if ($jobViewRow = mysqli_fetch_assoc($jobViewResult)) {
     </p>
 
     <h6 class="h5 mt-4"><b>Description</b></h6>
-    <p><?php echo nl2br($jobViewRow['fullDescription']); ?></p>
+    <p><?php echo nl2br($fullDescription); ?></p>
 
     <div class="button-container">
       <a href="../user/ApplicationForm.php?applicationFormID=">
