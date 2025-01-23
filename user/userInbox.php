@@ -44,7 +44,6 @@
                     $letterID = $letterRow['letterID'];
                     $messagePreview = $letterRow['letterContent'];
                     $isRead = $letterRow['isRead'];
-
                     echo '<li class="list-group-item mt-3 mb-3 notification-item">';
                     echo '<a href="applicationResult.php?letterID=' . urlencode($letterID) . '" class="text-decoration-none text-white d-flex align-items-center">';
                     echo '<img src="../assets/image/userImage/stbJobsNotification.png" alt="icon" class="rounded-circle me-2 img-fluid" style="max-width: 80px; height: auto;">';

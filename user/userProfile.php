@@ -1,5 +1,6 @@
 <?php
 include('../process/viewUserProfile.php');
+include('../process/sessionStarting.php');
 
 ?>
 
@@ -27,7 +28,8 @@ include('../process/viewUserProfile.php');
         if (mysqli_num_rows($result) > 0) {
             while ($resultRow = mysqli_fetch_assoc($result)) {
                 ?>
-                <form id="editProfileForm" method="POST" action="saveProfileChanges.php" enctype="multipart/form-data">
+                <form id="editProfileForm" method="POST" action="../process/saveProfileChanges.php"
+                    enctype="multipart/form-data">
                     <input type="hidden" name="userId" value="<?php echo $userId; ?>">
                     <div class="row">
                         <div class="col-12">
@@ -87,33 +89,28 @@ include('../process/viewUserProfile.php');
                                             <textarea id="editFullDescription" name="userDescription" class="textContent"
                                                 style="display:none; overflow:hidden;"></textarea>
                                         </div>
-                                        <?php
-                                        $portfolioQuery = "SELECT projectImage, projectTitle FROM portfolio WHERE userInfoID = '" . $resultRow['userInfoID'] . "'";
-                                        $portfolioResult = executeQuery($portfolioQuery);
-                                        while ($portfolioItem = mysqli_fetch_assoc($portfolioResult)) {
-                                            ?>
-                                            <div class="col-12">
-                                                <div class="card" style="border-radius: 20px">
-                                                    <img id="projectImage"
-                                                        src="../assets/image/user/userPortfolio/<?php echo $portfolioItem['projectImage']; ?>"
-
-                                                        class="cardImg" alt="Portfolio Image" style="cursor: pointer;">
-                                                    <input type="file" id="editProjectImage" name="projectImage"
-                                                        style="display: none;" onchange="previewImage(event)">
-
-                                                    <div class="cardBody">
-                                                        <b id="projectTitle" class="portfolioTitle">
-                                                            <?php echo $portfolioItem['projectTitle']; ?>
-                                                        </b>
-                                                        <input type="text" id="editProjectTitle" name="projectTitle"
-                                                            class="textInput" value="<?php echo $portfolioItem['projectTitle']; ?>"
-                                                            style="display: none;" placeholder="Project Title">
+                                        <div class="row justify-content-center">
+                                            <?php
+                                            $portfolioQuery = "SELECT projectImage, projectTitle FROM portfolio WHERE userInfoID = '" . $resultRow['userInfoID'] . "'";
+                                            $portfolioResult = executeQuery($portfolioQuery);
+                                            while ($portfolioItem = mysqli_fetch_assoc($portfolioResult)) {
+                                                ?>
+                                                <div class="col-6 mb-2 justify-content-center">
+                                                    <div class="card" style="border-radius: 20px;">
+                                                        <img id="projectImage"
+                                                            src="../assets/image/user/userPortfolio/<?php echo $portfolioItem['projectImage']; ?>"
+                                                            class="cardImg" alt="Portfolio Image" style="cursor: pointer;">
+                                                        <div class="cardBody" style = "text-align:center;">
+                                                            <b id="projectTitle" class="portfolioTitle">
+                                                                <?php echo $portfolioItem['projectTitle']; ?>
+                                                            </b>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <?php
-                                        }
-                                        ?>
+                                                <?php
+                                            }
+                                            ?>
+                                        </div>
                                         <div class="skills">
                                             <b>Skills</b>
                                             <p id="skillsText" style="text-align: justify;">
@@ -183,8 +180,7 @@ include('../process/viewUserProfile.php');
         integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
         crossorigin="anonymous"></script>
 
-    <script src="../js/userProfileEdit.js">
-    </script>
+    <script src="../js/userProfileEdit.js"></script>
 
 
 </body>
