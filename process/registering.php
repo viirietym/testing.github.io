@@ -77,9 +77,9 @@ if (isset($_POST['btnSign'])) {
 // FOR THE PERSONAL BG SECTION
 if (isset($_POST['btnSignPersonal'])) {
     $profile = $_FILES['profile'];
-    $shortbio = $_POST['shortbio'];
-    $jobtitle = $_POST['jobtitle'];
-    $longbio = $_POST['longbio'];
+    $shortbio = mysqli_real_escape_string($conn, $_POST['shortbio']); 
+    $jobtitle = mysqli_real_escape_string($conn, $_POST['jobtitle']);
+    $longbio = mysqli_real_escape_string($conn, $_POST['longbio']);
 
     if (!empty($profile['name']) && !empty($shortbio) && !empty($jobtitle) && !empty($longbio)) {
         $uploadDir = "../assets/image/user/userProfile/";
@@ -96,7 +96,7 @@ if (isset($_POST['btnSignPersonal'])) {
         }
 
         if (move_uploaded_file($profile['tmp_name'], $profileUploadPath)) {
-            $userInfoId = $_SESSION['userInfoID']; 
+            $userInfoId = $_SESSION['userInfoID'];
 
             $userInfoQuery = "UPDATE userinfo SET 
                               userProfileImage = '$profileFileName', 
@@ -115,6 +115,7 @@ if (isset($_POST['btnSignPersonal'])) {
         }
     }
 }
+
 
 
 

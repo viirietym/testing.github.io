@@ -4,18 +4,18 @@ include('../connect.php');
 $userId = $_POST['userId'];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $userId = $_POST['userId'];
-    $firstName = $_POST['firstname'];
-    $lastName = $_POST['lastname'];
-    $username = $_POST['username'];
-    $userBio = $_POST['userBio'];
-    $jobTitle = $_POST['jobTitle'];
-    $userDescription = $_POST['userDescription'];
-    $educationalDetails = $_POST['educationalDetails'];
-    $employmentHistoryDetails = $_POST['employmentHistoryDetails'];
-    $certificationDetails = $_POST['certificationDetails'];
-    $contactDetails = $_POST['contactDetails'];
-    $skillDescription = $_POST['skillDescription'];
+    $userId = mysqli_real_escape_string($conn, $_POST['userId']);
+    $firstName = mysqli_real_escape_string($conn, $_POST['firstname']);
+    $lastName = mysqli_real_escape_string($conn, $_POST['lastname']);
+    $username = mysqli_real_escape_string($conn, $_POST['username']);
+    $userBio = mysqli_real_escape_string($conn, $_POST['userBio']);
+    $jobTitle = mysqli_real_escape_string($conn, $_POST['jobTitle']);
+    $userDescription = mysqli_real_escape_string($conn, $_POST['userDescription']);
+    $educationalDetails = mysqli_real_escape_string($conn, $_POST['educationalDetails']);
+    $employmentHistoryDetails = mysqli_real_escape_string($conn, $_POST['employmentHistoryDetails']);
+    $certificationDetails = mysqli_real_escape_string($conn, $_POST['certificationDetails']);
+    $contactDetails = mysqli_real_escape_string($conn, $_POST['contactDetails']);
+    $skillDescription = mysqli_real_escape_string($conn, $_POST['skillDescription']);
 
     if (isset($_FILES['userProfileImage']) && $_FILES['userProfileImage']['error'] === UPLOAD_ERR_OK) {
         $htmlfileupload = $_FILES['userProfileImage']['name'];
