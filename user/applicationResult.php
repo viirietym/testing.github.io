@@ -53,7 +53,7 @@
 
                 <!-- Letter Title -->
                 <div class="title">
-                    <strong>Subject:</strong> Job Title
+                    <strong>Subject:</strong> Application Result
                     <p><strong>Good day! <?php echo $firstName . " " . $lastName ;?>,</strong></p>
                 </div>
 

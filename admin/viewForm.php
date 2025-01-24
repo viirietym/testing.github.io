@@ -41,7 +41,7 @@ $data = $result->fetch_assoc();
 
     <div class="form-container" style="margin: 150px auto;">
         <form>
-       
+
             <h5 class="aformName mb-4">
                 <?= htmlspecialchars($data['firstName'] ?? '') ?> <?= htmlspecialchars($data['lastName'] ?? '') ?>'s
                 Application Form
@@ -49,19 +49,20 @@ $data = $result->fetch_assoc();
 
             <div class="question1 mb-4">
                 <label for="question1" class="form-label mb-2">First Question:</label>
-                <textarea name="question1" class="form-control" id="question1" rows="3" placeholder="" required>
+                <textarea name="question1" class="form-control" id="question1" rows="3" placeholder="" required
+                    readonly>
                 <?= htmlspecialchars($data['firstAnswer'] ?? '') ?>
             </textarea>
             </div>
 
             <div class="question2 mb-4">
                 <label for="question2" class="form-label mb-2">Second Question:</label>
-                <textarea name="question2" class="form-control" id="question2" rows="3" placeholder="">
+                <textarea name="question2" class="form-control" id="question2" rows="3" placeholder="" readonly>
                 <?= htmlspecialchars($data['secondAnswer'] ?? '') ?>
             </textarea>
             </div>
 
-           
+
             <div class="mb-1">
                 <label for="uploadCV" class="form-label mb-2">CV/Resume:</label>
             </div>
@@ -79,15 +80,17 @@ $data = $result->fetch_assoc();
 
     <script>
         document.getElementById('acceptButton').addEventListener('click', function () {
-            updateStatus(1); 
+            updateStatus(1);
+            disableAndHideButtons();  // Disable and hide both buttons after the action
         });
 
         document.getElementById('declineButton').addEventListener('click', function () {
-            updateStatus(0); 
+            updateStatus(0);
+            disableAndHideButtons();  // Disable and hide both buttons after the action
         });
 
         function updateStatus(status) {
-            const userID = <?= $userID ?>; 
+            const userID = <?= $userID ?>;
             const xhr = new XMLHttpRequest();
             xhr.open("POST", "../process/updateStatus.php", true);
             xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -106,6 +109,22 @@ $data = $result->fetch_assoc();
             };
             xhr.send("userID=" + userID + "&isAccepted=" + status);
         }
+
+        function disableAndHideButtons() {
+            document.getElementById('acceptButton').disabled = true;
+            document.getElementById('declineButton').disabled = true;
+            document.getElementById('acceptButton').style.display = 'none';  // Hide the accept button
+            document.getElementById('declineButton').style.display = 'none'; // Hide the decline button
+        }
+
+        // Check if the buttons have been clicked before and disable them
+        window.onload = function () {
+            const isClick = <?= isset($data['isClick']) ? $data['isClick'] : 0 ?>;
+            if (isClick === 1) {
+                disableAndHideButtons();  // Disable and hide the buttons if already clicked
+            }
+        };
+
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"

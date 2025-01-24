@@ -1,29 +1,7 @@
 <?php
 
 include("../connect.php");
-<<<<<<< HEAD
 include("../process/adminJobCreate2.php");
-=======
-
-if (isset($_POST['addJobButton'])) {
-    $jobTitle = $_POST['jobTitle'];
-    $salaryRate = $_POST['salaryRate'];
-    $expLevel = $_POST['expLevel'];
-    $companyName = $_POST['companyName'];
-    $location = $_POST['barangay'];
-    $industry = $_POST['industry'];
-    $skillRequirements = $_POST['skillRequirements'];
-    $jobDescription = $_POST['jobDescription'];
-
-
-    $insertJobDetailQuery = "INSERT INTO jobdetail(jobTitle, salaryRate, experienceLevel, companyName , jobLocation, jobIndustry, jobSkillsDescription, fullDescription) 
-    VALUES ('$jobTitle','$salaryRate','$expLevel','$companyName','$location','$industry','$skillRequirements','$jobDescription');";
-    executeQuery($insertJobDetailQuery);
-
-    header('location:adminJobList.php');
-
-}
->>>>>>> 498eb7d616d7e7e9a1e6f56cd14940da19c91543
 
 ?>
 

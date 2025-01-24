@@ -88,7 +88,7 @@ if (isset($_POST['submitForm'])) {
       <!-- file input -->
       <div class="mb-5">
         <label for="uploadCV" class="form-label mb-2">Upload your CV/Resume (<span class="pdf-format">PDF
-            Format</span>):</label>
+            Format</span>)(Ex: Doe_Resume.pdf):</label>
         <input class="form-control form-control-lg" id="uploadCV" name="employeeResume" type="file" accept=".pdf"
           required>
       </div>
