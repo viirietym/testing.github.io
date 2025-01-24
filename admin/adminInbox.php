@@ -2,7 +2,7 @@
 include '../connect.php';
 include('../process/sessionStarting.php');
 
-$sendingApplicationquery = "SELECT applicationform.applicationFormID, user.firstName, user.lastName, user.userID, applicationform.sentDate, userInfo.userProfileImage
+$sendingApplicationquery = "SELECT applicationform.applicationFormID, user.firstName, user.lastName, user.userID, applicationform.sentDate, userInfo.userProfileImage, userInfo.userInfoID
     FROM applicationform
     INNER JOIN user ON applicationform.userID = user.userID
     LEFT JOIN userInfo ON user.userInfoID = userInfo.userInfoID

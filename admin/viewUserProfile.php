@@ -6,7 +6,7 @@ $userInfoID = $_GET['userInfoID'];
 $query = $conn->prepare("
     SELECT user.firstName, user.lastName, user.username, userinfo.*, portfolio.projectImage, portfolio.projectTitle
     FROM user
-    INNER JOIN userinfo ON user.userID = userinfo.userInfoID
+    INNER JOIN userinfo ON user.userInfoID = userinfo.userInfoID
     LEFT JOIN portfolio ON userinfo.userInfoID = portfolio.userInfoID
     WHERE userinfo.userInfoID = ?
 ");
@@ -81,8 +81,10 @@ if ($user) {
                     </div>
                     <div class="col-12 col-md-6">
                         <div class="profileText">
+                            
                             <h2 id="fullName"><?php echo htmlspecialchars($firstName . " " . $lastName); ?></h2>
                             <div id="editFullNameContainer" style="display:none">
+                                
                                 <input type="text" id="editFirstName" class="textInput" placeholder="First Name">
                                 <input type="text" id="editLastName" class="textInput" placeholder="Last Name">
                             </div>
@@ -119,12 +121,12 @@ if ($user) {
                                 style="display:none; overflow:hidden;"></textarea>
                         </div>
                         <?php foreach ($portfolios as $portfolio): ?>
-                            <div class="card" style="display:flex; border-radius: 20px">
+                            <div class="card" style="display:flex; border-radius: 20px; position: relative;display: flex; align-items:center; justify-content: center">
                                 <img src="../assets/image/user/userPortfolio/<?php echo htmlspecialchars($portfolio['projectImage']); ?>" class="cardImg"
                                     alt="...">
                                 <div class="cardBody">
                                     <b
-                                        class="portfolioTitle"><?php echo htmlspecialchars($portfolio['projectTitle']); ?></b>
+                                        class="portfolioTitle; justify-content: center;"><?php echo htmlspecialchars($portfolio['projectTitle']); ?></b>
                                 </div>
                             </div>
                         <?php endforeach; ?>
