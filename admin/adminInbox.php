@@ -2,10 +2,10 @@
 include '../connect.php';
 include('../process/sessionStarting.php');
 
-$sendingApplicationquery = "SELECT applicationform.applicationFormID, user.firstName, user.lastName, user.userID, applicationform.sentDate, userInfo.userProfileImage, userInfo.userInfoID
-    FROM applicationform
-    INNER JOIN user ON applicationform.userID = user.userID
+$sendingApplicationquery = "SELECT applicationform.applicationFormID, user.firstName, user.lastName, user.userID, applicationform.sentDate, userInfo.userProfileImage, userInfo.userInfoID, applicationform.jobDetailID
+    FROM applicationform INNER JOIN user ON applicationform.userID = user.userID
     LEFT JOIN userInfo ON user.userInfoID = userInfo.userInfoID
+    LEFT JOIN  post  ON applicationform.jobDetailID = post.jobDetailID
     ORDER BY applicationform.sentDate ASC";
 
 $result = executeQuery($sendingApplicationquery);
@@ -72,7 +72,7 @@ $result = executeQuery($sendingApplicationquery);
                             class="text-white"><?php echo date("F j, Y, g:i a", strtotime($application['sentDate'])); ?></small>
                         <div class="fw-bold fs-5 text-white">
                             <?php echo $application['firstName'] . ' ' . $application['lastName']; ?>,
-                            applied for <u><a href="../admin/adminJobView.php?userID=<?php echo $application['userID']; ?>"
+                            applied for <u><a href="adminJobView.php?jobDetailID=<?php echo $application['jobDetailID']; ?>"
                                     class="text-decoration-none text-white">this job.</a></u>
                         </div>
                         <div class="list-buttons d-flex p-1 d-md-flex">
