@@ -15,7 +15,7 @@ if (isset($_GET['letterID'])) {
 $userID = $_SESSION['userID'];
 
 
-$letterQuery = "SELECT * FROM letter JOIN user on letter.userID = user.userID WHERE letterID = '1'";
+$letterQuery = "SELECT * FROM letter JOIN user on letter.userID = user.userID JOIN userinfo on userinfo.userInfoID = user.userInfoID WHERE letterID = '$letterID'";
 $letterResult = mysqli_query($conn, $letterQuery);
 
 if (mysqli_num_rows($letterResult) > 0) {
@@ -28,6 +28,7 @@ if (mysqli_num_rows($letterResult) > 0) {
     $lastName = $letterRow['lastName'];
     $email = $letterRow['email'];
     $isAccepted = $letterRow['isAccepted'];  
+    $userProfileImage = $letterRow['userProfileImage']; 
 
 } else {
     echo "Letter not found.";

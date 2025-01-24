@@ -8,7 +8,7 @@ if (isset($_GET['jobDetailID'])) {
   $jobDetailID = $_GET['jobDetailID'];
 
 } else {
-  header('location:userJobList.php');
+  header('location:../../userJobList.php');
 }
 
 // Query to get the full details of the job
@@ -139,7 +139,7 @@ $datePosted = $jobViewRow['datePosted'];
     <p><?php echo nl2br($fullDescription); ?></p>
 
     <div class="button-container">
-      <a href="../user/ApplicationForm.php?applicationFormID=">
+      <a href="../user/applicationForm.php?jobDetailID=<?php echo $jobDetailID; ?>">
         <button class="apply-now-btn" style="width:180px;">Apply Now</button>
       </a>
 

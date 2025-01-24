@@ -1,3 +1,7 @@
+<?php
+include('../process/sessionStarting.php');
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -37,7 +41,7 @@
                 <img src="../assets/image/adminImage/adminHome.png" alt="" class="homeImg">
             </a>
             <a href="../admin/adminInbox.php">
-                <img src="../assets/image/adminImage/notif.png" alt="" class="notifImg">
+                <img src="../assets/image/adminImage/notifAdmin.png" alt="" class="notifImg">
             </a>
             <a href="../admin/index.php">
                 <img src="../assets/image/adminImage/Logout.png" alt="" class="logoutImg">

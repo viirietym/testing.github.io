@@ -1,25 +1,7 @@
 <?php
 
 include("../connect.php");
-
-if (isset($_POST['addJobButton'])) {
-    $jobTitle = $_POST['jobTitle'];
-    $salaryRate = $_POST['salaryRate'];
-    $expLevel = $_POST['expLevel'];
-    $companyName = $_POST['companyName'];
-    $location = $_POST['barangay'];
-    $industry = $_POST['industry'];
-    $skillRequirements = $_POST['skillRequirements'];
-    $jobDescription = $_POST['jobDescription'];
-
-
-    $insertJobDetailQuery = "INSERT INTO jobdetail(jobTitle, salaryRate, experienceLevel, companyName , jobLocation, jobIndustry, jobSkillsDescription, fullDescription) 
-    VALUES ('$jobTitle','$salaryRate','$expLevel','$companyName','$location','$industry','$skillRequirements','$jobDescription');";
-    executeQuery($insertJobDetailQuery);
-
-    header('location:adminJobList.php');
-
-}
+include("../process/adminJobCreate2.php");
 
 ?>
 
@@ -116,9 +98,14 @@ if (isset($_POST['addJobButton'])) {
 
                     <div class="col-12 col-sm-12 col-md-4 col-xl-4">
                         <div class="form-floating mb-3">
-                            <input name="industry" type="text" class="form-control forms" required id="floatingInput"
-                                placeholder="Industry">
-                            <label for="floatingInput" class="titles">Industry</label>
+                        <select name="industry" class="form-select forms" required id="floatingSelect"
+                                aria-label="Floating label select example">
+                                <option selected>Select an Industry</option>
+                                <option value="Information Technology">Information Technology</option>
+                                <option value="Business and Administration">Business and Administration</option>
+                                <option value="Manufacturing and Logistics">Manufacturing and Logistics</option>
+                            </select>
+                            <label for="floatingSelect" class="titles">Industry</label>
                         </div>
                     </div>
 

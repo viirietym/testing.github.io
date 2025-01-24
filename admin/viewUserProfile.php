@@ -1,3 +1,8 @@
+<?php
+include("../process/adminProfileViewing.php");
+?>
+
+
 <!doctype html>
 <html lang="en">
 
@@ -11,7 +16,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link href="../assets/css/adminCSS/navbarAdmin.css" rel="stylesheet">
     <link href="../assets/css/adminCSS/viewUserProfile.css" rel="stylesheet">
-    <link rel="icon" href="../assets/image/userImage/stbLogo.ico">
+    <link rel="icon" href="../assets/image/adminImage/stbLogoAdmin.png">
 
 </head>
 
@@ -26,32 +31,25 @@
             <div class="col-12">
                 <div class="profileHeader d-flex flex-column flex-md-row align-items-center">
                     <div class="profileImage">
-                        <img src="">
+                        <img src="../assets/image/user/userProfile/<?php echo htmlspecialchars($profileImage); ?>"
+                            alt="Profile Image">
                         <span>Profile</span>
                     </div>
                     <div class="col-12 col-md-6">
                         <div class="profileText">
-                            <h2 id="fullName">Full Name</h2>
+
+                            <h2 id="fullName"><?php echo htmlspecialchars($firstName . " " . $lastName); ?></h2>
                             <div id="editFullNameContainer" style="display:none">
+
                                 <input type="text" id="editFirstName" class="textInput" placeholder="First Name">
                                 <input type="text" id="editLastName" class="textInput" placeholder="Last Name">
                             </div>
-                            <p id="username">@username</p>
+                            <p id="username"><?php echo htmlspecialchars($username); ?></p>
                             <input type="text" id="editUsername" class="textInput" style="display:none">
-                            <p id="shortDescription">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                eiusmod
-                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-                                nostrud
-                                exercitation ullamco.</p>
+                            <p id="shortDescription"><?php echo htmlspecialchars($shortDescription); ?></p>
                             <textarea id="editDescription" class="textInput" style="display:none; overflow:hidden;"
                                 placeholder="Enter your description"></textarea>
                         </div>
-                    </div>
-                    <div class="buttons d-flex justify-content-center justify-content-md-start">
-                    
-                        <a href="p">
-                            <button>VIEW APPLICATIONS</button>
-                        </a>
                     </div>
                 </div>
             </div>
@@ -63,38 +61,40 @@
                 <div class="profileContent">
                     <div class="contentLeft">
                         <div class="jobTitle">
-                            <span id="jobTitleText">Quality Assurance | Web Developer</span>
+                            <span id="jobTitleText"><?php echo htmlspecialchars($jobTitle); ?></span>
                             <input type="text" id="editJobTitle" class="textContent" style="display:none;">
                         </div>
                         <div class="fullDescription">
                             <b>Full Description:</b>
-                            <p id="fullDescriptionText">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                eiusmod
-                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-                                nostrud
-                                exercitation ullamco.</p>
+                            <p id="fullDescriptionText"><?php echo htmlspecialchars($fullDescription); ?></p>
                             <textarea id="editFullDescription" class="textContent"
                                 style="display:none; overflow:hidden;"></textarea>
                         </div>
-                        <div class="card" style="border-radius: 20px">
-                            <img src="" class="cardImg" alt="...">
-                            <div class="cardBody">
-                                <b class="portfolioTitle">Portfolio #1</b>
-                            </div>
+                        <div class="row justify-content-center">
+                            <?php foreach ($portfolios as $portfolio): ?>
+                                <div class="col-6 mb-2 justify-content-center">
+                                    <div class="card"
+                                        style="display:flex; border-radius: 20px; position: relative;display: flex; align-items:center; justify-content: center">
+                                        <img src="../assets/image/user/userPortfolio/<?php echo htmlspecialchars($portfolio['projectImage']); ?>"
+                                            class="cardImg" alt="...">
+                                        <div class="cardBody">
+                                            <b
+                                                class="portfolioTitle; justify-content: center;"><?php echo htmlspecialchars($portfolio['projectTitle']); ?></b>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
                         </div>
                         <div class="skills">
                             <b>Skills</b>
-                            <p id="skillsText">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                tempor
-                                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                                exercitation
-                                ullamco.</p>
+                            <p id="skillsText"> <?php echo htmlspecialchars($skills) ?> </p>
                             <textarea id="editSkills" class="textContent"
                                 style="display:none; overflow:hidden;"></textarea>
                         </div>
                         <div class="contactInfo">
                             <b>Contact Info</b>
-                            <p id="contactText"></p>
+                            <p id="contactText"> <?php echo htmlspecialchars($contactDetails) ?> </p>
+                            </p>
                             <textarea id="editContact" class="textContent"
                                 style="display:none; overflow:hidden;"></textarea>
                         </div>
@@ -105,25 +105,19 @@
                     <div class="contentRight">
                         <div class="educDetails">
                             <b>Education Details</b>
-                            <p id="educDetailsText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-                                eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua.</p>
+                            <p id="educDetailsText"><?php echo htmlspecialchars($educationalDetails); ?></p>
                             <textarea id="editEducDetails" class="textContent"
                                 style="display:none; overflow:hidden;"></textarea>
                         </div>
                         <div class="empHistory">
                             <b>Employment History</b>
-                            <p id="empHistoryText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-                                eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua.</p>
+                            <p id="empHistoryText"><?php echo htmlspecialchars($employmentHistory); ?></p>
                             <textarea id="editEmpHistory" class="textContent"
                                 style="display:none; overflow:hidden;"></textarea>
                         </div>
                         <div class="certDetails">
                             <b>Certification Details</b>
-                            <p id="certDetailsText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-                                eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua.</p>
+                            <p id="certDetailsText"><?php echo htmlspecialchars($certifications); ?></p>
                             <textarea id="editCertDetails" class="textContent"
                                 style="display:none; overflow:hidden;"></textarea>
                         </div>

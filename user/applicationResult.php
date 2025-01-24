@@ -1,5 +1,7 @@
-<?php include("../process/applicationResultQuery.php")
+<?php include("../process/applicationResultQuery.php");
+
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -35,7 +37,7 @@
                     <div class="d-flex align-items-center">
                         <div class="rounded-circle">
                             <a href="#">
-                                <img src="https://www.w3schools.com/images/w3schools_green.jpg" alt="Profile Picture"
+                                <img src="../assets/image/user/userProfile/<?php echo "$userProfileImage"?>" alt="Profile Picture"
                                     class="w-100 h-100 object-fit-cover">
                             </a>
                         </div>
@@ -51,7 +53,7 @@
 
                 <!-- Letter Title -->
                 <div class="title">
-                    <strong>Subject:</strong> Job Title
+                    <strong>Subject:</strong> Application Result
                     <p><strong>Good day! <?php echo $firstName . " " . $lastName ;?>,</strong></p>
                 </div>
 

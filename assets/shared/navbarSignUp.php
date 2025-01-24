@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -32,8 +36,8 @@
         <!-- END MOBILE SCREEN -->
 
         <nav>
-            <a href="../index.php" style="color: #2ECC71">Home</a>
-            <a href="../user/help.php">Help</a>
+        <a href="<?php echo isset($_SESSION['userID']) ? 'userJobList.php' : '../index.php'; ?>" style="color: #2ECC71">Home</a>
+        <a href="../user/help.php">Help</a>
             <a href="../user/about.php">About</a>
         </nav>
     </div>

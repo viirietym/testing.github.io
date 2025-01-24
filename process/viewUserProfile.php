@@ -2,8 +2,7 @@
 include('../connect.php');
 include('../process/sessionStarting.php');
 
-session_start ();
-$userId = isset($_GET['userId']) ? $_GET['userId'] : '';
+$userId = $_SESSION['userID'];
 
 $query = "SELECT user.username, user.firstname, user.lastname,
     userinfo.userInfoID, userinfo.userProfileImage, userinfo.userBio, userinfo.jobTitle,

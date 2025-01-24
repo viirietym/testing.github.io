@@ -1,44 +1,5 @@
 <?php
-
-include("../connect.php");
-
-if (isset($_GET['jobDetailID'])) {
-
-    $jobDetailID = $_GET['jobDetailID'];
-
-} else {
-    header('location:adminJobList.php');
-}
-
-$getJobViewQuery = "SELECT jobdetail.jobDetailID,jobdetail.jobTitle, jobdetail.jobLocation, jobdetail.salaryRate, jobdetail.experienceLevel, jobdetail.jobIndustry, jobdetail.fullDescription, jobdetail.companyName, jobdetail.jobSkillsDescription, post.datePosted FROM `jobdetail` LEFT JOIN post ON jobdetail.jobDetailID = post.jobDetailID WHERE jobdetail.jobDetailID = '$jobDetailID';";
-
-$jobViewresult = executeQuery($getJobViewQuery);
-
-$jobTitle = '';
-$salaryRate = '';
-$expLevel = '';
-$companyName = '';
-$location = '';
-$industry = '';
-$skillRequirements = '';
-$jobDescription = '';
-$datePosted = '';
-
-while ($jobRow = mysqli_fetch_assoc($jobViewresult)) {
-
-    $jobDetailID = $jobRow['jobDetailID'];
-    $jobTitle = $jobRow['jobTitle'];
-    $salaryRate = $jobRow['salaryRate'];
-    $expLevel = $jobRow['experienceLevel'];
-    $companyName = $jobRow['companyName'];
-    $location = $jobRow['jobLocation'];
-    $industry = $jobRow['jobIndustry'];
-    $skillRequirements = $jobRow['jobSkillsDescription'];
-    $jobDescription = $jobRow['fullDescription'];
-    $datePosted = $jobRow['datePosted'];
-
-}
-
+include("../process/adminJobView2.php");
 ?>
 
 <!DOCTYPE html>
@@ -83,17 +44,20 @@ while ($jobRow = mysqli_fetch_assoc($jobViewresult)) {
                 <div class="col-6 col-sm-6 col-xl-2 d-flex justify-content-center align-items-center">
                     <div class="container d-flex justify-content-end align-items-end">
                         <button type="button" class="btn custom-btn btnEdit"
-                            onclick="location.href='jobEdit.php'">Edit</button>
+                            onclick="location.href='jobEdit.php?jobID=<?php echo $jobDetailID?>'">Edit</button>
                     </div>
                 </div>
 
                 <!-- Delete Btn -->
                 <div class="col-6 col-sm-6 col-xl-2 d-flex justify-content-center align-items-center">
                     <div class="container d-flex justify-content-start align-items-start">
-                        <button name="btnDelete" class="btn custom-btn btnDelete" data-bs-toggle="modal"
-                            data-bs-target="#deleteModal">Delete</button>
+                        
+                        <button class="btn custom-btn btnDelete" data-bs-toggle="modal"
+                        data-bs-target="#deleteModal<?php echo $jobDetailID?>">Delete</button>
 
-                        <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        <form method="POST"> 
+                        <input type="hidden" name="jobID" value="<?php echo $jobDetailID?>">
+                        <div class="modal fade" id="deleteModal<?php echo $jobDetailID?>" tabindex="-1" aria-labelledby="exampleModalLabel"
                             aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
@@ -102,15 +66,18 @@ while ($jobRow = mysqli_fetch_assoc($jobViewresult)) {
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
                                     </div>
+
                                     <div class="modal-body">
                                         Are you sure you want to delete this job?
                                     </div>
+
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary"
                                             data-bs-dismiss="modal">Cancel</button>
-                                        <button type="submit" class="btn custom-button"
+                                        <button type="submit" name="btnDelete" class="btn custom-button"
                                             style="background-color: #AF514C; color: #FFFFFF;">Delete</button>
                                     </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
