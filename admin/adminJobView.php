@@ -44,17 +44,20 @@ include("../process/adminJobView2.php");
                 <div class="col-6 col-sm-6 col-xl-2 d-flex justify-content-center align-items-center">
                     <div class="container d-flex justify-content-end align-items-end">
                         <button type="button" class="btn custom-btn btnEdit"
-                            onclick="location.href='jobEdit.php'">Edit</button>
+                            onclick="location.href='jobEdit.php?jobID=<?php echo $jobDetailID?>'">Edit</button>
                     </div>
                 </div>
 
                 <!-- Delete Btn -->
                 <div class="col-6 col-sm-6 col-xl-2 d-flex justify-content-center align-items-center">
                     <div class="container d-flex justify-content-start align-items-start">
-                        <button name="btnDelete" class="btn custom-btn btnDelete" data-bs-toggle="modal"
-                            data-bs-target="#deleteModal">Delete</button>
+                        
+                        <button class="btn custom-btn btnDelete" data-bs-toggle="modal"
+                        data-bs-target="#deleteModal<?php echo $jobDetailID?>">Delete</button>
 
-                        <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        <form method="POST"> 
+                        <input type="hidden" name="jobID" value="<?php echo $jobDetailID?>">
+                        <div class="modal fade" id="deleteModal<?php echo $jobDetailID?>" tabindex="-1" aria-labelledby="exampleModalLabel"
                             aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
@@ -63,15 +66,18 @@ include("../process/adminJobView2.php");
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
                                     </div>
+
                                     <div class="modal-body">
                                         Are you sure you want to delete this job?
                                     </div>
+
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary"
                                             data-bs-dismiss="modal">Cancel</button>
-                                        <button type="submit" class="btn custom-button"
+                                        <button type="submit" name="btnDelete" class="btn custom-button"
                                             style="background-color: #AF514C; color: #FFFFFF;">Delete</button>
                                     </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>

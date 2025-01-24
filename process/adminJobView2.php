@@ -39,4 +39,14 @@ while ($jobRow = mysqli_fetch_assoc($jobViewresult)) {
 
 }
 
+if (isset($_POST['btnDelete'])) {
+
+    $jobID = $_POST['jobID'];
+    $jobDeletequery1 = "DELETE FROM `jobdetail` WHERE jobDetailID = '$jobID';";
+    $jobDeletequery2 = "DELETE FROM `post` WHERE jobDetailID = '$jobID';";
+    executeQuery($jobDeletequery1);
+    executeQuery($jobDeletequery2);
+    header('location:adminJobList.php');
+}
+
 ?>
