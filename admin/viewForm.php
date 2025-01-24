@@ -32,7 +32,7 @@ $data = $result->fetch_assoc();
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link href="../assets/css/adminCSS/navbarAdmin.css" rel="stylesheet">
     <link href="../assets/css/adminCSS/viewForm.css" rel="stylesheet">
-    <link rel="icon" href="../assets/image/userImage/stbLogo.ico">
+    <link rel="icon" href="../assets/image/adminImage/stbLogoAdmin.png">
 </head>
 
 <body>

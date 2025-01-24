@@ -15,7 +15,7 @@ $query->execute();
 $result = $query->get_result();
 $user = $result->fetch_assoc();
 
-$portfolios = []; 
+$portfolios = [];
 if ($user) {
 
     $firstName = $user['firstName'];
@@ -60,7 +60,7 @@ if ($user) {
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link href="../assets/css/adminCSS/navbarAdmin.css" rel="stylesheet">
     <link href="../assets/css/adminCSS/viewUserProfile.css" rel="stylesheet">
-    <link rel="icon" href="../assets/image/userImage/stbLogo.ico">
+    <link rel="icon" href="../assets/image/adminImage/stbLogoAdmin.png">
 
 </head>
 
@@ -81,10 +81,10 @@ if ($user) {
                     </div>
                     <div class="col-12 col-md-6">
                         <div class="profileText">
-                            
+
                             <h2 id="fullName"><?php echo htmlspecialchars($firstName . " " . $lastName); ?></h2>
                             <div id="editFullNameContainer" style="display:none">
-                                
+
                                 <input type="text" id="editFirstName" class="textInput" placeholder="First Name">
                                 <input type="text" id="editLastName" class="textInput" placeholder="Last Name">
                             </div>
@@ -94,12 +94,6 @@ if ($user) {
                             <textarea id="editDescription" class="textInput" style="display:none; overflow:hidden;"
                                 placeholder="Enter your description"></textarea>
                         </div>
-                    </div>
-                    <div class="buttons d-flex justify-content-center justify-content-md-start">
-
-                        <a href="p">
-                            <button>VIEW APPLICATIONS</button>
-                        </a>
                     </div>
                 </div>
             </div>
@@ -120,16 +114,21 @@ if ($user) {
                             <textarea id="editFullDescription" class="textContent"
                                 style="display:none; overflow:hidden;"></textarea>
                         </div>
-                        <?php foreach ($portfolios as $portfolio): ?>
-                            <div class="card" style="display:flex; border-radius: 20px; position: relative;display: flex; align-items:center; justify-content: center">
-                                <img src="../assets/image/user/userPortfolio/<?php echo htmlspecialchars($portfolio['projectImage']); ?>" class="cardImg"
-                                    alt="...">
-                                <div class="cardBody">
-                                    <b
-                                        class="portfolioTitle; justify-content: center;"><?php echo htmlspecialchars($portfolio['projectTitle']); ?></b>
+                        <div class="row justify-content-center">
+                            <?php foreach ($portfolios as $portfolio): ?>
+                                <div class="col-6 mb-2 justify-content-center">
+                                    <div class="card"
+                                        style="display:flex; border-radius: 20px; position: relative;display: flex; align-items:center; justify-content: center">
+                                        <img src="../assets/image/user/userPortfolio/<?php echo htmlspecialchars($portfolio['projectImage']); ?>"
+                                            class="cardImg" alt="...">
+                                        <div class="cardBody">
+                                            <b
+                                                class="portfolioTitle; justify-content: center;"><?php echo htmlspecialchars($portfolio['projectTitle']); ?></b>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        <?php endforeach; ?>
+                            <?php endforeach; ?>
+                        </div>
                         <div class="skills">
                             <b>Skills</b>
                             <p id="skillsText"> <?php echo htmlspecialchars($skills) ?> </p>
