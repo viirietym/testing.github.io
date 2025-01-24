@@ -2,7 +2,6 @@
 include '../connect.php';
 include('../process/sessionStarting.php');
 
-session_start();
 date_default_timezone_set('Asia/Manila');
 
 if (!isset($_SESSION['userID'])) {
@@ -17,6 +16,7 @@ $applicantFullName = $_SESSION['firstName'] . " " . $_SESSION['lastName'];
 if (isset($_POST['submitForm'])) {
   $firstAnswer = $_POST['firstAnswer'];
   $secondAnswer = $_POST['secondAnswer'];
+  $jobDetailID = $_POST['jobDetailID'];
 
   // Handle file upload
   if (isset($_FILES['employeeResume']) && $_FILES['employeeResume']['error'] == 0) {
@@ -34,15 +34,18 @@ if (isset($_POST['submitForm'])) {
     move_uploaded_file($resumefileuploadTMP, $resumefolder . "/" . $resumenewfilename);
 
     // Store the file path in the database
-    $employeeResume = $resumefolder . "/" . $resumenewfilename;
+    $employeeResume = $resumenewfilename;
 
     // Sent date
     $sentDate = date("Y-m-d H:i:s");
 
     // InsertQuery
-    $insertApplicationFormQuery = "INSERT INTO applicationform(firstAnswer, secondAnswer, employeeResume, sentDate , userID) 
-        VALUES ('$firstAnswer','$secondAnswer','$employeeResume','$sentDate','$userID');";
-    executeQuery($insertApplicationFormQuery);
+    $insertApplicationFormQuery = "INSERT INTO applicationform(firstAnswer, secondAnswer, employeeResume, sentDate , userID, jobDetailID) 
+        VALUES ('$firstAnswer','$secondAnswer','$employeeResume','$sentDate','$userID','$jobDetailID');";
+      executeQuery($insertApplicationFormQuery);
+
+      header("Location: userJobList.php");
+      exit();
   }
 }
 ?>
@@ -62,11 +65,10 @@ if (isset($_POST['submitForm'])) {
 </head>
 
 <body>
-
   <?php include "../assets/shared/navbarHome.php" ?>
-
   <div class="form-container" style="margin: 150px auto;">
     <form action="applicationForm.php" method="POST" enctype="multipart/form-data">
+      <input type="hidden" name="jobDetailID" value="<?php echo $_GET['jobDetailID']; ?>">
       <h5 class="aformName mb-4"><?php echo $applicantFullName; ?>'s Application Form</h5>
 
       <div class="question1 mb-4 ">
