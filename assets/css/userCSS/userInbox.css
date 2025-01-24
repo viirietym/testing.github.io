@@ -65,11 +65,15 @@ body {
     background-color: #3E8A5E;
     border-radius: 20px !important;
     font-family: 'Poppins', sans-serif;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 .notification-item {
     background-color: #3E8A5E !important;
     font-family: 'Poppins', sans-serif;
+    margin-left: 35px;
 }
 
 .notification-box::-webkit-scrollbar {
