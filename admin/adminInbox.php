@@ -6,7 +6,7 @@ $sendingApplicationquery = "SELECT applicationform.applicationFormID, user.first
     FROM applicationform
     INNER JOIN user ON applicationform.userID = user.userID
     LEFT JOIN userInfo ON user.userInfoID = userInfo.userInfoID
-    ORDER BY applicationform.sentDate ASC"; 
+    ORDER BY applicationform.sentDate ASC";
 
 $result = executeQuery($sendingApplicationquery);
 ?>
@@ -63,7 +63,7 @@ $result = executeQuery($sendingApplicationquery);
             <!-- Notification List -->
             <?php foreach ($result as $application): ?>
                 <li class="list-group-item mx-4 my-5 d-flex align-items-center notification-item">
-                    <a href="profilepage.php">
+                    <a href="../admin/viewUserProfile.php?userInfoID=<?php echo $application['userInfoID']; ?>">
                         <img src="../assets/image/user/userProfile/<?php echo $application['userProfileImage']; ?>"
                             alt="icon" class="rounded-circle me-2 img-fluid" style="width: 100px; height: 100px;">
                     </a>
@@ -76,10 +76,11 @@ $result = executeQuery($sendingApplicationquery);
                                     class="text-decoration-none text-white">this job.</a></u>
                         </div>
                         <div class="list-buttons d-flex p-1 d-md-flex">
-                            <a href="../admin/viewApplication.php?applicationFormID=<?php echo $application['applicationFormID']; ?>"
+                            <a href="../admin/viewForm.php?applicationFormID=<?php echo $application['applicationFormID']; ?>&userID=<?php echo $application['userID']; ?>"
                                 class="btn btn-light me-2 mt-2">APPLICATION FORM</a>
-                            <button type="button" class="btn btn-success me-2 mt-2">ACCEPT</button>
-                            <button type="button" class="btn btn-danger me-2 mt-2">DECLINE</button>
+
+
+
                         </div>
                     </div>
                 </li>
