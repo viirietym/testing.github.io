@@ -1,3 +1,7 @@
+<?php
+include("../process/adminJobEdit2.php");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,26 +39,37 @@
 
                     <div class="col-12 col-sm-12 col-md-4 col-xl-4">
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control forms" id="floatingInput" placeholder="Job Title">
+                            <input type="text" name="jobTitle" value="<?php echo $jobTitle ?>"
+                                class="form-control forms" id="floatingInput" placeholder="Job Title">
                             <label for="floatingInput" class="titles">Job title</label>
                         </div>
                     </div>
 
                     <div class="col-12 col-sm-12 col-md-4 col-xl-4">
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control forms" id="floatingInput" placeholder="Salary Rate">
+                            <input type="text" name="salaryRate" value="<?php echo $salaryRate ?>"
+                                class="form-control forms" id="floatingInput" placeholder="Salary Rate">
                             <label for="floatingInput" class="titles">Salary Rate</label>
                         </div>
                     </div>
 
+                    <?php
+
+
+                    $entryLevelSelect = ($expLevel == 'Entry Level') ? 'selected' : '';
+                    $midLevelSelect = ($expLevel == 'Mid Level') ? 'selected' : '';
+                    $seniorLevelSelect = ($expLevel == 'Senior Level') ? 'selected' : '';
+
+
+                    ?>
                     <div class="col-12 col-sm-12 col-md-4 col-xl-4">
                         <div class="form-floating mb-3">
-                            <select class="form-select forms" required id="floatingSelect"
+                            <select name="expLevel" class="form-select forms" required id="floatingSelect"
                                 aria-label="Floating label select example">
                                 <option selected>Select an Exp Level</option>
-                                <option value="1">Common</option>
-                                <option value="2">Intermediate</option>
-                                <option value="3">Professional</option>
+                                <option value="Entry Level" <?php echo $entryLevelSelect ?>>Entry Level</option>
+                                <option value="Mid Level" <?php echo $midLevelSelect ?>>Mid Level</option>
+                                <option value="Senior Level" <?php echo $seniorLevelSelect ?>>Senior Level</option>
                             </select>
                             <label for="floatingSelect" class="titles">Experience Level</label>
                         </div>
@@ -66,27 +81,51 @@
 
                     <div class="col-12 col-sm-12 col-md-4 col-xl-4">
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control forms" id="floatingInput" placeholder="Company Name">
+                            <input type="text" name="companyName" value="<?php echo $companyName ?>"
+                                class="form-control forms" id="floatingInput" placeholder="Company Name">
                             <label for="floatingInput" class="titles">Company Name</label>
                         </div>
                     </div>
 
+                    <?php
+                    $Barangay1Select = ($location == 'San Antonio') ? 'selected' : '';
+                    $Barangay2Select = ($location == 'San Miguel') ? 'selected' : '';
+                    $Barangay3Select = ($location == 'San Pedro') ? 'selected' : '';
+                    $Barangay4Select = ($location == 'San Roque') ? 'selected' : '';
+                    $Barangay5Select = ($location == 'San Vicente') ? 'selected' : '';
+                    ?>
+
                     <div class="col-12 col-sm-12 col-md-4 col-xl-4">
                         <div class="form-floating mb-3">
-                            <select class="form-select forms" required id="floatingSelect"
+                            <select name="barangay" class="form-select forms" required id="floatingSelect"
                                 aria-label="Floating label select example">
                                 <option selected>Select a Barangay</option>
-                                <option value="1">San Roque</option>
-                                <option value="2">Santa Ana</option>
-                                <option value="3">San Agustin</option>
+                                <option value="San Antonio" <?php echo $Barangay1Select ?>>San Antonio</option>
+                                <option value="San Miguel" <?php echo $Barangay2Select ?>>San Miguel</option>
+                                <option value="San Pedro" <?php echo $Barangay3Select ?>>San Pedro</option>
+                                <option value="San Roque" <?php echo $Barangay4Select ?>>San Roque</option>
+                                <option value="San Vicente" <?php echo $Barangay5Select ?>>San Vicente</option>
+
                             </select>
                             <label for="floatingSelect" class="titles">Barangay</label>
                         </div>
                     </div>
 
+                    <?php
+                    $industry1Select = ($industry == 'Information Technology') ? 'selected' : '';
+                    $industry2Select = ($industry == 'Business and Administration') ? 'selected' : '';
+                    $industry3Select = ($industry == 'Manufacturing and Logistics') ? 'selected' : '';
+                    ?>
+
                     <div class="col-12 col-sm-12 col-md-4 col-xl-4">
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control forms" id="floatingInput" placeholder="Industry">
+                        <select name="industry" class="form-select forms" required id="floatingSelect"
+                                aria-label="Floating label select example">
+                                <option selected>Select an Industry</option>
+                                <option value="Information Technology" <?php echo $industry1Select ?>>Information Technology</option>
+                                <option value="Business and Administration" <?php echo $industry2Select ?>>Business and Administration</option>
+                                <option value="Manufacturing and Logistics" <?php echo $industry3Select ?>>Manufacturing and Logistics</option>
+                            </select>
                             <label for="floatingInput" class="titles">Industry</label>
                         </div>
                     </div>
@@ -97,8 +136,8 @@
 
                     <div class="col-12 col-sm-12 col-md-12 col-xl-12">
                         <div class="form-floating mb-3">
-                            <textarea class="form-control forms" placeholder="Skill Details" id="floatingTextarea"
-                                style="height: 100px"></textarea>
+                            <textarea name="skillRequirements" class="form-control forms" placeholder="Skill Details"
+                                id="floatingTextarea" style="height: 100px"><?php echo $skillRequirements ?></textarea>
                             <label for="floatingTextarea" class="titles">Skill Requirements</label>
                         </div>
                     </div>
@@ -109,8 +148,8 @@
 
                     <div class="col-12 col-sm-12 col-md-12 col-xl-12">
                         <div class="form-floating mb-3">
-                            <textarea class="form-control forms" placeholder="Skill Details" id="floatingTextarea"
-                                style="height: 150px"></textarea>
+                            <textarea name="jobDescription" class="form-control forms" placeholder="Skill Details"
+                                id="floatingTextarea" style="height: 150px"><?php echo $jobDescription ?></textarea>
                             <label for="floatingTextarea" class="titles">Job Description</label>
                         </div>
                     </div>
@@ -120,7 +159,8 @@
                 <!-- Add btn -->
                 <div class="row p-3 d-flex justify-content-center align-items-center">
                     <div class="container d-flex justify-content-center align-items-center p-2">
-                        <a href="adminJobList.php"><button type="submit" class="btn btn-light btnEdit">Save Changes</button></a>
+                        <button name="editButton" type="submit" class="btn btn-light btnEdit">Save
+                            Changes</button></a>
                     </div>
                 </div>
 

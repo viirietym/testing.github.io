@@ -1,7 +1,7 @@
 <?php
 
 include("../connect.php");
-include("../process/adminJobCreate.php");
+include("../process/adminJobCreate2.php");
 
 ?>
 
@@ -98,9 +98,14 @@ include("../process/adminJobCreate.php");
 
                     <div class="col-12 col-sm-12 col-md-4 col-xl-4">
                         <div class="form-floating mb-3">
-                            <input name="industry" type="text" class="form-control forms" required id="floatingInput"
-                                placeholder="Industry">
-                            <label for="floatingInput" class="titles">Industry</label>
+                        <select name="industry" class="form-select forms" required id="floatingSelect"
+                                aria-label="Floating label select example">
+                                <option selected>Select an Industry</option>
+                                <option value="Information Technology">Information Technology</option>
+                                <option value="Business and Administration">Business and Administration</option>
+                                <option value="Manufacturing and Logistics">Manufacturing and Logistics</option>
+                            </select>
+                            <label for="floatingSelect" class="titles">Industry</label>
                         </div>
                     </div>
 
