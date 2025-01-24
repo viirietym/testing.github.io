@@ -2,8 +2,6 @@
 
 include("../connect.php");
 
-session_start();
-
 if (isset($_GET['jobID'])) {
 
     $jobID = $_GET['jobID'];

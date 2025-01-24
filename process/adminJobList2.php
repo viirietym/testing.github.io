@@ -1,7 +1,6 @@
 <?php
 
 include("../connect.php");
-session_start();
 
 $jobDetailquery = "SELECT jobdetail.jobDetailID, jobdetail.jobTitle, jobdetail.jobLocation, jobdetail.salaryRate, jobdetail.experienceLevel, jobdetail.jobIndustry, LEFT (jobdetail.fullDescription, 100) AS shortenedDesc, jobdetail.companyName, jobdetail.jobSkillsDescription, post.datePosted 
 FROM `jobdetail` LEFT JOIN post ON jobdetail.jobDetailID = post.jobDetailID";
