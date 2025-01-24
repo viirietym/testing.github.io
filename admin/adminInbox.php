@@ -1,6 +1,5 @@
 <?php
 include '../connect.php';
-include('../process/sessionStarting.php');
 
 $sendingApplicationquery = "SELECT applicationform.applicationFormID, user.firstName, user.lastName, user.userID, applicationform.sentDate, userInfo.userProfileImage, userInfo.userInfoID, applicationform.jobDetailID
     FROM applicationform INNER JOIN user ON applicationform.userID = user.userID

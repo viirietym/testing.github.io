@@ -24,9 +24,6 @@ if (isset($_POST ['btnLogin'])) {
     $_SESSION['email'] = "";
     $_SESSION['role'] = "";
    
-
-
-
     if (mysqli_num_rows($loginResult) > 0) {
         while ($user = mysqli_fetch_assoc($loginResult)) {
             $_SESSION['userID'] = $user['userID'];

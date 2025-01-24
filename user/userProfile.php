@@ -101,7 +101,7 @@ include('../process/viewUserProfile.php');
                                             $portfolioResult = executeQuery($portfolioQuery);
                                             while ($portfolioItem = mysqli_fetch_assoc($portfolioResult)) {
                                                 ?>
-                                                <div class="col-6 mb-2 justify-content-center">
+                                                <div class="d-flex col-12 col-lg-6 mb-2 justify-content-center">
                                                     <div class="card" style="border-radius: 20px;">
                                                         <img id="projectImage"
                                                             src="../assets/image/user/userPortfolio/<?php echo $portfolioItem['projectImage']; ?>"
